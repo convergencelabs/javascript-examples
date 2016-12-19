@@ -1,0 +1,18 @@
+{
+  "name": "convergence-examples",
+  "version": "0.1.0",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "dependencies": {
+    "chart.js": "2.1.6",
+    "nouislider": "8.5.1",
+    "jquery": "3.1.1",
+    "rxjs": "5.0.1"
+  },
+  "devDependencies": {
+    "lite-server": "2.2.0",
+    "materialize-css": "^0.97.8",
+    "moment": "^2.17.1"
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Convergence Chat Demo</title>
+
+  <link href="chat.css" rel="stylesheet">
+
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="../../node_modules/materialize-css/dist/css/materialize.min.css"
+        media="screen,projection"/>
+
+
+  <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="../../node_modules/moment/min/moment.min.js"></script>
+  <script type="text/javascript" src="../../node_modules/materialize-css/dist/js/materialize.min.js"></script>
+
+  <!-- Convergence resources -->
+  <script src="../../config.js"></script>
+  <script src="../../node_modules/rxjs/bundles/Rx.min.js"></script>
+  <script src="https://api.convergence.io/client/v1/convergence.js"></script>
+
+</head>
+<body>
+<div class="chat-controls">
+  <div class="row">
+    <div class="input-field col s5">
+      <input id="username" type="text" class="validate" placeholder="Enter Username">
+      <label for="username">Username</label>
+    </div>
+    <div class="input-field col s5">
+      <input id="room" type="text" class="validate" value="Default">
+      <label for="room">Chat Room</label>
+    </div>
+    <div class="input-field col s2">
+      <a class="waves-effect waves-light btn" id="join" onclick="connectAndJoin()">Join</a>
+      <a class="waves-effect waves-light btn" id="leave" onclick="handleLeave()" style="display: none">Leave</a>
+    </div>
+  </div>
+</div>
+<div class="chat-container">
+  <nav>
+    <div id="chat-title" class="nav-wrapper"><span>Chat Messages</span></div>
+  </nav>
+  <div class="card chat-messages">
+    <div id="scroller" class="card-content">
+      <ul id="chat-messages" class="collection">
+      </ul>
+    </div>
+  </div>
+  <div class="chat-input-containers">
+    <input id="message" type="text" placeholder="Enter message" disabled onkeydown="handleKeyDown(event)"/>
+  </div>
+</div>
+<script src="chat.js" type="text/javascript" language="JavaScript"></script>
+</body>
+</html>

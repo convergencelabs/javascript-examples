@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img.github-logo {
+  float: right;
+  margin: 22px 10px 0 0;
+  height: 24px;
+}
+
+img.logo {
+  float: left;
+  height: 45px;
+  margin: 10px 10px 0 20px;
+}
+
+span.title {
+  color: white;
+  font-size: 25px;
+  font-family: "Century Gothic", sans-serif;
+}
+
+#examples {
+  padding:10px;
+}
+
+@font-face {
+  font-family: "Century Gothic";
+  src: url('fonts/CenturyGothic.ttf');
+}
