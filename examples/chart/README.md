@@ -18,6 +18,6 @@ The data model looks something like this:
 }
 ```
 
-### Advanced usage
+## Advanced Editing
 
 You can edit a segment's label, background color and value in the Model Editor of the [Convergence Admin Console](https://admin.convergence.io).  The chart will respond to changes in the Admin Console in real time, but be careful, you can easily corrupt the data if you don't maintain a valid Chart.js pie chart schema.
