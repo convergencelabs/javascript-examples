@@ -1,18 +1,25 @@
 {
   "name": "convergence-examples",
+  "keywords": ["convergence", "examples"],
+  "author": "Convergence Labs, Inc.",
   "version": "0.1.0",
+  "license": "MIT",
   "scripts": {
     "start": "lite-server"
   },
   "dependencies": {
     "chart.js": "2.1.6",
+    "director": "1.2.8",
     "nouislider": "8.5.1",
+    "handlebars": "2.0.0",
     "jquery": "3.1.1",
-    "rxjs": "5.0.1"
+    "rxjs": "5.0.1",
+    "materialize-css": "0.97.8",
+    "moment": "2.17.1",
+    "todomvc-app-css": "1.0.1",
+    "todomvc-common": "1.0.3"
   },
   "devDependencies": {
-    "lite-server": "2.2.0",
-    "materialize-css": "^0.97.8",
-    "moment": "^2.17.1"
+    "lite-server": "2.2.2"
   }
 }
