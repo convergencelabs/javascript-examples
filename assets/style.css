@@ -17,8 +17,9 @@ img.logo {
 
 span.title {
   color: white;
-  font-size: 25px;
+  font-size: 2em;
   font-family: "Century Gothic", sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 #examples {

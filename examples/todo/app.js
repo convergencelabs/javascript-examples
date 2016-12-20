@@ -69,9 +69,10 @@ jQuery(function ($) {
       this.model.onTodoRemote(todoIndex, 'text-insert', this.renderTodoLabelInsert.bind(this));
       this.model.onTodoRemote(todoIndex, 'text-remove', this.renderTodoLabelDelete.bind(this));
     },
-    renderNewTodo: function(todo) {
+    renderNewTodo: function(todo, index) {
       $('#todo-list').append(this.todoTemplate(todo));
       this.renderCounters();
+      this.listenToTodoEvents(index);
     },
     renderDeletedTodo: function(index) {
       var elToRemove = $('#todo-list li')[index];
