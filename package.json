@@ -1,13 +1,29 @@
 {
-  "name": "convergence-examples",
-  "keywords": ["convergence", "examples"],
-  "author": "Convergence Labs, Inc.",
-  "version": "0.1.0",
+  "name": "@convergence/examples",
+  "version": "0.1.1",
+  "description": "Examples demonstrating various features of the Convergence platform.",
+  "keywords": [
+    "convergence",
+    "examples"
+  ],
+  "homepage": "http://convergencelabs.com",
+  "author": {
+    "name": "Convergence Labs",
+    "email": "info@convergencelabs.com",
+    "url": "http://convergencelabs.com"
+  },
+  "contributors": [],
   "license": "MIT",
-  "scripts": {
-    "start": "lite-server"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/convergencelabs/examples.git"
+  },
+  "bugs": {
+    "url": "https://github.com/convergencelabs/examples/issues"
   },
   "dependencies": {
+    "@convergence/ace-collab-ext": "0.1.0",
+    "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
     "director": "1.2.8",
     "nouislider": "8.5.1",
@@ -21,5 +37,8 @@
   },
   "devDependencies": {
     "lite-server": "2.2.2"
+  },
+  "scripts": {
+    "start": "lite-server"
   }
 }

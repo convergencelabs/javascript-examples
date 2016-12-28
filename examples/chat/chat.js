@@ -5,7 +5,7 @@ function connectAndJoin() {
   var username = $("#username").val();
   var roomId = $("#room").val();
 
-  // Connect to the domain.  See ../connection.js for the connection settings.
+  // Connect to the domain.  See ../../config.js for the connection settings.
   ConvergenceDomain.connectAnonymously(DOMAIN_URL, username)
     .then(function (d) {
       domain = d;
