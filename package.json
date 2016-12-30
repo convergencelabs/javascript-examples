@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@convergence/ace-collab-ext": "0.1.0",
+    "@convergence/color-assigner": "0.1.0",
     "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
     "director": "1.2.8",

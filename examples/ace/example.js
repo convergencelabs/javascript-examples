@@ -16,6 +16,8 @@ ConvergenceDomain.connectAnonymously(DOMAIN_URL)
 
 var AceRange = ace.require("ace/range").Range;
 
+var colorAssigner = new ColorAssigner();
+
 var editor = null;
 var session = null;
 var doc = null;
@@ -125,8 +127,7 @@ function setLocalCursor() {
 }
 
 function addCursor(reference) {
-  // FIXME Colors
-  var color = "yellow";
+  const color = colorAssigner.getColorAsHex(reference.sessionId());
   var remoteCursorIndex = reference.value();
   cursorManager.addCursor(reference.sessionId(), reference.username(), color, remoteCursorIndex);
 
@@ -189,10 +190,7 @@ function setLocalSelection() {
 }
 
 function addSelection(reference) {
-  // fixme we need the client to handle multi ranges
-  // const color = colorAssigner.getColorAsHex(reference.sessionId());
-  const color = "yellow";
-
+  const color = colorAssigner.getColorAsHex(reference.sessionId());
   const remoteSelection = reference.values().map(range => toAceRange(range));
   selectionManager.addSelection(reference.sessionId(), reference.username(), color, remoteSelection);
 
@@ -263,8 +261,7 @@ function setLocalView() {
 }
 
 function addView(reference) {
-  // const color = colorAssigner.getColorAsHex(reference.sessionId());
-  const color = "yellow";
+  const color = colorAssigner.getColorAsHex(reference.sessionId());
 
   // fixme need the cursor
   let cursorRow = null;
