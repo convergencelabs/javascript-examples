@@ -1,5 +1,5 @@
 // Connect to the domain.  See ../../config.js for the connection settings.
-ConvergenceDomain.connectAnonymously(DOMAIN_URL)
+Convergence.connectAnonymously(DOMAIN_URL)
   .then(function (d) {
     domain = d;
     // Now open the model, creating it using the initial data if it does not exist.

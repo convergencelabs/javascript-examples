@@ -1,4 +1,4 @@
-var RealtimeChart = function () {
+const RealtimeChart = function () {
   this.controls = [];
 };
 
@@ -9,7 +9,7 @@ RealtimeChart.prototype = {
    */
   init: function () {
     // Connect to the domain.  See ../connection.js for the connection settings.
-    ConvergenceDomain.connect(DOMAIN_URL, DOMAIN_USERNAME, DOMAIN_PASSWORD).then(function (domain) {
+    Convergence.connectAnonymously(DOMAIN_URL).then(function (domain) {
       // Now open the model, creating it using the initial data if it does not exist.
       return domain.models().open("example", "pie-chart", function (collectionId, modelId) {
         return initialData;
@@ -32,7 +32,7 @@ RealtimeChart.prototype = {
    * @param initialData The initial chart data.
    */
   createChart: function (initialData) {
-    var ctx = document.getElementById("pieChart");
+    const ctx = document.getElementById("pieChart");
     this.pieChart = new Chart(ctx, {
       type: 'pie',
       data: initialData,
@@ -47,14 +47,14 @@ RealtimeChart.prototype = {
     });
 
     // Create slider controls for each segment, initialized with the current data
-    var dataset = initialData.datasets[0];
+    const dataset = initialData.datasets[0];
     initialData.labels.forEach(function (label, index) {
-      var attrs = {
+      const attrs = {
         label: label,
         value: dataset.data[index],
         color: dataset.backgroundColor[index]
       };
-      var control = new ChartControl(attrs);
+      const control = new ChartControl(attrs);
       control.addToDom();
       this.controls.push(control);
     }.bind(this));
@@ -67,7 +67,7 @@ RealtimeChart.prototype = {
   bindToSliders: function () {
     this.controls.forEach(function (control, index) {
       control.onSlide(function (value) {
-        var val = Math.round(parseInt(value[0], 10));
+        const val = Math.round(parseInt(value[0], 10));
 
         // update the RealTimeValue.  This notifies any listeners
         this.realTimeModel.elementAt(['datasets', 0, 'data', index]).value(val);
@@ -89,32 +89,32 @@ RealtimeChart.prototype = {
       // This can be triggered either from the slider of another chart example, or
       // by explicitly typing in the value in the Model Editor of the Admin UI
       this.realTimeModel.elementAt(['datasets', 0, 'data', index]).on('value', function (e) {
-        control.updateSliderVal(e.value);
-        this.updateSegmentValue(index, e.value);
+        control.updateSliderVal(e.element.value());
+        this.updateSegmentValue(index, e.element.value());
       }.bind(this));
 
       // Update the UI when a segment's value is incremented or decremented
       // This can be triggered with a value's spinner in the Model Editor of the Admin UI
       this.realTimeModel.elementAt(['datasets', 0, 'data', index]).on('add', function (e) {
-        var value = this.getSegmentValue(index) + e.value;
+        const value = this.getSegmentValue(index) + e.value;
         control.updateSliderVal(value);
         this.updateSegmentdata(index, value);
       }.bind(this));
 
-      // Update the UI when a semgment's color changes
+      // Update the UI when a segment's color changes
       // This can be triggered by editing a "backgroundColor" value in the Admin UI
-      var rtColorValue = this.realTimeModel.elementAt(['datasets', 0, 'backgroundColor', index]);
+      const rtColorValue = this.realTimeModel.elementAt(['datasets', 0, 'backgroundColor', index]);
       rtColorValue.on('model_changed', function () {
-        var newColor = rtColorValue.value();
+        const newColor = rtColorValue.value();
         control.updateSliderColor(newColor);
         this.updateSegmentColor(index, newColor);
       }.bind(this));
 
       // Update the UI when a segment's label changes
       // This can be triggered by editing a "labels" value in the Admin UI
-      var rtLabelValue = this.realTimeModel.elementAt(['labels', index]);
+      const rtLabelValue = this.realTimeModel.elementAt(['labels', index]);
       rtLabelValue.on('model_changed', function () {
-        var newLabel = rtLabelValue.value();
+        const newLabel = rtLabelValue.value();
         this.updateLabel(index, newLabel);
       }.bind(this));
     }.bind(this));
@@ -159,9 +159,9 @@ function ChartControl(attrs) {
 }
 ChartControl.prototype = {
   addToDom: function () {
-    var controlsDiv = document.getElementById("controls");
+    const controlsDiv = document.getElementById("controls");
 
-    var controlDiv = document.createElement("div");
+    const controlDiv = document.createElement("div");
     controlDiv.className = "control";
 
     this.sliderEl = document.createElement("div");
@@ -170,7 +170,7 @@ ChartControl.prototype = {
     this.sliderEl.style.background = this.color;
     controlDiv.appendChild(this.sliderEl);
 
-    var valueDiv = document.createElement("div");
+    const valueDiv = document.createElement("div");
     valueDiv.className = "value";
 
     this.valueInput = document.createElement("input");
@@ -214,7 +214,7 @@ ChartControl.prototype = {
 };
 
 // The default data that is provided if the model does not exist.
-var initialData = {
+const initialData = {
   labels: ["Red", "Green", "Yellow", "Blue"],
   datasets: [
     {
@@ -224,5 +224,5 @@ var initialData = {
   ]
 };
 
-var realTimeChart = new RealtimeChart();
+const realTimeChart = new RealtimeChart();
 realTimeChart.init();

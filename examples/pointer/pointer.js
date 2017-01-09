@@ -1,52 +1,51 @@
 // References to the buttons that will be enabled / disabled
-var joinButton = document.getElementById("joinButton");
-var leaveButton = document.getElementById("leaveButton");
+const joinButton = document.getElementById("joinButton");
+const leaveButton = document.getElementById("leaveButton");
 
-// The element that shows the local moust location
-var localMouseSpan = document.getElementById("localMouse");
+// The element that shows the local mouse location
+const localMouseSpan = document.getElementById("localMouse");
 
-var sessionIdSpan = document.getElementById("sessionId");
+const sessionIdSpan = document.getElementById("sessionId");
 
 // The list where all the cursors by session are listed.
-var mouseLocations = document.getElementById("mouseLocations");
+const mouseLocations = document.getElementById("mouseLocations");
 
 // The div where the mouse events are sourced / rendered
-var cursorBox = document.getElementById('cursorBox');
+const cursorBox = document.getElementById('cursorBox');
 
 // The Convergence activity
-var activity;
+let activity;
 
 // A map of remote cursors by sessionId
-var remoteSessions = {};
+const remoteSessions = {};
 
 // The domain that this example connects too.
-var domain;
+let domain;
 
+let zOrder = 1;
 
-ConvergenceDomain.connect(DOMAIN_URL, DOMAIN_USERNAME, DOMAIN_PASSWORD).then(function (d) {
+Convergence.connectAnonymously(DOMAIN_URL).then(function (d) {
   domain = d;
   joinButton.disabled = false;
   sessionIdSpan.innerHTML = domain.session().sessionId();
-}.bind(this)).catch(function (error) {
+}).catch(function (error) {
   console.log("Could not connect: " + error);
 });
-
-var zOrder = 1;
 
 // Handles clicking the open button
 function joinActivity() {
   domain.activities().join("testActivity").then(function (act) {
     activity = act;
-    var participants = activity.participants();
+    const participants = activity.participants();
     joinButton.disabled = true;
     leaveButton.disabled = false;
 
     participants.forEach(function (participant) {
-      var local = participant.sessionId() === activity.session().sessionId();
-      handleSessionJoined(participant.sessionId(), local);
-      var state = participant.state()["pointer"];
+      const local = participant.sessionId === activity.session().sessionId();
+      handleSessionJoined(participant.sessionId, local);
+      const state = participant.state.get("pointer");
       if (state) {
-        updateMouseLocation(participant.sessionId(), state.x, state.y, local);
+        updateMouseLocation(participant.sessionId, state.x, state.y, local);
       }
     });
 
@@ -82,19 +81,18 @@ function leaveActivity() {
   leaveButton.disabled = true;
 }
 
-
 // Handles a session joining (both remote and local)
 function handleSessionJoined(sessionId, local) {
-  var sessionTr = document.createElement("tr");
-  var sessionIdCell = document.createElement("td");
+  const sessionTr = document.createElement("tr");
+  const sessionIdCell = document.createElement("td");
   sessionIdCell.innerHTML = sessionId;
   sessionTr.appendChild(sessionIdCell);
 
-  var locationCell = document.createElement("td");
+  const locationCell = document.createElement("td");
   sessionTr.appendChild(locationCell);
 
   mouseLocations.appendChild(sessionTr);
-  var cursorDiv;
+  let cursorDiv;
 
   if (!local) {
     cursorDiv = document.createElement("img");
@@ -113,7 +111,7 @@ function handleSessionJoined(sessionId, local) {
 
 // Handles a session leaving (both remote and local)
 function handleSessionLeft(sessionId) {
-  var sessionRec = remoteSessions[sessionId];
+  const sessionRec = remoteSessions[sessionId];
   sessionRec.sessionTr.parentNode.removeChild(sessionRec.sessionTr);
   if (sessionRec.cursorDiv) {
     cursorBox.removeChild(sessionRec.cursorDiv);
@@ -122,7 +120,7 @@ function handleSessionLeft(sessionId) {
 }
 
 function updateMouseLocation(sessionId, x, y, local) {
-  var sessionRec = remoteSessions[sessionId];
+  const sessionRec = remoteSessions[sessionId];
   sessionRec.locationCell.innerHTML = "(" + x + "," + y + ")";
   if (!local) {
     sessionRec.cursorDiv.style.top = y + "px";
@@ -131,15 +129,14 @@ function updateMouseLocation(sessionId, x, y, local) {
 }
 
 function remoteClicked(sessionId, x, y) {
-  console.log(x, y);
-  var elem = createClickSpot(x, y);
+  const elem = createClickSpot(x, y);
   setTimeout(function () {
     elem.parentElement.removeChild(elem);
   }, 300);
 }
 
 function getMouseEventCoordinates(evt) {
-  var cursorBoxOffset = $(cursorBox).offset();
+  const cursorBoxOffset = $(cursorBox).offset();
   return {
     x: evt.pageX - cursorBoxOffset.left,
     y: evt.pageY - cursorBoxOffset.top
@@ -148,7 +145,7 @@ function getMouseEventCoordinates(evt) {
 
 // handles the local mouse movement and set events.
 function mouseMoved(evt) {
-  var coordinates = getMouseEventCoordinates(evt);
+  const coordinates = getMouseEventCoordinates(evt);
   localMouseSpan.innerHTML = " (" + coordinates.x + "," + coordinates.y + ")";
 
   if (activity && activity.isJoined()) {
@@ -158,13 +155,13 @@ function mouseMoved(evt) {
 
 function mouseClicked(event) {
   if (activity && activity.isJoined()) {
-    var coordinates = getMouseEventCoordinates(event);
+    const coordinates = getMouseEventCoordinates(event);
     activity.setState("click", coordinates);
   }
 }
 
 function createClickSpot(posX, posY) {
-  var spot = document.createElement("div");
+  const spot = document.createElement("div");
   spot.className = "clickSpot";
   spot.style.left = posX + "px";
   spot.style.top = posY + "px";

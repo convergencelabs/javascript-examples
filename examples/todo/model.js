@@ -8,7 +8,7 @@
    * @param {object} storage A reference to the client side storage class
    */
   function Model(name) {
-    this.loaded = ConvergenceDomain.connectAnonymously(DOMAIN_URL, "anonymous").then(function (domain) {
+    this.loaded = Convergence.connectAnonymously(DOMAIN_URL).then(function (domain) {
       this.domain = domain;
       return domain.models().open('example', name, function (collectionId, modelId) {
         return {
@@ -139,10 +139,10 @@
           this.rtTodos.on('model_changed', function(event) {
             if (event.relativePath.length) {
               if (event.childEvent.name === 'set' && event.childEvent.key === 'completed') {
-                var changedTodo = event.src.elementAt(event.relativePath).value();
+                var changedTodo = event.element.elementAt(event.relativePath).value();
                 callback(changedTodo.id, changedTodo.completed);
               } else if(event.childEvent.name.toLowerCase() === 'value' && event.relativePath[1] === 'completed') {
-                var changedTodo = event.src.elementAt(event.relativePath[0]).value();
+                var changedTodo = event.element.elementAt(event.relativePath[0]).value();
                 callback(changedTodo.id, changedTodo.completed);
               }
             }

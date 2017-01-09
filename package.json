@@ -1,6 +1,6 @@
 {
   "name": "@convergence/examples",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Examples demonstrating various features of the Convergence platform.",
   "keywords": [
     "convergence",
@@ -24,6 +24,7 @@
   "dependencies": {
     "@convergence/ace-collab-ext": "0.1.0",
     "@convergence/color-assigner": "0.1.0",
+    "@convergence/convergence": "1.0.0-alpha.1",
     "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
     "director": "1.2.8",
