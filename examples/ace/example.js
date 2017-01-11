@@ -98,7 +98,7 @@ var cursorReference = null;
 var cursorManager = null;
 
 function initSharedCursors(textElement) {
-  cursorManager = new AceCollabExt.AceMultiCursorManager(editor);
+  cursorManager = new AceCollabExt.AceMultiCursorManager(editor.getSession());
   cursorReference = textElement.indexReference(cursorKey);
 
   var references = textElement.references({key: cursorKey});
@@ -152,7 +152,7 @@ var selectionReference = null;
 var selectionKey = "selection";
 
 function initSharedSelection(textModel) {
-  selectionManager = new AceCollabExt.AceMultiSelectionManager(editor);
+  selectionManager = new AceCollabExt.AceMultiSelectionManager(editor.getSession());
 
   selectionReference = textModel.rangeReference(selectionKey);
   setLocalSelection();
