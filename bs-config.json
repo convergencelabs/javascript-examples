@@ -1,3 +1,10 @@
 {
-  "ghostMode": false
+  "ghostMode": false,
+  "server": {
+    "baseDir": "src",
+    "routes": {
+      "/libs": "node_modules",
+      "/config.js": "config.js"
+    }
+  }
 }

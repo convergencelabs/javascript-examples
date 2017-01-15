@@ -1,0 +1,23 @@
+language: node_js
+
+node_js:
+  - "6.1"
+
+env:
+  - DOCKER_REPO=javascript-examples
+
+services:
+  - docker
+
+before_script:
+  - npm install -g gulp
+
+script:
+ - gulp docker-prep
+ - docker build -t $DOCKER_USERNAME/$DOCKER_REPO docker-build
+
+after_success:
+ - if [ "$TRAVIS_BRANCH" == "master" ]; then
+   docker login -u="$DOCKER_EMAIL" -p="$DOCKER_PASSWORD";
+   docker push $DOCKER_USERNAME/$DOCKER_REPO;
+   fi

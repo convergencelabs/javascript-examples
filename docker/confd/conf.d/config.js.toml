@@ -1,0 +1,6 @@
+[template]
+src   = "config.js"
+dest  = "/usr/share/nginx/html/config.js"
+owner = "root"
+group = "root"
+mode  = "0644"

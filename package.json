@@ -21,27 +21,30 @@
   "bugs": {
     "url": "https://github.com/convergencelabs/examples/issues"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "@convergence/ace-collab-ext": "0.1.1",
     "@convergence/color-assigner": "0.1.0",
     "@convergence/convergence": "1.0.0-alpha.1",
     "@convergence/input-element-bindings": "0.1.1",
     "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
+    "del": "2.2.2",
     "director": "1.2.8",
-    "nouislider": "8.5.1",
+    "gulp": "3.9.1",
     "handlebars": "2.0.0",
     "jquery": "3.1.1",
-    "rxjs": "5.0.1",
+    "lite-server": "2.2.2",
     "materialize-css": "0.97.8",
+    "merge2": "1.0.3",
     "moment": "2.17.1",
+    "nouislider": "8.5.1",
+    "rxjs": "5.0.1",
     "todomvc-app-css": "1.0.1",
     "todomvc-common": "1.0.3"
   },
-  "devDependencies": {
-    "lite-server": "2.2.2"
-  },
   "scripts": {
-    "start": "lite-server"
+    "start": "lite-server",
+    "docker-prep": "gulp docker-prep"
   }
 }

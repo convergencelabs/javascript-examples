@@ -1,0 +1,78 @@
+@keyframes ripple {
+ 0% { width: 0; height: 0; margin: 0; opacity: 1; }
+ 100%{ width: 36px; height: 36px; margin: -18px 0 0 -18px; opacity: 0.2; }
+}
+
+body {
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  font-family: Helvetica Neue, Helvetica, Arial;
+  font-size: 13px;
+}
+
+#buttons {
+  width: 710px;
+  padding: 4px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+#left {
+  width: 400px;
+  float: left;
+}
+
+#cursorBox {
+  height: 300px;
+  border: 1px solid black;
+  position: relative;
+}
+#titleBar, #rightTitle {
+  border: 1px solid black;
+  padding: 2px;
+  text-align: center;
+}
+
+
+#statusBar {
+  border: 1px solid black;
+  padding: 2px;
+}
+
+#sessionId {
+  margin-right: 20px;
+}
+
+#right {
+  width: 300px;
+  float: left;
+  margin-left: 20px;
+}
+
+#mouseLocationsTable {
+  width: 100%;
+  border: 1px solid black;
+}
+
+#mouseLocationsTable td {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.remoteCursor {
+  display: inline-block;
+  position: absolute;
+  width: 11px;
+  height: 15px;
+}
+
+.clickSpot {
+  position: absolute;
+  animation: ripple 300ms forwards;
+  border-radius: 18px;
+  background-color: palegreen;
+}
