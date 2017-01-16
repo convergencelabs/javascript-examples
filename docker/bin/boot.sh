@@ -10,7 +10,7 @@ require_env_var() {
   fi
 }
 
-echo "Convergence Code Editor.  Checking required environment variables."
+echo "Convergence Examples.  Checking required environment variables."
 
 require_env_var $convergence_domain_url "convergence_domain_url"
 
