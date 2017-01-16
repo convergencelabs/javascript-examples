@@ -2,6 +2,10 @@ const gulp = require('gulp');
 const del = require('del');
 const merge = require('merge2');
 
+gulp.task('clean', function() {
+  return del['docker-build'];
+});
+
 gulp.task('default', ['docker-prep'], function() {
 
 });
