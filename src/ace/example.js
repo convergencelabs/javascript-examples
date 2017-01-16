@@ -1,4 +1,4 @@
-// Connect to the domain.  See ../../config.js for the connection settings.
+// Connect to the domain.  See ../config.js for the connection settings.
 Convergence.connectAnonymously(DOMAIN_URL)
   .then(function (d) {
     domain = d;
