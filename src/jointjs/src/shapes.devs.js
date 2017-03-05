@@ -82,7 +82,7 @@ Convergence.connectAnonymously(DOMAIN_URL)
     graphAdapter.bind();
 
     const colorManager = new ConvergenceJointUtils.ActivityColorManager(activity);
-    const pointerManager = new ConvergenceJointUtils.PointerManager(paper, activity, colorManager, "../dist/img/cursor.svg");
+    const pointerManager = new ConvergenceJointUtils.PointerManager(paper, activity, colorManager, "../libs/@convergence/jointjs-utils/img/cursor.svg");
     selectionManager = new ConvergenceJointUtils.SelectionManager(paper, graphAdapter, colorManager);
   })
   .catch(function (error) {
