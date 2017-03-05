@@ -32,5 +32,11 @@ const libs = [
   "moment",
   "nouislider",
   "todomvc-common",
-  "todomvc-app-css"
+  "todomvc-app-css",
+  "jointjs-utils",
+  "jointjs",
+  "lodash",
+  "backbone",
+  "underscore",
+  "dom-utils",
 ];
