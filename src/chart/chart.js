@@ -11,7 +11,7 @@ RealtimeChart.prototype = {
     // Connect to the domain.  See ../connection.js for the connection settings.
     Convergence.connectAnonymously(DOMAIN_URL).then(function (domain) {
       // Now open the model, creating it using the initial data if it does not exist.
-      return domain.models().open("example", "pie-chart", function (collectionId, modelId) {
+      return domain.models().open("examples", "chart", function (collectionId, modelId) {
         return initialData;
       });
     }.bind(this)).then(function (model) {

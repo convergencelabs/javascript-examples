@@ -10,7 +10,7 @@
   function Model(name) {
     this.loaded = Convergence.connectAnonymously(DOMAIN_URL).then(function (domain) {
       this.domain = domain;
-      return domain.models().open('example', name, function (collectionId, modelId) {
+      return domain.models().open('examples', name, function (collectionId, modelId) {
         return {
           todos: []
         };

@@ -1,5 +1,5 @@
 Convergence.connectAnonymously(DOMAIN_URL).then(function(domain) {
-  return domain.models().open("input-binder", "test", function() {
+  return domain.models().open("examples", "input-binder", function() {
     return defaultData;
   });
 }).then(function(model) {

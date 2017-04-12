@@ -67,7 +67,7 @@ paper.on('blank:pointerdown', function(cellView) {
 Convergence.connectAnonymously(DOMAIN_URL)
   .then(function (domain) {
     // Now open the model, creating it using the initial data if it does not exist.
-    const modelPromise = domain.models().open("jointjs", "example", function () {
+    const modelPromise = domain.models().open("examples", "jointjs", function () {
       return ConvergenceJointUtils.DataConverter.graphJsonToModelData(DefaultGraphData);
     });
 

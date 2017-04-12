@@ -3,7 +3,7 @@ Convergence.connectAnonymously(DOMAIN_URL)
   .then(function (d) {
     domain = d;
     // Now open the model, creating it using the initial data if it does not exist.
-    return domain.models().open("ace", "example", function () {
+    return domain.models().open("examples", "ace", function () {
       return {
         "text": defaultEditorContents
       };
