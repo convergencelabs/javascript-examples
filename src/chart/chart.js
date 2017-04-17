@@ -9,18 +9,20 @@ RealtimeChart.prototype = {
    */
   init: function () {
     // Connect to the domain.  See ../connection.js for the connection settings.
-    Convergence.connectAnonymously(DOMAIN_URL).then(function (domain) {
+    Convergence.connectAnonymously(DOMAIN_URL).then(domain => {
       // Now open the model, creating it using the initial data if it does not exist.
-      return domain.models().open("examples", "chart", function (collectionId, modelId) {
-        return initialData;
+      return domain.models().openAutoCreate({
+        collection: "examples",
+        id: "chart",
+        data: initialData
       });
-    }.bind(this)).then(function (model) {
+    }).then(model => {
       // Initialize the chart with the model data and wire up the events.
       this.createChart(model.root().value());
       this.realTimeModel = model;
       this.bindToSliders();
       this.listenForRemoteChanges();
-    }.bind(this)).catch(function (error) {
+    }).catch(error => {
       console.log("Could not open model: " + error);
     });
   },

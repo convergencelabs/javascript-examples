@@ -1,8 +1,10 @@
-Convergence.connectAnonymously(DOMAIN_URL).then(function(domain) {
-  return domain.models().open("examples", "input-binder", function() {
-    return defaultData;
+Convergence.connectAnonymously(DOMAIN_URL).then(domain => {
+  return domain.models().openAutoCreate({
+    collection: "examples",
+    id: "input-binder",
+    data: defaultData
   });
-}).then(function(model) {
+}).then(model => {
   const textInput = document.getElementById("textInput");
   ConvergenceInputElementBinder.bindTextInput(textInput, model.elementAt("textInput"));
 
@@ -32,7 +34,7 @@ Convergence.connectAnonymously(DOMAIN_URL).then(function(domain) {
   radioInputs.push(document.getElementById("radio2"));
   radioInputs.push(document.getElementById("radio3"));
   ConvergenceInputElementBinder.bindRadioInputs(radioInputs, model.elementAt("radioInputs"));
-}).catch(function(error) {
+}).catch(error => {
   console.error(error);
 });
 

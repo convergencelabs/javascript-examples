@@ -1,26 +1,28 @@
 // Connect to the domain.  See ../config.js for the connection settings.
 Convergence.connectAnonymously(DOMAIN_URL)
-  .then(function (d) {
+  .then(d => {
     domain = d;
     // Now open the model, creating it using the initial data if it does not exist.
-    return domain.models().open("examples", "ace", function () {
-      return {
+    return domain.models().openAutoCreate({
+      collection: "examples",
+      id: "ace",
+      data: {
         "text": defaultEditorContents
-      };
+      }
     })
   })
   .then(handleOpen)
-  .catch(function (error) {
+  .catch(error => {
     console.error("Could not open model: " + error);
   });
 
-var AceRange = ace.require("ace/range").Range;
+const AceRange = ace.require("ace/range").Range;
 
-var colorAssigner = new ColorAssigner();
+const colorAssigner = new ColorAssigner();
 
-var editor = null;
-var session = null;
-var doc = null;
+let editor = null;
+let session = null;
+let doc = null;
 
 function handleOpen(model) {
   editor = ace.edit("ace-editor");
@@ -31,35 +33,35 @@ function handleOpen(model) {
 
   doc = session.getDocument();
 
-  var textModel = model.elementAt("text");
+  const textModel = model.elementAt("text");
 
   initModel(textModel);
   initSharedCursors(textModel);
   initSharedSelection(textModel);
 
-  var radarViewElement = document.getElementById("radar-view");
+  const radarViewElement = document.getElementById("radar-view");
   initRadarView(textModel, radarViewElement);
 }
 
 /////////////////////////////////////////////////////////////////////////////
 // Text Binding
 /////////////////////////////////////////////////////////////////////////////
-var suppressEvents = false;
+let suppressEvents = false;
 
 function initModel(textModel) {
-  var session = editor.getSession();
+  const session = editor.getSession();
   session.setValue(textModel.value());
 
   textModel.on("insert", (e) => {
-    var pos = doc.indexToPosition(e.index);
+    const pos = doc.indexToPosition(e.index);
     suppressEvents = true;
     doc.insert(pos, e.value);
     suppressEvents = false;
   });
 
   textModel.on("remove", (e) => {
-    var start = doc.indexToPosition(e.index);
-    var end = doc.indexToPosition(e.index + e.value.length);
+    const start = doc.indexToPosition(e.index);
+    const end = doc.indexToPosition(e.index + e.value.length);
     suppressEvents = true;
     doc.remove(new AceRange(start.row, start.column, end.row, end.column));
     suppressEvents = false;
@@ -76,7 +78,7 @@ function initModel(textModel) {
       return;
     }
 
-    var pos = doc.positionToIndex(delta.start);
+    const pos = doc.positionToIndex(delta.start);
     switch (delta.action) {
       case "insert":
         textModel.insert(pos, delta.lines.join("\n"));
@@ -93,15 +95,15 @@ function initModel(textModel) {
 /////////////////////////////////////////////////////////////////////////////
 // Cursor Binding
 /////////////////////////////////////////////////////////////////////////////
-var cursorKey = "cursor";
-var cursorReference = null;
-var cursorManager = null;
+const cursorKey = "cursor";
+let cursorReference = null;
+let cursorManager = null;
 
 function initSharedCursors(textElement) {
   cursorManager = new AceCollabExt.AceMultiCursorManager(editor.getSession());
   cursorReference = textElement.indexReference(cursorKey);
 
-  var references = textElement.references({key: cursorKey});
+  const references = textElement.references({key: cursorKey});
   references.forEach((reference) => {
     if (!reference.isLocal()) {
       addCursor(reference);
@@ -121,21 +123,21 @@ function initSharedCursors(textElement) {
 }
 
 function setLocalCursor() {
-  var position = editor.getCursorPosition();
-  var index = doc.positionToIndex(position);
+  const position = editor.getCursorPosition();
+  const index = doc.positionToIndex(position);
   cursorReference.set(index);
 }
 
 function addCursor(reference) {
   const color = colorAssigner.getColorAsHex(reference.sessionId());
-  var remoteCursorIndex = reference.value();
+  const remoteCursorIndex = reference.value();
   cursorManager.addCursor(reference.sessionId(), reference.username(), color, remoteCursorIndex);
 
   reference.on("cleared", () => cursorManager.clearCursor(reference.sessionId()) );
   reference.on("disposed", () => cursorManager.removeCursor(reference.sessionId()) );
   reference.on("set", () => {
-    var cursorIndex = reference.value();
-    var cursorRow = doc.indexToPosition(cursorIndex).row;
+    const cursorIndex = reference.value();
+    const cursorRow = doc.indexToPosition(cursorIndex).row;
     cursorManager.setCursor(reference.sessionId(), cursorIndex);
 
     if (radarView.hasView(reference.sessionId())) {
@@ -147,9 +149,9 @@ function addCursor(reference) {
 /////////////////////////////////////////////////////////////////////////////
 // Selection Binding
 /////////////////////////////////////////////////////////////////////////////
-var selectionManager = null;
-var selectionReference = null;
-var selectionKey = "selection";
+let selectionManager = null;
+let selectionReference = null;
+const selectionKey = "selection";
 
 function initSharedSelection(textModel) {
   selectionManager = new AceCollabExt.AceMultiSelectionManager(editor.getSession());
@@ -224,9 +226,9 @@ function toAceRange(range) {
 /////////////////////////////////////////////////////////////////////////////
 // Radar View Binding
 /////////////////////////////////////////////////////////////////////////////
-var radarView = null;
-var viewReference = null;
-var viewKey = "view";
+let radarView = null;
+let viewReference = null;
+const viewKey = "view";
 
 function initRadarView(textModel, radarViewElement) {
   radarView = new AceCollabExt.AceRadarView(radarViewElement, editor);

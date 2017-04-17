@@ -1,23 +1,23 @@
 const graph = new joint.dia.Graph;
 const paper = new joint.dia.Paper({
-    el: document.getElementById('paper'),
-    width: 800,
-    height: 400,
-    gridSize: 1,
-    model: graph,
-    snapLinks: true,
-    linkPinning: false,
-    embeddingMode: true,
-    highlighting: {
-        'default': { name: 'stroke', options: { padding: 6 } },
-        'embedding': { name: 'addClass', options: { className: 'highlighted-parent' } }
-    },
-    validateEmbedding: function(childView, parentView) {
-        return parentView.model instanceof joint.shapes.devs.Coupled;
-    },
-    validateConnection: function(sourceView, sourceMagnet, targetView, targetMagnet) {
-        return sourceMagnet != targetMagnet;
-    }
+  el: document.getElementById('paper'),
+  width: 800,
+  height: 400,
+  gridSize: 1,
+  model: graph,
+  snapLinks: true,
+  linkPinning: false,
+  embeddingMode: true,
+  highlighting: {
+    'default': {name: 'stroke', options: {padding: 6}},
+    'embedding': {name: 'addClass', options: {className: 'highlighted-parent'}}
+  },
+  validateEmbedding: function (childView, parentView) {
+    return parentView.model instanceof joint.shapes.devs.Coupled;
+  },
+  validateConnection: function (sourceView, sourceMagnet, targetView, targetMagnet) {
+    return sourceMagnet != targetMagnet;
+  }
 });
 
 // Setup selection behavior
@@ -35,7 +35,7 @@ const highlightOptions = {
   }
 };
 
-paper.on('cell:pointerdown', function(cellView) {
+paper.on('cell:pointerdown', function (cellView) {
   if (cellView === selectedCellView) {
     return;
   }
@@ -54,7 +54,7 @@ paper.on('cell:pointerdown', function(cellView) {
   }
 });
 
-paper.on('blank:pointerdown', function(cellView) {
+paper.on('blank:pointerdown', function (cellView) {
   if (selectedCellView !== null) {
     selectedCellView.unhighlight();
     selectedCellView = null;
@@ -65,16 +65,20 @@ paper.on('blank:pointerdown', function(cellView) {
 
 // Connect to the domain.  See ../config.js for the connection settings.
 Convergence.connectAnonymously(DOMAIN_URL)
-  .then(function (domain) {
+  .then(domain => {
     // Now open the model, creating it using the initial data if it does not exist.
-    const modelPromise = domain.models().open("examples", "jointjs", function () {
-      return ConvergenceJointUtils.DataConverter.graphJsonToModelData(DefaultGraphData);
+    const modelPromise = domain.models().openAutoCreate({
+      collection: "examples",
+      id: "jointjs",
+      data: () => {
+        return ConvergenceJointUtils.DataConverter.graphJsonToModelData(DefaultGraphData);
+      }
     });
 
     const activityPromise = domain.activities().join("jointjs-example");
     return Promise.all([modelPromise, activityPromise])
   })
-  .then(function(results) {
+  .then(results => {
     const model = results[0];
     const activity = results[1];
 
