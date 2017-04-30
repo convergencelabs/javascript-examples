@@ -7,18 +7,21 @@ function connectAndJoin() {
 
   // Connect to the domain.  See ../config.js for the connection settings.
   Convergence.connectAnonymously(DOMAIN_URL, username)
-    .then(function (d) {
+    .then(d => {
       domain = d;
-      // Now open the model, creating it using the initial data if it does not exist.
-      return domain.chat().joinRoom(roomId)
+      // Blindly try to create the chat room. We'll get a known error if it exists.
+      return domain.chat().create({id: roomId, type: "room", membership: "public", ignoreExistsError: true})
     })
+    .then(channelId => domain.chat().join(channelId))
     .then(handleJoin)
-    .catch(function (error) {
+    .catch(error => {
       console.log("Could not join chat room: " + error);
     });
 }
 
 function handleJoin(room) {
+  chatRoom = room;
+
   $("#join").hide();
   $("#leave").show();
 
@@ -26,8 +29,15 @@ function handleJoin(room) {
   $("#room").prop("disabled", true);
   $("#message").prop("disabled", false);
 
-  chatRoom = room;
-  room.on("message", appendMessage);
+  chatRoom.on("message", appendMessage);
+
+  room.getHistory({
+    offset: room.info().eventCount,
+    limit: 25,
+    filter: "message"
+  }).then(events => {
+    // TODO display messages
+  });
 }
 
 function handleLeave() {
@@ -40,8 +50,8 @@ function handleLeave() {
 
   $("#chat-messages").empty();
 
-  chatRoom.leave();
-  domain.dispose();
+  chatRoom.leave().then(() => domain.dispose());
+  chatRoom = null;
 }
 
 function appendMessage(message) {
