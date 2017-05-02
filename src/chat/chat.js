@@ -2,14 +2,14 @@ let chatRoom = null;
 let domain = null;
 
 function connectAndJoin() {
-  const username = $("#username").val();
+  const displayName = $("#username").val();
   const roomId = $("#room").val();
 
   // Connect to the domain.  See ../config.js for the connection settings.
-  Convergence.connectAnonymously(DOMAIN_URL, username)
+  Convergence.connectAnonymously(DOMAIN_URL, displayName)
     .then(d => {
       domain = d;
-      // Blindly try to create the chat room. We'll get a known error if it exists.
+      // Blindly try to create the chat room, ignoring the error if it already exists.
       return domain.chat().create({id: roomId, type: "room", membership: "public", ignoreExistsError: true})
     })
     .then(channelId => domain.chat().join(channelId))
@@ -32,11 +32,17 @@ function handleJoin(room) {
   chatRoom.on("message", appendMessage);
 
   room.getHistory({
-    offset: room.info().eventCount,
+    offset: 0,
     limit: 25,
-    filter: "message"
+    eventFilter: ["message"]
   }).then(events => {
-    // TODO display messages
+    events.filter(event => event.type === "message").forEach(event => {
+      appendMessage({
+        username: event.username,
+        message: event.message,
+        timestamp: event.timestamp
+      });
+    });
   });
 }
 
