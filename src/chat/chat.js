@@ -32,7 +32,7 @@ function handleJoin(room) {
   chatRoom.on("message", appendMessage);
 
   room.getHistory({
-    offset: 0,
+    offset: chatRoom.info().lastEventNumber,
     limit: 25,
     eventFilter: ["message"]
   }).then(events => {

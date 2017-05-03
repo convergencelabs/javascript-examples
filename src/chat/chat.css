@@ -4,7 +4,7 @@
 }
 div.chat-container {
   width: 400px;
-  padding: 10px;
+  padding: 0 10px;
 }
 
 div.chat-messages {
@@ -13,7 +13,7 @@ div.chat-messages {
 }
 
 #scroller {
-  height: 300px;
+  height: 350px;
   padding: 0;
   overflow: auto;
   margin-top: 0;
@@ -26,4 +26,18 @@ div.chat-messages .card-content {
 div.chat-controls {
   width: 450px;
   padding: 10px;
+}
+
+div.chat-controls .row {
+  margin-bottom: 0;
+}
+
+.chat-container .collection .collection-item.avatar .circle {
+  height: 32px;
+  width: 32px;
+  line-height: 32px;
+}
+
+.chat-container .collection .collection-item.avatar {
+  min-height: 0;
 }
