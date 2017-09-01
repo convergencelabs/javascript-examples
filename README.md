@@ -6,7 +6,7 @@ This repository contains several examples that demonstrate using various feature
 To run the examples locally:
 
 1. Clone or fork this repository.
-1. If you don't have one already, request a Convergence account at http://www.convergencelabs.com.
+1. If you don't have one already, request a Convergence account at https://convergencelabs.com.
 1. Log into the Convergence Admin Console
 1. Create a domain for running the examples, or choose an existing one and note the connection url. 
 1. Ensure anonymous authentication is enabled for the selected domain.
