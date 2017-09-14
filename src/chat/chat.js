@@ -69,7 +69,7 @@ function appendMessage(message) {
     username.html(user.displayName);
 
     const messageText = $('<p/>');
-    messageText.html(message.message);
+    messageText.text(message.message);
 
     const time = $('<span class="secondary-content"></span>');
     const dateString = moment(message.timestamp).format('h:mm a');

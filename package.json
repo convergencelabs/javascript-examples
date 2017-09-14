@@ -25,10 +25,10 @@
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.1.1",
     "@convergence/color-assigner": "0.1.1",
-    "@convergence/convergence": "1.0.0-alpha.21",
+    "@convergence/convergence": "1.0.0-alpha.26",
     "@convergence/dom-utils": "0.2.2",
     "@convergence/input-element-bindings": "0.2.1",
-    "@convergence/jointjs-utils": "0.1.2",
+    "@convergence/jointjs-utils": "0.1.8",
     "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
     "del": "2.2.2",
