@@ -1,6 +1,8 @@
 
 Convergence Examples
 ====================
+[![Build Status](https://travis-ci.org/convergencelabs/javascript-examples.svg?branch=master)](https://travis-ci.org/convergencelabs/javascript-examples)
+
 This repository contains several examples that demonstrate using various features of Convergence.
 
 To run the examples locally:
