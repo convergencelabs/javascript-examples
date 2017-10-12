@@ -28,7 +28,7 @@
     "@convergence/convergence": "^1.0.0-alpha.29",
     "@convergence/dom-utils": "0.2.2",
     "@convergence/input-element-bindings": "0.2.1",
-    "@convergence/jointjs-utils": "0.1.8",
+    "@convergence/jointjs-utils": "0.1.9",
     "ace-builds": "1.2.5",
     "chart.js": "2.1.6",
     "del": "2.2.2",
@@ -41,7 +41,7 @@
     "merge2": "1.0.3",
     "moment": "2.17.1",
     "nouislider": "8.5.1",
-    "rxjs": "5.0.1",
+    "rxjs": "^5.0.1",
     "todomvc-app-css": "1.0.1",
     "todomvc-common": "1.0.3"
   },
