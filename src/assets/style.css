@@ -30,3 +30,20 @@ span.title {
   font-family: "Century Gothic";
   src: url('fonts/CenturyGothic.ttf');
 }
+
+div.row {
+  display: flex;
+}
+
+div.row div.col {
+  display: flex;
+}
+
+div.card {
+  display: flex;
+  flex-direction: column;
+}
+
+div.card-content {
+  flex: 1;
+}

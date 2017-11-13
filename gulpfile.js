@@ -23,6 +23,7 @@ gulp.task('docker-prep', function () {
 
 const libs = [
   "@convergence",
+  "froala-editor",
   "ace-builds",
   "chart.js",
   "director",

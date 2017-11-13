@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Froala Realtime Demo</title>
+
+  <link rel="stylesheet" href="example.css"/>
+
+  <!-- Froala Dependencies -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="../libs/froala-editor/js/froala_editor.min.js"></script>
+  <link href="../libs/froala-editor/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css"/>
+  <link href="../libs/froala-editor/css/froala_style.min.css" rel="stylesheet" type="text/css"/>
+
+  <link rel="stylesheet" href="../libs/froala-editor/css/plugins/table.min.css">
+  <script src="../libs/froala-editor/js/plugins/table.min.js"></script>
+
+  <link rel="stylesheet" href="../libs/froala-editor/css/plugins/colors.min.css">
+  <script src="../libs/froala-editor/js/plugins/colors.min.js"></script>
+
+  <script src="../libs/froala-editor/js/plugins/lists.min.js"></script>
+  <script src="../libs/froala-editor/js/plugins/paragraph_format.min.js"></script>
+  <script src="../libs/froala-editor/js/plugins/paragraph_style.min.js"></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+
+  <script src="../libs/@convergence/color-assigner/browser/color-assigner.js" type="text/javascript"
+          charset="utf-8"></script>
+
+  <!-- Convergence resources -->
+  <script src="../config.js"></script>
+  <script src="../libs/@convergence/convergence/browser/convergence-all.js"></script>
+  <script src="../libs/@convergence/dom-utils/browser/convergence-dom-utils.js"></script>
+</head>
+<body>
+<div id="main-container">
+  <div id="title">Collaborative Forala Editor Example</div>
+  <div id="loading">
+    <h2 class="sr-only">Loading</h2>
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </div>
+  <textarea name="editor_content" id="froala"></textarea>
+</div>
+<script src="example.js" type="text/javascript" charset="utf-8"></script>
+</body>
+</html>
