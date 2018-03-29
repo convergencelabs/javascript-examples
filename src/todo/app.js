@@ -66,8 +66,6 @@ jQuery(function ($) {
     },
     listenToTodoEvents: function(todoIndex) {
       this.model.onTodoRemote(todoIndex, 'text-change', this.renderChangedTodo.bind(this));
-      this.model.onTodoRemote(todoIndex, 'text-insert', this.renderTodoLabelInsert.bind(this));
-      this.model.onTodoRemote(todoIndex, 'text-remove', this.renderTodoLabelDelete.bind(this));
     },
     renderNewTodo: function(todo, index) {
       $('#todo-list').append(this.todoTemplate(todo));
@@ -108,24 +106,6 @@ jQuery(function ($) {
     renderChangedTodo: function(id, newTitle) {
       var el = this.getItemElementById(id);
       el.find('label').html(newTitle);
-    },
-    renderTodoLabelInsert: function(id, index, value) {
-      var labelEl = this.getItemElementById(id).find('label');
-      var label = labelEl.html();
-      if (index >= 0 && index <= label.length) {
-        var newLabel = label.substr(0, index) + value + label.substr(index);
-        labelEl.html(newLabel);
-        this.getItemElementById(id).find('input.edit').val(newLabel);
-      }
-    },
-    renderTodoLabelDelete: function(id, index) {
-      var labelEl = this.getItemElementById(id).find('label');
-      var label = labelEl.html();
-      if (index >= 0 && index <= label.length - 1) {
-        var newLabel = label.substr(0, index) +  label.substr(index + 1);
-        labelEl.html(newLabel);
-        this.getItemElementById(id).find('input.edit').val(newLabel);
-      }
     },
     render: function () {
       var todos = this.model.getViewTodos();

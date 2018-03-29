@@ -162,19 +162,6 @@
               callback(rtTodo.value().id, rtTodo.value().title);
             });
             break;
-          // We could listen on todo edits character-by-character in realtime.  We're not actually
-          // broadcasting these events yet from the App, so they won't get fired.  Currently, we just set the value
-          // of the todo in edit mode when focus is lost or the 'enter' key is pressed.
-          case 'text-remove':
-            rtTitle.on('remove', function (event) {
-              callback(rtTodo.value().id, event.index);
-            });
-            break;
-          case 'text-insert':
-            rtTitle.on('insert', function (event) {
-              callback(rtTodo.value().id, event.index, event.value);
-            });
-            break;
         }
       }
     }
