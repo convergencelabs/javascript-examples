@@ -40,6 +40,7 @@ jQuery(function ($) {
       this.drop = this.drop.bind(this);
 
       this.update = this.update.bind(this);
+      this.valCache = this.valCache.bind(this);
 
       $('#new-todo').on('keyup', this.create.bind(this));
       $('#toggle-all').on('change', this.toggleAll.bind(this));
@@ -48,6 +49,7 @@ jQuery(function ($) {
         .on('change', '.toggle', this.toggle.bind(this))
         .on('dblclick', 'label', this.edit.bind(this))
         .on('keyup', '.edit', this.editKeyup.bind(this))
+        .on('focusin', '.edit', this.valCache)
         .on('focusout', '.edit', this.update)
         .on('click', '.destroy', this.destroy.bind(this));
 
@@ -177,13 +179,24 @@ jQuery(function ($) {
       var $input = $(e.target).closest('li').addClass('editing').find('.edit');
       $input.val($input.val()).focus();
     },
+    editTodo: function(el, val) {
+      var id = this.idFromEl(el);
+      this.model.editTodo(id, {title: val});
+    },
     editKeyup: function (e) {
-      if (e.which === ENTER_KEY) {
-        e.target.blur();
+      var el = e.target;
+      var which = e.which;
+      var val = $(el).val().trim();
+
+      if (which === ENTER_KEY) {
+        el.blur();
       }
 
-      if (e.which === ESCAPE_KEY) {
-        $(e.target).data('abort', true).blur();
+      if (which === ESCAPE_KEY) {
+        this.editTodo(el, $(el).data('val'));
+        $(el).data('abort', true).blur();
+      } else {
+        this.editTodo(el, val);
       }
     },
     update: function (e) {
@@ -199,12 +212,16 @@ jQuery(function ($) {
       if ($el.data('abort')) {
         $el.data('abort', false);
       } else {
-        var id = this.idFromEl(el);
-        this.model.editTodo(id, {title: val});
+        this.editTodo(el, val);
       }
 
       this.render();
       this.enableDrag();
+    },
+    valCache: function(e) {
+      var $el = $(e.target);
+      
+      $el.data('val', $el.val().trim());
     },
     destroy: function (e) {
       var id = this.idFromEl(e.target);
