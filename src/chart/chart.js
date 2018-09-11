@@ -42,7 +42,7 @@ RealtimeChart.prototype = {
         responsive: false,
         duration: 0,
         legend: {
-          onClick: function () {
+          onClick: () => {
           }
         }
       }
@@ -50,7 +50,7 @@ RealtimeChart.prototype = {
 
     // Create slider controls for each segment, initialized with the current data
     const dataset = initialData.datasets[0];
-    initialData.labels.forEach(function (label, index) {
+    initialData.labels.forEach((label, index) => {
       const attrs = {
         label: label,
         value: dataset.data[index],
@@ -59,7 +59,7 @@ RealtimeChart.prototype = {
       const control = new ChartControl(attrs);
       control.addToDom();
       this.controls.push(control);
-    }.bind(this));
+    });
   },
 
   /**
@@ -67,8 +67,8 @@ RealtimeChart.prototype = {
    * by sliding the slider.
    */
   bindToSliders: function () {
-    this.controls.forEach(function (control, index) {
-      control.onSlide(function (value) {
+    this.controls.forEach((control, index) => {
+      control.onSlide((value) => {
         const val = Math.round(parseInt(value[0], 10));
 
         // update the RealTimeValue.  This notifies any listeners
@@ -77,8 +77,8 @@ RealtimeChart.prototype = {
         // Update the control widget and rerender the chart
         control.updateInputVal(val);
         this.updateSegmentValue(index, val);
-      }.bind(this));
-    }.bind(this));
+      });
+    });
   },
 
   /**
@@ -86,40 +86,44 @@ RealtimeChart.prototype = {
    * in the chart.
    */
   listenForRemoteChanges: function () {
-    this.controls.forEach(function (control, index) {
+    this.controls.forEach((control, index) => {
       // Update the UI when a segment's value is explicitly changed
       // This can be triggered either from the slider of another chart example, or
       // by explicitly typing in the value in the Model Editor of the Admin UI
-      this.realTimeModel.elementAt(['datasets', 0, 'data', index]).on('value', function (e) {
+      this.realTimeModel
+        .elementAt('datasets', 0, 'data', index)
+        .on(Convergence.RealTimeNumber.Events.VALUE, (e) => {
         control.updateSliderVal(e.element.value());
         this.updateSegmentValue(index, e.element.value());
-      }.bind(this));
+      });
 
       // Update the UI when a segment's value is incremented or decremented
       // This can be triggered with a value's spinner in the Model Editor of the Admin UI
-      this.realTimeModel.elementAt(['datasets', 0, 'data', index]).on('add', function (e) {
+      this.realTimeModel
+        .elementAt('datasets', 0, 'data', index)
+        .on(Convergence.RealTimeNumber.Events.DELTA, (e) => {
         const value = this.getSegmentValue(index) + e.value;
         control.updateSliderVal(value);
         this.updateSegmentdata(index, value);
-      }.bind(this));
+      });
 
       // Update the UI when a segment's color changes
       // This can be triggered by editing a "backgroundColor" value in the Admin UI
-      const rtColorValue = this.realTimeModel.elementAt(['datasets', 0, 'backgroundColor', index]);
-      rtColorValue.on('model_changed', function () {
+      const rtColorValue = this.realTimeModel.elementAt('datasets', 0, 'backgroundColor', index);
+      rtColorValue.on(Convergence.RealTimeString.Events.MODEL_CHANGED, () => {
         const newColor = rtColorValue.value();
         control.updateSliderColor(newColor);
         this.updateSegmentColor(index, newColor);
-      }.bind(this));
+      });
 
       // Update the UI when a segment's label changes
       // This can be triggered by editing a "labels" value in the Admin UI
-      const rtLabelValue = this.realTimeModel.elementAt(['labels', index]);
-      rtLabelValue.on('model_changed', function () {
+      const rtLabelValue = this.realTimeModel.elementAt('labels', index);
+      rtLabelValue.on(Convergence.RealTimeString.Events.MODEL_CHANGED, () => {
         const newLabel = rtLabelValue.value();
         this.updateLabel(index, newLabel);
-      }.bind(this));
-    }.bind(this));
+      });
+    });
   },
 
   /**
