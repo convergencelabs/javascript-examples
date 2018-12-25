@@ -10,7 +10,6 @@ services:
   - docker
 
 script:
- - npm install
  - npm run docker-prep
  - docker build -t $DOCKER_REPO docker-build
 
