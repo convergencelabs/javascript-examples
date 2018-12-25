@@ -9,11 +9,9 @@ env:
 services:
   - docker
 
-before_script:
-  - npm install -g gulp
-
 script:
- - gulp docker-prep
+ - npm install
+ - npm run docker-prep
  - docker build -t $DOCKER_REPO docker-build
 
 after_success:
