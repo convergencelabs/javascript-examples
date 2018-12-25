@@ -1,0 +1,43 @@
+body {
+  padding: 10px;
+}
+
+div.example {
+  max-width: 800px;
+  min-width: 300px;
+  margin: auto;
+  position: relative;
+}
+
+div.example div.example-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+div.example img.example-logo {
+  float: left;
+  font-family: "Helvetica Neue", sans-serif;
+  height: 32px;
+  margin-right: 10px;
+}
+
+div.example span.example-title {
+  font-size: 24px;
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+div.example div.example-overview {
+  font-family: "Helvetica Neue", sans-serif;
+  background: #F0F0F0;
+  border-radius: 2px;
+  border: 1px solid darkgray;
+  padding: 5px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: #039be5;
+  text-decoration: none;
+}

@@ -195,7 +195,7 @@ ChartControl.prototype = {
     noUiSlider.create(this.sliderEl, {
       animate: false,
       start: 40,
-      connect: 'lower',
+      connect: [false, true],
       step: 1,
       range: {
         'min': 0,

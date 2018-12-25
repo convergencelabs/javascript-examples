@@ -68,3 +68,7 @@ div.titles div.value {
   width: 50px;
   display: inline-block;
 }
+
+div.noUi-connect {
+  background: #f1f1f1;
+}

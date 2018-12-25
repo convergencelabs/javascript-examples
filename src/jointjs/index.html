@@ -1,40 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
 
-        <title>Convergence JointJS Example</title>
+  <title>Convergence JointJS Example</title>
 
-        <link rel="stylesheet" type="text/css" href="../libs/jointjs/dist/joint.css" />
-        <link rel="stylesheet" type="text/css" href="css/shapes.devs.css"/>
-        <link rel="stylesheet" type="text/css" href="../libs/@convergence/jointjs-utils/css/convergence-rappid.css"/>
-        <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="../assets/examples-common.css"/>
+  <link rel="stylesheet" type="text/css" href="../libs/jointjs/dist/joint.css"/>
+  <link rel="stylesheet" type="text/css" href="css/shapes.devs.css"/>
+  <link rel="stylesheet" type="text/css" href="../libs/@convergence/jointjs-utils/css/convergence-jointjs-utils.css"/>
 
-    </head>
-    <body>
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
 
-        <h3>Joint JS Example</h3>
+</head>
+<body>
+<div class="example">
+  <div class="example-header">
+    <img class="example-logo" src="../assets/img/logo.png">
+    <span class="example-title">Joint JS Example</span>
+  </div>
+  <div class="example-overview">
+    This example demonstrates shared editing of a graph visualized with the
+    <a href="https://www.jointjs.com/">Joint JS</a> library. The example uses the
+    <a href="https://github.com/convergencelabs/jointjs-utils">Convergence Joint JS Utils</a>
+    to simplify the binding between Joint JS and Convergence. The example demonstrates
+    shared pointers and selection, as well as real time editing.
+  </div>
+  <div class="example-content">
+    <div id="content">
+      <div id="paper"></div>
+    </div>
+  </div>
+</div>
 
-        <div id="paper"></div>
+<!-- JointJS Dependencies: -->
+<script src="../libs/jquery/dist/jquery.js"></script>
+<script src="../libs/underscore/underscore.js"></script>
+<script src="../libs/jointjs/node_modules/lodash/index.js"></script>
+<script src="../libs/backbone/backbone.js"></script>
 
-        <!-- JointJS Dependencies: -->
-        <script src="../libs/jquery/dist/jquery.js"></script>
-        <script src="../libs/underscore/underscore.js"></script>
-        <script src="../libs/lodash/index.js"></script>
-        <script src="../libs/backbone/backbone.js"></script>
+<!-- JointJS: -->
+<script src="../libs/jointjs/dist/joint.js"></script>
 
-        <!-- JointJS: -->
-        <script src="../libs/jointjs/dist/joint.js"></script>
+<!-- Convergence: -->
+<script src="../libs/@convergence/convergence/browser/convergence-all.js"></script>
+<script src="../libs/@convergence/color-assigner/browser/color-assigner.js"></script>
+<script src="../libs/@convergence/jointjs-utils/browser/convergence-jointjs-utils.js"></script>
 
-        <!-- Convergence: -->
-        <script src="../libs/@convergence/convergence/browser/convergence-all.js"></script>
-        <script src="../libs/@convergence/color-assigner/browser/color-assigner.js"></script>
-        <script src="../libs/@convergence/jointjs-utils/browser/convergence-jointjs-utils.js"></script>
-
-        <!-- Application Scripts: -->
-        <script src="../config.js"></script>
-        <script src="src/default-graph-data.js"></script>
-        <script src="src/shapes.devs.js"></script>
-    </body>
+<!-- Application Scripts: -->
+<script src="../config.js"></script>
+<script src="src/default-graph-data.js"></script>
+<script src="src/shapes.devs.js"></script>
+</body>
 </html>

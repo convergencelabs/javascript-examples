@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Convergence Chart Demo</title>
 
-  <link href="chart.css" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/examples-common.css"/>
+  <link rel="stylesheet" href="chart.css">
 
   <!-- Third-party chart and slider libs -->
   <script src="../libs/chart.js/dist/Chart.js"></script>
@@ -16,8 +17,21 @@
   <script src="../libs/@convergence/convergence/browser/convergence-all.js"></script>
 </head>
 <body>
-  <canvas id="pieChart" width="400" height="400"></canvas>
-  <div class="controls" id="controls"></div>
-  <script src="chart.js" type="text/javascript" language="JavaScript"></script>
+<div class="example">
+  <div class="example-header">
+    <img class="example-logo" src="../assets/img/logo.png">
+    <span class="example-title">Collaborative Chart Example</span>
+  </div>
+  <div class="example-overview">
+    This example demonstrates modifying visualized data, in real time, using shared controls. The chart is
+    rendered using the <a href="https://www.chartjs.org/">Chart.js</a> library. Move the controls to see
+    the chart update on all clients in real time.
+  </div>
+  <div class="example-content">
+    <canvas id="pieChart" width="400" height="400"></canvas>
+    <div class="controls" id="controls"></div>
+  </div>
+</div>
+<script src="chart.js" type="text/javascript" language="JavaScript"></script>
 </body>
 </html>

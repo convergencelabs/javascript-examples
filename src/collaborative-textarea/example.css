@@ -1,0 +1,11 @@
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  height: 300px;
+  line-height: 1.2;
+  resize: none;
+}
+
+textarea:focus {
+  outline: none;
+}

@@ -3,6 +3,7 @@
 <head>
   <title>Froala Realtime Demo</title>
 
+  <link rel="stylesheet" href="../assets/examples-common.css"/>
   <link rel="stylesheet" href="example.css"/>
 
   <!-- Froala Dependencies -->
@@ -32,13 +33,27 @@
   <script src="../libs/@convergence/dom-utils/browser/convergence-dom-utils.js"></script>
 </head>
 <body>
-<div id="main-container">
-  <div id="title">Collaborative Forala Editor Example</div>
-  <div id="loading">
-    <h2 class="sr-only">Loading</h2>
-    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+
+<div class="example">
+  <div class="example-header">
+    <img class="example-logo" src="../assets/img/logo.png">
+    <span class="example-title">Collaborative Forala Editor Example</span>
   </div>
-  <textarea name="editor_content" id="froala"></textarea>
+  <div class="example-overview">
+    This example demonstrates shared rich text editing the
+    <a href="https://www.froala.com/wysiwyg-editor">Forala Editor</a>. The example uses the
+    <a href="https://github.com/convergencelabs/dom-utils">Convergence DOM Utils</a>
+    to create a binding between the Froala contents and a Convergence Realtime Model.
+  </div>
+  <div class="example-content">
+    <div id="content">
+      <div id="loading">
+        <h2 class="sr-only">Loading</h2>
+        <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+      </div>
+      <textarea name="editor_content" id="froala"></textarea>
+    </div>
+  </div>
 </div>
 <script src="example.js" type="text/javascript" charset="utf-8"></script>
 </body>

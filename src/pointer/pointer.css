@@ -15,15 +15,19 @@ body {
 }
 
 #buttons {
-  width: 710px;
+  width: 100%;
+  box-sizing: border-box;
   padding: 4px;
   border: 1px solid black;
   margin-bottom: 10px;
 }
 
-#left {
-  width: 400px;
-  float: left;
+#content {
+  display: flex;
+}
+
+#sessions {
+  width: 300px;
 }
 
 #cursorBox {
@@ -31,6 +35,7 @@ body {
   border: 1px solid black;
   position: relative;
 }
+
 #titleBar, #rightTitle {
   border: 1px solid black;
   padding: 2px;
@@ -47,10 +52,9 @@ body {
   margin-right: 20px;
 }
 
-#right {
-  width: 300px;
-  float: left;
-  margin-left: 20px;
+#cursors {
+  flex: 1;
+  margin-right: 20px;
 }
 
 #mouseLocationsTable {
