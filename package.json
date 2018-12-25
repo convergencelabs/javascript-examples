@@ -35,7 +35,7 @@
     "del": "3.0.0",
     "director": "1.2.8",
     "froala-editor": "2.9.1",
-    "gulp": "3.9.1",
+    "gulp": "4.0.0",
     "handlebars": "4.0.12",
     "jquery": "3.3.1",
     "lite-server": "2.4.0",
@@ -44,10 +44,10 @@
     "moment": "2.23.0",
     "nouislider": "12.1.0",
     "todomvc-app-css": "1.0.1",
-    "todomvc-common": "1.0.3"
+    "todomvc-common": "1.0.5"
   },
   "scripts": {
     "start": "lite-server",
-    "docker-prep": "gulp docker-prep"
+    "docker-prep": "gulp dockerPrep"
   }
 }

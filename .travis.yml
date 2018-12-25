@@ -1,10 +1,10 @@
 language: node_js
 
 node_js:
-  - "6.1"
+  - "10"
 
 env:
-  - DOCKER_REPO=javascript-examples
+  - DOCKER_REPO=convergencelabs/javascript-examples
 
 services:
   - docker
@@ -14,10 +14,10 @@ before_script:
 
 script:
  - gulp docker-prep
- - docker build -t $DOCKER_USERNAME/$DOCKER_REPO docker-build
+ - docker build -t $DOCKER_REPO docker-build
 
 after_success:
  - if [ "$TRAVIS_BRANCH" == "master" ]; then
    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-   docker push $DOCKER_USERNAME/$DOCKER_REPO;
+   docker push $DOCKER_REPO;
    fi
