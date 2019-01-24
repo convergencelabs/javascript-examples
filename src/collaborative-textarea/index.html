@@ -3,7 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Collaborative Text Area Example</title>
-  <script src="../libs/@convergence/convergence/browser/convergence-all.js"
+  <link rel="icon" type="image/ico" href="../assets/favicon/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png" sizes="16x16">
+
+  <script src="../libs/@convergence/convergence/umd/convergence-all.js"
           language="JavaScript" type="text/javascript" charset="utf-8"></script>
   <script src="../libs/@convergence/html-text-collab-ext/umd/html-text-collab-ext.js"
           language="JavaScript" type="text/javascript" charset="utf-8"></script>
@@ -25,6 +30,7 @@
     selection and cursor of the remote user and allows for real time editing of the text.
   </div>
   <div class="example-content">
+    <span class="username-label">Local Username: </span><span id="username"></span>
     <textarea rows="4" id="textarea"></textarea>
   </div>
 </div>

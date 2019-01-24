@@ -6,9 +6,14 @@
 
   <title>Convergence JointJS Example</title>
 
+  <link rel="icon" type="image/ico" href="../assets/favicon/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="../assets/favicon/favicon-16x16.png" sizes="16x16">
+
   <link rel="stylesheet" href="../assets/examples-common.css"/>
   <link rel="stylesheet" type="text/css" href="../libs/jointjs/dist/joint.css"/>
-  <link rel="stylesheet" type="text/css" href="css/shapes.devs.css"/>
+  <link rel="stylesheet" type="text/css" href="example.css"/>
   <link rel="stylesheet" type="text/css" href="../libs/@convergence/jointjs-utils/css/convergence-jointjs-utils.css"/>
 
   <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700" rel="stylesheet" type="text/css">
@@ -37,20 +42,20 @@
 <!-- JointJS Dependencies: -->
 <script src="../libs/jquery/dist/jquery.js"></script>
 <script src="../libs/underscore/underscore.js"></script>
-<script src="../libs/jointjs/node_modules/lodash/index.js"></script>
+<script src="../libs/lodash/lodash.min.js"></script>
 <script src="../libs/backbone/backbone.js"></script>
 
 <!-- JointJS: -->
 <script src="../libs/jointjs/dist/joint.js"></script>
 
 <!-- Convergence: -->
-<script src="../libs/@convergence/convergence/browser/convergence-all.js"></script>
-<script src="../libs/@convergence/color-assigner/browser/color-assigner.js"></script>
-<script src="../libs/@convergence/jointjs-utils/browser/convergence-jointjs-utils.js"></script>
+<script src="../libs/@convergence/convergence/umd/convergence-all.js"></script>
+<script src="../libs/@convergence/color-assigner/umd/color-assigner.js"></script>
+<script src="../libs/@convergence/jointjs-utils/umd/convergence-jointjs-utils.js"></script>
 
 <!-- Application Scripts: -->
 <script src="../config.js"></script>
-<script src="src/default-graph-data.js"></script>
-<script src="src/shapes.devs.js"></script>
+<script src="default-graph-data.js"></script>
+<script src="example.js"></script>
 </body>
 </html>

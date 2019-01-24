@@ -1,5 +1,8 @@
 // Connect to the domain.  See ../config.js for the connection settings.
-Convergence.connectAnonymously(DOMAIN_URL)
+
+const username = "User-" + Math.round(Math.random() * 10000);
+
+Convergence.connectAnonymously(DOMAIN_URL, username)
   .then(d => {
     domain = d;
     // Now open the model, creating it using the initial data if it does not exist.
@@ -13,12 +16,12 @@ Convergence.connectAnonymously(DOMAIN_URL)
   })
   .then(handleOpen)
   .catch(error => {
-    console.error("Could not open model: " + error);
+    console.error("Could not open model ", error);
   });
 
 const AceRange = ace.require("ace/range").Range;
 
-const colorAssigner = new ColorAssigner();
+const colorAssigner = new ConvergenceColorAssigner.ColorAssigner();
 
 let editor = null;
 let session = null;
@@ -131,7 +134,7 @@ function setLocalCursor() {
 function addCursor(reference) {
   const color = colorAssigner.getColorAsHex(reference.sessionId());
   const remoteCursorIndex = reference.value();
-  cursorManager.addCursor(reference.sessionId(), reference.username(), color, remoteCursorIndex);
+  cursorManager.addCursor(reference.sessionId(), reference.user().displayName, color, remoteCursorIndex);
 
   reference.on("cleared", () => cursorManager.clearCursor(reference.sessionId()) );
   reference.on("disposed", () => cursorManager.removeCursor(reference.sessionId()) );
@@ -194,7 +197,7 @@ function setLocalSelection() {
 function addSelection(reference) {
   const color = colorAssigner.getColorAsHex(reference.sessionId());
   const remoteSelection = reference.values().map(range => toAceRange(range));
-  selectionManager.addSelection(reference.sessionId(), reference.username(), color, remoteSelection);
+  selectionManager.addSelection(reference.sessionId(), reference.user().username, color, remoteSelection);
 
   reference.on("cleared", () => selectionManager.clearSelection(reference.sessionId()));
   reference.on("disposed", () => selectionManager.removeSelection(reference.sessionId()));
@@ -274,7 +277,7 @@ function addView(reference) {
     viewRows = AceCollabExt.AceViewportUtil.indicesToRows(editor, remoteViewIndices.start, remoteViewIndices.end);
   }
 
-  radarView.addView(reference.sessionId(), reference.username(), color, viewRows, cursorRow);
+  radarView.addView(reference.sessionId(), reference.user().username, color, viewRows, cursorRow);
 
   // fixme need to implement this on the ace collab side
   reference.on("cleared", () => radarView.clearView(reference.sessionId()));

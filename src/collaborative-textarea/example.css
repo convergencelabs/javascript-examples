@@ -1,11 +1,24 @@
+body {
+  font-family: Helvetica, sans-serif;
+}
+
 textarea {
   width: 100%;
   box-sizing: border-box;
   height: 300px;
   line-height: 1.2;
   resize: none;
+  margin-top: 5px;
 }
 
 textarea:focus {
   outline: none;
+}
+
+span {
+  font-size: 13px;
+}
+
+span.username-label {
+  font-weight: bold;
 }

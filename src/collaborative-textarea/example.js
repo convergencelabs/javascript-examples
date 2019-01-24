@@ -3,6 +3,7 @@ let textEditor;
 let localSelectionReference;
 
 const username = "User-" + (Math.floor(Math.random()*900000) + 100000);
+document.getElementById("username").innerHTML = username;
 
 Convergence.connectAnonymously(DOMAIN_URL, username).then(domain => {
   return domain.models().openAutoCreate({
@@ -70,14 +71,13 @@ function addSelection(reference) {
 
   selectionManager.addCollaborator(
     reference.sessionId(),
-    "Remote User",
+    reference.user().displayName,
     color,
     {anchor: remoteRange.start, target: remoteRange.end});
 
   reference.on("cleared", () => selectionManager.removeCollaborator(reference.sessionId()) );
   reference.on("disposed", () => selectionManager.removeCollaborator(reference.sessionId()) );
   reference.on("set", (e) => {
-    console.log(e);
     const selection = reference.value();
     const collaborator = selectionManager.getCollaborator(reference.sessionId());
     collaborator.setSelection({anchor: selection.start, target: selection.end});

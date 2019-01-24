@@ -90,6 +90,6 @@ Convergence.connectAnonymously(DOMAIN_URL)
     selectionManager = new ConvergenceJointUtils.SelectionManager(paper, graphAdapter, colorManager);
   })
   .catch(function (error) {
-    console.error("Could not open model: " + error);
+    console.error("Could not open model", error);
     throw error;
   });
