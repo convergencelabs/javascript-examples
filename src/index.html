@@ -16,6 +16,22 @@
 
   <script type="text/javascript" src="libs/jquery/dist/jquery.min.js"></script>
   <script type="text/javascript" src="libs/materialize-css/dist/js/materialize.min.js"></script>
+
+  <!-- Google Analytics -->
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-84372428-7', 'auto');
+    ga('send', 'pageview');
+
+    // track clicks on individual examples. see https://github.com/googleanalytics/autotrack/blob/master/docs/plugins/outbound-link-tracker.md
+    ga('require', 'outboundLinkTracker', {
+      events: ['click', 'auxclick', 'contextmenu'],
+      shouldTrackOutboundLink: function() { return true; }
+    });
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+  <script async src="assets/js/ga-auto.js"></script>
+  <!-- End Google Analytics -->
 </head>
 <body>
 
