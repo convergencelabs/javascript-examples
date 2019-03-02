@@ -1,19 +1,22 @@
 
-Convergence Examples
-====================
+# Convergence Examples
+
 [![Build Status](https://travis-ci.org/convergencelabs/javascript-examples.svg?branch=master)](https://travis-ci.org/convergencelabs/javascript-examples)
 
 This repository contains several examples that demonstrate using various features of Convergence.
 
-To run the examples locally:
+## Dependencies
 
-1. Clone or fork this repository.
-1. If you don't have one already, request a Convergence account at https://convergencelabs.com.
-1. Log into the Convergence Admin Console
-1. Create a domain for running the examples, or choose an existing one and note the connection url. 
-1. Ensure anonymous authentication is enabled for the selected domain.
-1. Copy the `config.example.js` to `config.js`.
-1. Update `config.js` as appropriate for your domain.
-1. `npm install`
-1. `npm start`  
-1. Browse to http://localhost:3000/
+ * jeykll >= 3.6.x
+ * docker
+
+
+## Development Setup
+
+ 1. Ensure development dependencies are installed for your platform.
+ 1. `npm install`
+ 1. `bundle install`
+ 1. Copy the `config.example.js` to `config.js`.
+ 1. Update `config.js` as appropriate for your domain.
+ 1. `npm start`
+ 1. Open http://localhost:4000

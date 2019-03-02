@@ -1,1 +1,1 @@
-const DOMAIN_URL = '{{ getenv "convergence_domain_url" }}';
+const CONVERGENCE_URL = '{{ getenv "CONVERGENCE_URL" }}';

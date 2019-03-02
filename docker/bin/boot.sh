@@ -12,7 +12,7 @@ require_env_var() {
 
 echo "Convergence Examples.  Checking required environment variables."
 
-require_env_var $convergence_domain_url "convergence_domain_url"
+require_env_var $CONVERGENCE_URL "$CONVERGENCE_URL"
 
 echo "All required variables are set.  Booting."
 echo ""

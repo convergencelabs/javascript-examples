@@ -30,27 +30,26 @@
     "@convergence/html-text-collab-ext": "0.1.1",
     "@convergence/input-element-bindings": "0.3.4",
     "@convergence/jointjs-utils": "0.3.0",
-    "@fortawesome/fontawesome-free": "^5.7.2",
+    "@fortawesome/fontawesome-free": "5.7.2",
     "ace-builds": "1.4.2",
     "bootstrap": "^4.3.1",
     "chart.js": "2.7.3",
     "director": "1.2.8",
     "froala-editor": "2.9.1",
-    "fs-extra": "^7.0.1",
+    "fs-extra": "7.0.1",
     "handlebars": "4.0.12",
     "jquery": "3.3.1",
-    "lite-server": "2.4.0",
     "materialize-css": "1.0.0",
     "moment": "2.23.0",
     "nouislider": "12.1.0",
-    "popper": "^1.0.1",
     "popper.js": "^1.14.7",
     "todomvc-app-css": "1.0.1",
     "todomvc-common": "1.0.5"
   },
   "scripts": {
-    "start": "bundle exec jekyll serve",
-    "build": "bundle exec jekyll build",
-    "docker-prep": "gulp dockerPrep"
+    "start": "node ./scripts/copy-libs.js && bundle exec jekyll serve",
+    "build": "node ./scripts/copy-libs.js && bundle exec jekyll build",
+    "clean": "node ./scripts/clean.js",
+    "docker-prep": "node ./scripts/copy-libs.js && bundle exec jekyll build && node scripts/docker-prep.js"
   }
 }
