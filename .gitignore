@@ -2,3 +2,5 @@
 node_modules
 config.js
 docker-build
+src/libs
+.sass-cache

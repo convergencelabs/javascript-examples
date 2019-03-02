@@ -1,0 +1,28 @@
+---
+title: Collaborative Textarea
+layout: example
+permalink: /examples/collaborative-textarea/
+stylesheets:
+  - /examples/collaborative-textarea/example.css
+  - /examples/collaborative-textarea/example.css
+  - /libs/@convergence/html-text-collab-ext/css/html-text-collab-ext.css"
+example:
+  title: Text Area
+  overview: |-
+    This example demonstrates using the Convergence Html Text Collaborative Extensions to create a
+    collaborative text editor from a normal HTML <code>&lt;textarea&gt;</code> Element. The example shows the
+    selection and cursor of the remote user and allows for real time editing of the text.
+---
+
+<span class="username-label">Local Username: </span><span id="username"></span>
+<textarea rows="4" id="textarea"></textarea>
+
+<script src="/libs/@convergence/convergence/umd/convergence-all.js"
+        language="JavaScript" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergence/html-text-collab-ext/umd/html-text-collab-ext.js"
+        language="JavaScript" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js"
+        language="JavaScript" type="text/javascript" charset="utf-8"></script>
+<script src="/config.js" language="JavaScript" charset="utf-8"></script>
+<script src="data.js" language="JavaScript" charset="utf-8"></script>
+<script src="example.js" language="JavaScript" charset="utf-8"></script>

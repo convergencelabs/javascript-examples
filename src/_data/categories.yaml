@@ -1,0 +1,20 @@
+- title: Plain Text
+  id: plain-text
+
+- title: Rich Text
+  id: rich-text
+
+- title: Data Visualization
+  id: data-visualization
+
+- title: Chat
+  id: chat
+
+- title: Presence / Awarenes
+  id: presence
+
+- title: Diagraming / Drawing
+  id: diagraming-drawing
+
+- title: Forms
+  id: forms

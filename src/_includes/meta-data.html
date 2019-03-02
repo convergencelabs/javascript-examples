@@ -1,0 +1,81 @@
+<!-- General Meta Data -->
+<meta name="keywords" content="realtime collaboration api" />
+<!-- Open Graph Meta Data -->
+<meta property="og:locale" content="en_US" />
+<meta property="og:site_name" content="{{ site.title }}" />
+{% if page.title %}
+<meta property="og:title" content="{{ page.title }}" />
+{% else %}
+<meta property="og:title" content="{{ site.title }}" />
+{% endif %}
+{% if page.title %}
+<meta property="og:type" content="article" />
+{% else %}
+<meta property="og:type" content="website" />
+{% endif %}
+{% if page.description %}
+<meta property="og:description" content="{{ page.description }}" />
+{% else %}
+<meta property="og:description" content="{{ site.description }}" />
+{% endif %}
+{% if page.url %}
+<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+{% endif %}
+{% if page.image %}
+<meta property="og:image" content="{{ site.url }}{{ page.image }}" />
+{% else %}
+<meta property="og:image" content="{{ site.url }}/assets/img/convergence_logo_card.png" />
+{% endif %}
+<!-- Article Information -->
+{% if page.categories %}
+{% for category in page.categories limit:1 %}
+<meta property="article:section" content="{{ category }}" />
+{% endfor %}
+{% endif %}
+{% if page.tags %}
+{% for tag in page.tags %}
+<meta property="article:tag" content="{{ tag }}" />
+{% endfor %}
+{% endif %}
+{% if page.date %}
+<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}" />
+<meta property="article:author" content="{{ site.url }}" />
+{% endif %}
+<!-- Google Meta Data -->
+{% if page.title %}
+<meta itemprop="name" content="{{ page.title }}" />
+{% else %}
+<meta itemprop="name" content="{{ site.title }}" />
+{% endif %}
+{% if page.description %}
+<meta itemprop="description" content="{{ page.description }}" />
+{% else %}
+<meta itemprop="description" content="{{ site.description }}" />
+{% endif %}
+{% if page.image %}
+<meta itemprop="image" content="{{ page.image }}" />
+{% else %}
+<meta itemprop="image" content="{{ site.url }}/assets/img/convergence-logo.png" />
+{% endif %}
+<!-- Twitter Cards -->
+{% if page.title %}
+<meta name="twitter:title" content="{{ page.title }}" />
+{% else %}
+<meta name="twitter:title" content="{{ site.title }}" />
+{% endif %}
+{% if page.url %}
+<meta name="twitter:url" content="{{ site.url }}{{ page.url }}" />
+{% endif %}
+{% if page.description %}
+<meta name="twitter:description" content="{{ page.description }}" />
+{% else %}
+<meta name="twitter:description" content="{{ site.description }}" />
+{% endif %}
+{% if page.image %}
+<meta name="twitter:image" content="{{ page.image }}" />
+{% else %}
+<meta name="twitter:image" content="{{ site.url }}/assets/img/convergence-logo.png" />
+{% endif %}
+<meta name="twitter:card" content="summary_large_image"/>
+
+<meta name="google-site-verification" content="HtwXdOhfAvJni6JgXQLeE8Ij40rBCucyBzXA7sGpA90" />

@@ -1,29 +1,88 @@
 body {
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-img.github-logo {
-  float: right;
-  margin: 22px 10px 0 0;
-  height: 24px;
+nav#header {
+  background: #1976D2;
+  display: flex;
+  align-items: center;
+  padding: 5px 20px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
 
-img.logo {
-  float: left;
+nav#header img.logo {
   height: 45px;
-  margin: 10px 10px 0 20px;
+  margin-right: 15px;
 }
 
-span.title {
+nav#header span.title {
   color: white;
   font-size: 2em;
   font-family: "Century Gothic", sans-serif;
   -webkit-font-smoothing: antialiased;
+  flex: 1;
+  text-align: left;
+}
+
+nav#header img.github-logo {
+  height: 24px;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  align-items: stretch;
+}
+
+#sidebar {
+  background-color: rgba(0,0,0,.03);
+  border-right: 1px solid darkgray;
+  height: 100%;
+  overflow: auto;
+}
+
+#sidebar .all-examples {
+  margin: 10px 0;
+  padding: 4px 10px;
+}
+
+#sidebar .example-category {
+  padding: 4px 10px;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#sidebar ul.example-group {
+  margin: 0;
+  padding: 0;
+}
+
+#sidebar ul.example-group li {
+  padding: 4px 20px;
+  list-style: none;
+}
+
+#content {
+  height: 100%;
+  overflow: auto;
+  flex: 1;
 }
 
 #examples {
   padding:10px;
+  text-align: left;
+}
+
+#examples .container {
+  margin: 0;
 }
 
 @font-face {
@@ -31,19 +90,41 @@ span.title {
   src: url('fonts/CenturyGothic.ttf');
 }
 
+#examples .card {
+  margin-bottom: 20px;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+}
+
+#examples .card a {
+  margin-left: 15px;
+}
+
 div.row {
   display: flex;
 }
 
-div.row div.col {
+div.row div.col-6 {
   display: flex;
 }
 
 div.card {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 div.card-content {
   flex: 1;
 }
+
+
+footer {
+  margin-top: 0;
+  text-align: center;
+  font-size: 11px;
+  background: #1976D2;
+  padding: 10px;
+  color: white;
+}
+
+

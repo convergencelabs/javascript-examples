@@ -1,0 +1,9 @@
+<!-- Start Header -->
+<div>
+  <div class="all-examples"><a href="/"><i class="fas fa-home"></i>  All Examples</a></div>
+  {% for category in site.data.categories %}
+  {% include side-nav-group.html category=category %}
+  {% endfor %}
+</div>
+<!-- End Header -->
+

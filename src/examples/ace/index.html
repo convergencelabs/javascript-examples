@@ -1,0 +1,30 @@
+---
+title: Ace Editor
+layout: example
+permalink: /examples/ace/
+stylesheets:
+  - /libs/@convergence/ace-collab-ext/css/ace-collab-ext.css
+  - /examples/ace/ace.css
+example:
+  title: Ace Editor
+  overview: |-
+    This example demonstrates building a realtime source code editor with the
+    <a href="https://ace.c9.io/">Ace Editor</a>. This example uses the
+    <a href="https://github.com/convergencelabs/ace-collab-ext">Ace Collaborative Extensions</a> to
+    add in remote cursors, selections, and a Radar View that shows where other users are editing.
+---
+
+<div class="wrapped-editor">
+  <div class="editor" id="ace-editor" style="height: 100%; width: 400px;"></div>
+  <div class="radar-view" id="radar-view"></div>
+</div>
+
+<script src="/libs/ace-builds/src/ace.js"></script>
+<script src="/libs/@convergence/ace-collab-ext/umd/ace-collab-ext.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript" charset="utf-8"></script>
+<script src="default_editor_contents.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="/libs/@convergence/convergence/umd/convergence-all.js"></script>
+<script src="./ace.js" type="text/javascript" charset="utf-8"></script>

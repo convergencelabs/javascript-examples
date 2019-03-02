@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Convergence Examples{% if page.title %}: {{page.title}}{% endif %}</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  {% include meta-data.html%}
+
+  <link rel="icon" type="image/ico" href="/assets/favicon/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/assets/favicon/favicon-16x16.png" sizes="16x16">
+
+
+  <link rel="stylesheet" href="/libs/@fortawesome/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="/libs/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/examples-common.css">
+  <link rel="stylesheet" href="/assets/style.css">
+
+  {% for stylesheet in page.stylesheets %}
+  <link rel="stylesheet" href="{{stylesheet}}">
+  {% endfor %}
+
+  <!--Import Google Icon Font-->
+  <link href="//fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+  <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
+  <script src="/libs/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/libs/bootstrap/dist/js/bootstrap.min.js" ></script>
+
+</head>
+<body>

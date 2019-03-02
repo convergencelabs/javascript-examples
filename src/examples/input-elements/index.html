@@ -1,0 +1,59 @@
+---
+title: Input Elements
+layout: example
+permalink: /examples/input-elements/
+stylesheets:
+  - /examples/input-elements/example.css
+example:
+  title: Input Elements
+  overview: |-
+    Everyone's favorite todo app.
+---
+<div id="input-elements">
+  <label for="textInput">&lt;input type="text" /&gt;</label>
+  <input type="text" id="textInput"/>
+
+  <label for="textArea">&lt;textarea rows="4" id="textArea" /&gt;</label>
+  <textarea rows="4" id="textArea"></textarea>
+
+  <label for="checkboxInput">&lt;input type="checkbox" /&gt;</label>
+  <input type="checkbox" id="checkboxInput"/>
+
+  <label for="numberInput">&lt;input type="number" /&gt;</label>
+  <input type="number" id="numberInput"/>
+
+  <label for="rangeInput">&lt;input type="range" /&gt;</label>
+  <input type="range" id="rangeInput" min="0" max="10"/>
+
+  <label for="colorInput">&lt;input type="color" /&gt;</label>
+  <input type="color" id="colorInput"/>
+
+  <label for="singleSelect">&lt;select id="singleSelect" /&gt;</label>
+  <select id="singleSelect">
+    <option value="one">One</option>
+    <option value="two">Two</option>
+    <option value="three">Three</option>
+  </select>
+
+  <label for="multiSelect">&lt;select multiple id="multiSelect" /&gt;</label>
+  <select multiple id="multiSelect">
+    <option value="one">One</option>
+    <option value="two">Two</option>
+    <option value="three">Three</option>
+    <option value="four">Four</option>
+  </select>
+
+  <label for="multiSelect">&lt;input id="radio1" type="radio" name="value" value="one"" /&gt;</label>
+  <form id="radios">
+    <input id="radio1" type="radio" name="value" value="one"/> One
+    <input id="radio2" type="radio" name="value" value="two"/> Two
+    <input id="radio3" type="radio" name="value" value="three"/> Three
+  </form>
+</div>
+
+<script src="/libs/@convergence/convergence/umd/convergence-all.js" language="JavaScript"
+    charset="utf-8"></script>
+<script src="/libs/@convergence/input-element-bindings/browser/convergence-input-element-bindings.js"
+    language="JavaScript" charset="utf-8"></script>
+<script src="/config.js" language="JavaScript" charset="utf-8"></script>
+<script src="example.js" language="JavaScript" charset="utf-8"></script>

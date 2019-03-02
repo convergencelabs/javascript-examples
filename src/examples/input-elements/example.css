@@ -1,0 +1,12 @@
+#input-elements {
+  font-size: 13px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 20px 0 10px 0;
+  font-family: monospace;
+  border-bottom: 1px solid darkblue;
+  background: #EEEEEE;
+}

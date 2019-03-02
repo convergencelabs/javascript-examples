@@ -1,33 +1,22 @@
-body {
-  padding: 10px;
-}
-
-div.example {
+#example {
+  padding: 10px 20px;
   max-width: 800px;
-  min-width: 300px;
-  margin: auto;
+  min-width: 500px;
+  margin: 0;
   position: relative;
 }
 
-div.example div.example-header {
-  display: flex;
-  align-items: center;
+#example div.example-header {
+  margin-bottom: 20px;
+}
+
+#example div.example-title {
+  font-size: 24px;
+  font-family: "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
 }
 
-div.example img.example-logo {
-  float: left;
-  font-family: "Helvetica Neue", sans-serif;
-  height: 32px;
-  margin-right: 10px;
-}
-
-div.example span.example-title {
-  font-size: 24px;
-  font-family: "Helvetica Neue", sans-serif;
-}
-
-div.example div.example-overview {
+#example div.example-overview {
   font-family: "Helvetica Neue", sans-serif;
   background: #F0F0F0;
   border-radius: 2px;

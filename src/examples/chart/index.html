@@ -1,0 +1,29 @@
+---
+title: Chart.js
+layout: example
+permalink: /examples/chart/
+stylesheets:
+  - /libs/nouislider/distribute/nouislider.min.css
+  - /examples/chart/chart.css
+example:
+  title: Chart.js
+  overview: |-
+    This example demonstrates modifying visualized data, in real time, using shared controls. The chart is rendered
+    using the <a href="https://www.chartjs.org/">Chart.js</a> library. Move the controls to see the chart update on all
+    clients in real time.
+---
+
+<canvas id="pieChart" width="400" height="400"></canvas>
+<div class="controls-container">
+  <div class="controls" id="controls">
+  </div>
+</div>
+
+<!-- Third-party chart and slider libs -->
+<script src="/libs/chart.js/dist/Chart.js"></script>
+<script src="/libs/nouislider/distribute/nouislider.js"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="/libs/@convergence/convergence/umd/convergence-all.js"></script>
+<script src="chart.js" type="text/javascript" language="JavaScript"></script>

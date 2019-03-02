@@ -7,7 +7,7 @@ const clean = () => {
 }
 
 
-const dockerPrep = () => {
+const prop = () => {
   const libTasks = merge(
     libs.map(lib => gulp.src("node_modules/" + lib + "/**/*")
       .pipe(gulp.dest('docker-build/src/libs/' + lib))
@@ -22,26 +22,18 @@ const dockerPrep = () => {
   );
 }
 
-const libs = [
-  "@convergence",
-  "froala-editor",
-  "ace-builds",
-  "chart.js",
-  "director",
-  "handlebars",
-  "jquery",
-  "materialize-css",
-  "moment",
-  "nouislider",
-  "todomvc-common",
-  "todomvc-app-css",
-  "jointjs",
-  "lodash",
-  "backbone",
-  "underscore"
-];
+
+const copyLibs = () => {
+  return merge(
+    libs.map(lib => gulp.src("node_modules/" + lib + "/**/*")
+      .pipe(gulp.dest('source/libs/' + lib))
+
+    )
+  );
+}
+
 
 module.exports = {
   clean,
-  dockerPrep
+  copyLibs
 };
