@@ -1,7 +1,42 @@
+- title: Text Area
+  description: A full fledged collaborative text area, with shared cursors and selections.
+  category: forms
+  example: collaborative-textarea
+  
 - title: Chart.js
   category: data-visualization
   description: Demonstrates the Model API by dynamically changing data visualized using Chart.js. The result is a highly dynamic visual experience.
   example: chart
+
+- title: Froala
+  description: Demonstrates rich text editing in the <a href="https://www.froala.com/wysiwyg-editor">Froala</a> editor.
+  category: rich-text
+  example: froala
+
+- title: Content Editable
+  description: Leverages dom synchronization to collaborate within a content editable element.
+  category: rich-text
+  example: content-editable
+
+- title: HTML Input Elements
+  description: Show real time synchronization of HTML form input controls.
+  category: forms
+  example: input-elements
+  
+- title: Joint JS
+  description: Demonstrates integration between <a href="https://www.jointjs.com/">JointJS</a> and Convergence for collaborative diagramming.
+  category: diagraming-drawing
+  example: jointjs
+
+- title: Ace Editor
+  description: Demonstrates collaborative code editing in the <a href="https://ace.c9.io/">Ace</a> Editor.
+  category: plain-text
+  example: ace
+
+- title: Monaco Editor
+  description: Demonstrates collaborative code editing in the <a href="https://microsoft.github.io/monaco-editor/">Monaco</a> Editor.
+  category: plain-text
+  example: monaco
 
 - title: Shared Pointer
   category: presence
@@ -14,37 +49,3 @@
   example: chat-room
   sourceUrl: https://github.com/convergencelabs/javascript-examples/tree/master/src/chat
 
-- title: Joint JS
-  description: Demonstrates integration between Joint JS and Convergence for collaborative diagraming.
-  category: diagraming-drawing
-  example: jointjs
-
-- title: Ace Editor
-  description: Demonstrates collaborative code editing in the Ace Editor.
-  category: plain-text
-  example: ace
-
-- title: Monaco Editor
-  description: Demonstrates collaborative code editing in the Monaco Editor.
-  category: plain-text
-  example: monaco
-
-- title: Content Editable
-  description: Leverages dom synchronization to collaborate withing a content editable element.
-  category: rich-text
-  example: content-editable
-
-- title: Forala
-  description: Demonstrates rich text editing in the Froala editor.
-  category: rich-text
-  example: froala
-
-- title: Text Area
-  description: A full fledged collaborative text area, with shared cursors and selections.
-  category: forms
-  example: collaborative-textarea
-
-- title: HTML Input Elements
-  description: Show real time synchronization of HTML Form Input controls.
-  category: forms
-  example: input-elements

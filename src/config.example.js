@@ -1,18 +1,8 @@
 //
-// This file configures the domain url that is used by all of the exampled to
-// connect to the Convergence service.
+// This file configures the domain url that is used to connect to the Convergence service.
 //
-
-//
-// 1. Copy / rename this file to config.js and modify the below.
-//
-// 2. Start a convergence server.
-//
-// 3. Create a domain, note the domain id, and ensure that anonymous authentication is enabled.
-//
-// 4. Copy the domain connection url, from the Convergence Admin Console
-//
-// 5. Modify the url below to match your Convergence connection URL.
-//
-
-const CONVERGENCE_URL = "<domain-url>";
+// By default, it is configured to use the default options in the Convergence Development Edition
+// (https://hub.docker.com/r/convergencelabs/convergence-de)
+// 
+// These are the relevant parts of the URL: http://<host>:<host-port>/api/realtime/<namespace>/<domainId>
+var CONVERGENCE_URL = "http://localhost:8000/api/realtime/convergence/default";

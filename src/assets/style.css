@@ -1,3 +1,8 @@
+@font-face {
+  font-family: "Century Gothic";
+  src: url('fonts/CenturyGothic.ttf');
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -14,22 +19,22 @@ nav#header {
   background: #1976D2;
   display: flex;
   align-items: center;
-  padding: 5px 20px;
+  padding: 5px 15px 5px 10px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
-
 nav#header img.logo {
-  height: 45px;
-  margin-right: 15px;
+  height: 40px;
+  margin-right: 10px;
 }
-
 nav#header span.title {
-  color: white;
-  font-size: 2em;
+  font-size: 1.8em;
   font-family: "Century Gothic", sans-serif;
   -webkit-font-smoothing: antialiased;
   flex: 1;
   text-align: left;
+}
+nav#header span.title a {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 nav#header img.github-logo {
@@ -48,53 +53,66 @@ nav#header img.github-logo {
   border-right: 1px solid darkgray;
   height: 100%;
   overflow: auto;
+  max-width: 100%;
+  opacity: 1;
 }
-
+#sidebar.hidden {
+  opacity: 0;
+  max-width: 0;
+}
 #sidebar .all-examples {
   margin: 10px 0;
   padding: 4px 10px;
 }
-
 #sidebar .example-category {
   padding: 4px 10px;
   background: rgba(0, 0, 0, 0.1);
 }
-
 #sidebar ul.example-group {
-  margin: 0;
+  margin: 0 0 15px;
   padding: 0;
 }
-
 #sidebar ul.example-group li {
-  padding: 4px 20px;
+  padding: 4px 20px 0;
   list-style: none;
+}
+#sidebar ul.example-group li.active {
+  padding-left: 8px;
+  color: #039be5;
 }
 
 #content {
   height: 100%;
   overflow: auto;
   flex: 1;
+  position: relative;
+}
+#content .nav-toggle {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 10;
+  color: #039be5;
+  cursor: pointer;
 }
 
 #examples {
   padding:10px;
   text-align: left;
 }
-
+#examples .header {
+  margin: 30px 0 20px;
+}
+#examples .header .larger {
+  font-size: 1.1rem;
+}
 #examples .container {
   margin: 0;
 }
-
-@font-face {
-  font-family: "Century Gothic";
-  src: url('fonts/CenturyGothic.ttf');
-}
-
 #examples .card {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
-
 #examples .card a {
   margin-left: 15px;
 }
@@ -102,7 +120,6 @@ nav#header img.github-logo {
 div.row {
   display: flex;
 }
-
 div.row div.col-6 {
   display: flex;
 }
@@ -112,11 +129,9 @@ div.card {
   flex-direction: column;
   width: 100%;
 }
-
 div.card-content {
   flex: 1;
 }
-
 
 footer {
   margin-top: 0;
@@ -127,4 +142,23 @@ footer {
   color: white;
 }
 
+
+@media screen and (min-width: 601px) {
+  #sidebar {
+    transition: all .5s ease;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav#header img.logo {
+    height: 25px;
+  }
+  nav#header span.title {
+    font-size: 1.3em;
+    line-height: 1.2em;
+  }
+  #sidebar {
+    font-size: 0.9rem;
+  }
+}
 

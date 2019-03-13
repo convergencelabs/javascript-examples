@@ -7,14 +7,14 @@
 - title: Data Visualization
   id: data-visualization
 
-- title: Chat
-  id: chat
-
-- title: Presence / Awarenes
-  id: presence
-
 - title: Diagraming / Drawing
   id: diagraming-drawing
 
 - title: Forms
   id: forms
+
+- title: Collaborative Cueing
+  id: presence
+
+- title: Chat
+  id: chat

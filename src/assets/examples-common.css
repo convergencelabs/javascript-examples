@@ -11,6 +11,7 @@
 }
 
 #example div.example-title {
+  text-align: center;
   font-size: 24px;
   font-family: "Helvetica Neue", sans-serif;
   margin-bottom: 10px;
@@ -29,4 +30,10 @@
 a {
   color: #039be5;
   text-decoration: none;
+}
+
+@media screen and (max-width: 600px) {
+  #example {
+    min-width: 0;
+  }
 }

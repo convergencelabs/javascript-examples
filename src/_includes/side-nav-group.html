@@ -3,7 +3,14 @@
   <ul class="example-group">
   {% for example in site.data.examples %}
   {% if example.category == category.id %}
-    <li><a href=/examples/{{example.example}}>{{example.title}}</a></li>
+    {% if page.url contains example.example %}
+    <li class="active">
+      <i class="fas fa-angle-right"></i>
+    {% else %}
+    <li>
+    {% endif %}
+      <a href=/examples/{{example.example}}>{{example.title}}</a>
+    </li>
   {% endif  %}
   {% endfor %}
   </ul>
