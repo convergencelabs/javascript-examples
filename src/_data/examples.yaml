@@ -24,6 +24,11 @@
   category: plain-text
   example: ace
 
+- title: Monaco Editor
+  description: Demonstrates collaborative code editing in the Monaco Editor.
+  category: plain-text
+  example: monaco
+
 - title: Content Editable
   description: Leverages dom synchronization to collaborate withing a content editable element.
   category: rich-text

@@ -2,6 +2,7 @@ const fs = require("fs-extra");
 
 const libs = [
   "@convergence",
+  "@convergencelabs",
   "@fortawesome",
   "ace-builds",
   "backbone",
@@ -15,17 +16,16 @@ const libs = [
   "lodash",
   "materialize-css",
   "moment",
+  "monaco-editor",
   "nouislider",
   "popper.js",
-  "todomvc-common",
-  "todomvc-app-css",
+  "rxjs",
   "underscore"
 ];
 
 const srcLibs = "src/libs/";
 
 fs.mkdir(srcLibs);
-
 
 const paths = libs
   .forEach(lib => fs.copySync("node_modules/" + lib, srcLibs + lib));

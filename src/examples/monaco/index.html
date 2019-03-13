@@ -1,0 +1,48 @@
+---
+title: Monaco Editor
+layout: example
+permalink: /examples/monaco/
+stylesheets:
+  - /libs/monaco-editor/min/vs/editor/editor.main.css
+  - /libs/@convergencelabs/monaco-collab-ext/css/monaco-collab-ext.css
+  - /examples/monaco/monaco.css
+example:
+  title: Monaco Editor
+  overview: |-
+    This example demonstrates building a realtime source code editor with the
+    <a href="https://microsoft.github.io/monaco-editor/">Monaco Editor</a>. This example uses the
+    <a href="https://github.com/convergencelabs/monaco-collab-ext">Monaco Collaborative Extensions</a> to
+    display remote cursors and selections, as well as to simplify the management of local and remote edits.
+---
+
+<div class="wrapped-editor">
+  <div class="editor" id="monaco-editor" style="height: 100%; width: 400px;"></div>
+  <div class="radar-view" id="radar-view"></div>
+</div>
+
+
+
+<script src="/libs/monaco-editor/min/vs/loader.js"></script>
+<script>
+require.config({
+  paths: {
+    'vs': '/libs/monaco-editor/min/vs',
+    'Convergence': '/libs/@convergence/convergence/convergence.amd.js',
+    "ConvergenceColorAssigner": "/libs/@convergence/color-assigner/umd/color-assigner.js",
+    "MonacoConvergenceAdapter": "./monaco-adapter.js",
+    'rxjs': "https://unpkg.com/rxjs@6.4.0/bundles/rxjs.umd.js"
+  }
+});
+</script>
+
+<script src="/libs/monaco-editor/min/vs/editor/editor.main.nls.js"></script>
+<script src="/libs/monaco-editor/min/vs/editor/editor.main.js"></script>
+
+<script src="/libs/@convergencelabs/monaco-collab-ext/umd/monaco-collab-ext.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript" charset="utf-8"></script>
+<script src="./default_editor_contents.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="./monaco-adapter.js"></script>
+<script src="./monaco.js" type="text/javascript" charset="utf-8"></script>
