@@ -113,14 +113,14 @@ nav#header img.github-logo {
   margin-bottom: 30px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
-#examples .card a {
+#examples .card a.action {
   margin-left: 15px;
 }
 
 div.row {
   display: flex;
 }
-div.row div.col-6 {
+div.row div.example-column {
   display: flex;
 }
 
@@ -129,8 +129,20 @@ div.card {
   flex-direction: column;
   width: 100%;
 }
-div.card-content {
+
+div.card-body {
+  display: flex;
+  flex-direction: column;
   flex: 1;
+}
+
+div.card-body div.description {
+  flex: 1;
+}
+
+div.card-body div.actions {
+  margin-top: 15px;
+  text-align: right;
 }
 
 footer {
