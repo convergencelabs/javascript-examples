@@ -10,6 +10,7 @@ services:
   - docker
 
 script:
+ - bundle install
  - npm run docker-prep
  - docker build -t $DOCKER_REPO docker-build
 
