@@ -8,16 +8,16 @@
   <!-- Sidebar -->
   <div id="sidebar">
     {% include side-nav.html %}
+    <div id="sidebar-toggle">
+      <div class="sidebar-btn">
+        <i class="fa fa-caret-left show"></i>
+        <i class="fa fa-caret-right"></i>
+      </div>
+    </div>
   </div>
-
+  
   <!-- Page Content -->
   <div id="content">
-    <div class="nav-toggle">
-      <span class="collapse show">
-        <i class="fa fa-caret-left"></i>
-      </span>
-      <i class="fa fa-bars"></i>
-    </div>
     {{ content }}
   </div>
   <!-- End Page Content -->

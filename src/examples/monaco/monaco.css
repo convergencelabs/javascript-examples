@@ -20,9 +20,3 @@
   border: 1px solid black;
   height: 550px;
 }
-
-#radar-view {
-  display: inline-block;
-  min-width: 20px;
-  background: #2F3129;
-}

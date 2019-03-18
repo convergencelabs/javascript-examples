@@ -19,6 +19,7 @@ nav#header {
   background: #1976D2;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 5px 15px 5px 10px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
@@ -26,19 +27,32 @@ nav#header img.logo {
   height: 40px;
   margin-right: 10px;
 }
-nav#header span.title {
-  font-size: 1.8em;
+nav#header .brand-copy {
   font-family: "Century Gothic", sans-serif;
   -webkit-font-smoothing: antialiased;
-  flex: 1;
-  text-align: left;
 }
-nav#header span.title a {
+nav#header .brand-copy a {
   color: rgba(255, 255, 255, 0.9);
 }
-
+nav#header span.title {
+  font-size: 1.7em;
+}
+nav#header .links {
+  display: flex;
+  align-items: center;
+}
+nav#header .links .link {
+  display: inline-block;
+  padding: 0 10px;
+}
+nav#header .links a:hover {
+  text-decoration: underline;
+}
 nav#header img.github-logo {
   height: 24px;
+}
+nav#header .menu {
+  display: none;
 }
 
 .wrapper {
@@ -49,14 +63,19 @@ nav#header img.github-logo {
 }
 
 #sidebar {
-  background-color: rgba(0,0,0,.03);
-  border-right: 1px solid darkgray;
   height: 100%;
-  overflow: auto;
-  max-width: 100%;
-  opacity: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
 }
-#sidebar.hidden {
+#sidebar .sidebar-content {
+  opacity: 1;
+  max-width: 100%;
+  overflow: auto;
+  border-right: 1px solid #a9a9a9;
+  background-color: rgba(0,0,0,.03);
+}
+#sidebar .sidebar-content.hidden {
   opacity: 0;
   max-width: 0;
 }
@@ -81,19 +100,39 @@ nav#header img.github-logo {
   color: #039be5;
 }
 
+#sidebar-toggle {
+  margin-top: -15px;
+  z-index: 10;
+  cursor: pointer;
+  align-self: center;
+  overflow: hidden;
+  width: 15px;
+}
+#sidebar-toggle .sidebar-btn {
+  transform: translateX(-50%);
+  border: 1px solid #a9a9a9;
+  border-radius: 100%;
+  background-color: rgba(0,0,0,.03);
+  color: #6d6c6c;
+  width: 30px;
+  height: 30px;
+}
+#sidebar-toggle i {
+  padding-top: 6px;
+  padding-left: 16px;
+  display: none;
+}
+#sidebar-toggle i.fa-caret-right {
+  padding-left: 18px;
+}
+#sidebar-toggle i.show {
+  display: inline-block;
+}
+
 #content {
   height: 100%;
   overflow: auto;
   flex: 1;
-  position: relative;
-}
-#content .nav-toggle {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-  z-index: 10;
-  color: #039be5;
-  cursor: pointer;
 }
 
 #examples {
@@ -101,7 +140,7 @@ nav#header img.github-logo {
   text-align: left;
 }
 #examples .header {
-  margin: 30px 0 20px;
+  margin: 10px 0 20px;
 }
 #examples .header .larger {
   font-size: 1.1rem;
@@ -156,19 +195,50 @@ footer {
 
 
 @media screen and (min-width: 601px) {
-  #sidebar {
+  #sidebar .sidebar-content {
     transition: all .5s ease;
   }
 }
 
 @media screen and (max-width: 600px) {
+  #content {
+    margin-left: -15px;
+  }
+
   nav#header img.logo {
     height: 25px;
+    margin-right: 0;
   }
   nav#header span.title {
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 1.2em;
   }
+  nav#header .menu { 
+    display: initial;
+    align-self: flex-end;
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  nav#header .links {
+    display: none;
+  }
+  nav#header .links.visible {
+    position: absolute;
+    top: 38px;
+    left: 0;
+    background: #1976D2;
+    z-index: 10;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 8px;
+    border-top: 1px solid rgba(0, 0, 0, .07);
+  } 
+  nav#header .links .link {
+    padding: 5px 15px 0;
+    align-self: flex-start;
+  }
+
   #sidebar {
     font-size: 0.9rem;
   }

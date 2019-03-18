@@ -3,15 +3,10 @@
  100%{ width: 36px; height: 36px; margin: -18px 0 0 -18px; opacity: 0.2; }
 }
 
-body {
-  position: absolute;
-  top: 0px;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-
+#pointer-content {
   font-family: Helvetica Neue, Helvetica, Arial;
   font-size: 13px;
+  display: flex;
 }
 
 #buttons {
@@ -20,10 +15,7 @@ body {
   padding: 4px;
   border: 1px solid black;
   margin-bottom: 10px;
-}
-
-#content {
-  display: flex;
+  font-size: 13px;
 }
 
 #sessions {
