@@ -8,8 +8,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
     const initialData = ConvergenceDomUtils.DomConverter.htmlToJson(initialContents);
     // Now open the model, creating it using the initial data if it does not exist.
     return domain.models().openAutoCreate({
-      collection: "examples",
-      id: "froala",
+      collection: "example-froala",
+      id: convergenceExampleId,
       data: initialData,
       ephemeral: true
     })

@@ -5,14 +5,13 @@ let localDisplayName;
 
 function connectAndJoin() {
   localDisplayName = $("#username").val();
-  const roomId = $("#room").val();
 
   // Connect to the domain.  See ../config.js for the connection settings.
   Convergence.connectAnonymously(CONVERGENCE_URL, localDisplayName)
     .then(d => {
       domain = d;
       // Blindly try to create the chat room, ignoring the error if it already exists.
-      return domain.chat().create({id: roomId, type: "room", membership: "public", ignoreExistsError: true})
+      return domain.chat().create({id: convergenceExampleId, type: "room", membership: "public", ignoreExistsError: true})
     })
     .then(channelId => domain.chat().join(channelId))
     .then(handleJoin)

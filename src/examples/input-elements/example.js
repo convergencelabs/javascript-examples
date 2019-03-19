@@ -1,8 +1,9 @@
 Convergence.connectAnonymously(CONVERGENCE_URL).then(domain => {
   return domain.models().openAutoCreate({
-    collection: "examples",
-    id: "input-binder",
-    data: defaultData
+    collection: "example-input-binder",
+    id: convergenceExampleId,
+    data: defaultData,
+    ephemeral: true
   });
 }).then(model => {
   const textInput = document.getElementById("textInput");

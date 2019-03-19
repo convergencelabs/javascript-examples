@@ -10,6 +10,15 @@
   margin-bottom: 20px;
 }
 
+#example div.example-share-icons {
+  text-align: right;
+}
+
+#example div.example-share-icons a {
+  text-decoration: none;
+  margin-left: 10px;
+}
+
 #example div.example-title {
   text-align: center;
   font-size: 24px;

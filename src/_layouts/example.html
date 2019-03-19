@@ -1,9 +1,22 @@
 ---
 layout: default
 ---
+<script src="/assets/js/exampleId.js"></script>
+<script src="/libs/toastr/build/toastr.min.js"></script>
 <div id="example">
   <div class="example-header">
     <div class="example-title">{{page.example.title}}</div>
+    <div class="example-share-icons">
+      <a href="#" onclick="copyUrlToClipboard()">
+        <span>Share</span>
+        <i class="far fa-share-square"></i>
+      </a>
+
+      <a href="#" onclick="newWindowWithExample()">
+        <span>New Window</span>
+        <i class="fas fa-external-link-alt"></i>
+      </a>
+    </div>
     <div class="example-overview">{{page.example.overview}}</div>
   </div>
   <div class="example-content">

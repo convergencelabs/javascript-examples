@@ -68,8 +68,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
   .then(domain => {
     // Now open the model, creating it using the initial data if it does not exist.
     const modelPromise = domain.models().openAutoCreate({
-      collection: "examples",
-      id: "jointjs",
+      collection: "example-jointjs",
+      id: convergenceExampleId,
       data: () => {
         return ConvergenceJointUtils.DataConverter.graphJsonToModelData(DefaultGraphData);
       }

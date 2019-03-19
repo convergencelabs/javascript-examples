@@ -34,7 +34,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL).then(function (d) {
 
 // Handles clicking the open button
 function joinActivity() {
-  domain.activities().join("testActivity").then(function (act) {
+  domain.activities().join(convergenceExampleId).then(function (act) {
     activity = act;
     const participants = activity.participants();
     joinButton.disabled = true;

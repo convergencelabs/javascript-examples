@@ -44,7 +44,8 @@
     "moment": "2.23.0",
     "nouislider": "12.1.0",
     "popper.js": "1.14.7",
-    "rxjs": "6.4.0"
+    "rxjs": "6.4.0",
+    "toastr": "2.1.4"
   },
   "scripts": {
     "start": "node ./scripts/copy-libs.js && bundle exec jekyll serve",

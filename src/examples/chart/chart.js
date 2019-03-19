@@ -12,9 +12,10 @@ RealtimeChart.prototype = {
     Convergence.connectAnonymously(CONVERGENCE_URL).then(domain => {
       // Now open the model, creating it using the initial data if it does not exist.
       return domain.models().openAutoCreate({
-        collection: "examples",
-        id: "chart",
-        data: initialData
+        collection: "example-chart",
+        id: convergenceExampleId,
+        data: initialData,
+        ephemeral: true
       });
     }).then(model => {
       // Initialize the chart with the model data and wire up the events.

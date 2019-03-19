@@ -7,8 +7,9 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username)
     domain = d;
     // Now open the model, creating it using the initial data if it does not exist.
     return domain.models().openAutoCreate({
-      collection: "examples",
-      id: "ace",
+      collection: "example-ace",
+      id: convergenceExampleId,
+      ephemeral: true,
       data: {
         "text": defaultEditorContents
       }

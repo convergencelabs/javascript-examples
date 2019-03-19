@@ -7,8 +7,9 @@ document.getElementById("username").innerHTML = username;
 
 Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
   return domain.models().openAutoCreate({
-    collection: "examples",
-    id: "collab-textarea",
+    collection: "example-textarea",
+    id: convergenceExampleId,
+    ephemeral: true,
     data: defaultData
   });
 }).then(model => {

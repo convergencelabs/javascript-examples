@@ -5,9 +5,10 @@ Convergence.connectAnonymously(CONVERGENCE_URL).then(domain => {
     "Here is some initial text with a <b>bold</b> section and some <i>italics</i>."
   );
   return domain.models().openAutoCreate({
-    collection: "examples",
-    id: "content-editable",
-    data: initialData
+    collection: "example-content-editable",
+    id: convergenceExampleId,
+    data: initialData,
+    ephemeral: true
   });
 }).then(model => {
   const binder = new ConvergenceDomUtils.DomBinder(editable, model);

@@ -21,8 +21,8 @@ define("monaco-example", [
       domain = d;
       // Now open the model, creating it using the initial data if it does not exist.
       return domain.models().openAutoCreate({
-        collection: "examples",
-        id: "ace",
+        collection: "example-monaco",
+        id: convergenceExampleId,
         data: {
           "text": defaultEditorContents
         }
