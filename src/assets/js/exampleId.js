@@ -19,9 +19,6 @@ const convergenceExampleId = (function () {
   return id;
 })();
 
-
-console.log(convergenceExampleId);
-
 function newWindowWithExample() {
   window.open(window.location.href, "_blank");
 }
