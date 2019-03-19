@@ -20,6 +20,7 @@ const libs = [
   "nouislider",
   "popper.js",
   "rxjs",
+  "toastr",
   "underscore"
 ];
 
