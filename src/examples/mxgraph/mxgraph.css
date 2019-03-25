@@ -1,0 +1,18 @@
+.body {
+  margin: 0;
+}
+
+h1 {
+  font-family: Helvetica, sans-serif;
+  font-size: 24px;
+  border-radius: 4px;
+  border: 1px solid darkgray;
+  background: #e1e1e1;
+  padding: 10px;
+}
+
+#mxgraph {
+  height: 400px;
+  width: 600px;
+  border: 1px solid darkgray;
+}

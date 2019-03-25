@@ -17,6 +17,7 @@ const libs = [
   "materialize-css",
   "moment",
   "monaco-editor",
+  "mxgraph",
   "nouislider",
   "popper.js",
   "rxjs",
