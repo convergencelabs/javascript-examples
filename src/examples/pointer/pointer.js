@@ -5,7 +5,7 @@ const leaveButton = document.getElementById("leaveButton");
 // The element that shows the local mouse location
 const localMouseSpan = document.getElementById("localMouse");
 
-const sessionIdSpan = document.getElementById("sessionId");
+const localUserSpan = document.getElementById("localUser");
 
 // The list where all the cursors by session are listed.
 const mouseLocations = document.getElementById("mouseLocations");
@@ -17,17 +17,19 @@ const cursorBox = document.getElementById('cursorBox');
 let activity;
 
 // A map of remote cursors by sessionId
-const remoteSessions = {};
+const sessions = new Map();
 
 // The domain that this example connects too.
 let domain;
 
 let zOrder = 1;
 
-Convergence.connectAnonymously(CONVERGENCE_URL).then(function (d) {
+const username = "User-" + (Math.floor(Math.random() * 900000) + 100000);
+
+Convergence.connectAnonymously(CONVERGENCE_URL, username).then(function (d) {
   domain = d;
   joinButton.disabled = false;
-  sessionIdSpan.innerHTML = domain.session().sessionId();
+  localUserSpan.innerHTML = domain.session().user().displayName;
 }).catch(function (error) {
   console.log("Could not connect: " + error);
 });
@@ -42,7 +44,7 @@ function joinActivity() {
 
     participants.forEach(function (participant) {
       const local = participant.sessionId === activity.session().sessionId();
-      handleSessionJoined(participant.sessionId, local);
+      handleSessionJoined(participant);
       const state = participant.state.get("pointer");
       if (state) {
         updateMouseLocation(participant.sessionId, state.x, state.y, local);
@@ -52,7 +54,7 @@ function joinActivity() {
     activity.events().subscribe(function (event) {
       switch (event.name) {
         case "session_joined":
-          handleSessionJoined(event.sessionId, event.local);
+          handleSessionJoined(event.participant);
           break;
         case "session_left":
           handleSessionLeft(event.sessionId);
@@ -69,6 +71,11 @@ function joinActivity() {
               break;
           }
           break;
+        case "state_removed":
+          if (event.key === "pointer") {
+            hidePointer(event.sessionId, event.local);
+          }
+          break;
       }
     });
   });
@@ -79,14 +86,22 @@ function leaveActivity() {
   activity.leave();
   joinButton.disabled = false;
   leaveButton.disabled = true;
+
+  sessions.forEach((remoteSession, sessionId) => {
+    handleSessionLeft(sessionId);
+  });
+
+  sessions.clear();
 }
 
 // Handles a session joining (both remote and local)
-function handleSessionJoined(sessionId, local) {
+function handleSessionJoined(participant) {
+  const sessionId = participant.sessionId;
+  const username = participant.user.displayName;
   const sessionTr = document.createElement("tr");
-  const sessionIdCell = document.createElement("td");
-  sessionIdCell.innerHTML = sessionId;
-  sessionTr.appendChild(sessionIdCell);
+  const usernameCell = document.createElement("td");
+  usernameCell.innerHTML = username;
+  sessionTr.appendChild(usernameCell);
 
   const locationCell = document.createElement("td");
   sessionTr.appendChild(locationCell);
@@ -94,7 +109,7 @@ function handleSessionJoined(sessionId, local) {
   mouseLocations.appendChild(sessionTr);
   let cursorDiv;
 
-  if (!local) {
+  if (!participant.local) {
     cursorDiv = document.createElement("img");
     cursorDiv.src = "assets/cursor.png";
     cursorDiv.className = "remoteCursor";
@@ -102,29 +117,45 @@ function handleSessionJoined(sessionId, local) {
     cursorBox.appendChild(cursorDiv);
   }
 
-  remoteSessions[sessionId] = {
+  sessions.set(sessionId, {
     sessionTr: sessionTr,
     locationCell: locationCell,
     cursorDiv: cursorDiv
+  });
+
+  if (participant.state.has("pointer")) {
+    const pointer = participant.state.get("pointer");
+    updateMouseLocation(sessionId, pointer.x, pointer.y, participant.local);
+  } else {
+    hidePointer(sessionId, participant.local);
   }
 }
 
 // Handles a session leaving (both remote and local)
 function handleSessionLeft(sessionId) {
-  const sessionRec = remoteSessions[sessionId];
+  const sessionRec = sessions.get(sessionId);
   sessionRec.sessionTr.parentNode.removeChild(sessionRec.sessionTr);
   if (sessionRec.cursorDiv) {
     cursorBox.removeChild(sessionRec.cursorDiv);
   }
-  delete remoteSessions[sessionId];
+  sessions.delete(sessionId);
+}
+
+function hidePointer(sessionId, local) {
+  const sessionRec = sessions.get(sessionId);
+  sessionRec.locationCell.innerHTML = "(none)";
+  if (!local) {
+    sessionRec.cursorDiv.style.visibility = "hidden";
+  }
 }
 
 function updateMouseLocation(sessionId, x, y, local) {
-  const sessionRec = remoteSessions[sessionId];
+  const sessionRec = sessions.get(sessionId);
   sessionRec.locationCell.innerHTML = "(" + x + "," + y + ")";
   if (!local) {
     sessionRec.cursorDiv.style.top = y + "px";
     sessionRec.cursorDiv.style.left = x + "px";
+    sessionRec.cursorDiv.style.visibility = "visible";
   }
 }
 
@@ -150,6 +181,13 @@ function mouseMoved(evt) {
 
   if (activity && activity.isJoined()) {
     activity.setState("pointer", coordinates);
+  }
+}
+
+function mouseOut(evt) {
+  localMouseSpan.innerHTML = " (none)";
+  if (activity && activity.isJoined()) {
+    activity.removeState("pointer");
   }
 }
 
