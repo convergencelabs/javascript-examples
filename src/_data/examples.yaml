@@ -28,6 +28,11 @@
   category: diagraming-drawing
   example: jointjs
 
+- title: mxGraph
+  description: Demonstrates integration between <a href="https://github.com/jgraph/mxgraph/">mxGraph</a> and Convergence for collaborative diagramming.
+  category: diagraming-drawing
+  example: mxgraph
+
 - title: Ace Editor
   description: Demonstrates collaborative code editing in the <a href="https://ace.c9.io/">Ace</a> Editor.
   category: plain-text

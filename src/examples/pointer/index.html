@@ -11,26 +11,29 @@ example:
     within an element. The pointer location is synchronized across all clients. Mouse clicks
     are also shared and rendered as a ripple animation.
 ---
+<nav class="navbar navbar-light">
+  <a class="navbar-brand">Activity Control</a>
+  <form class="form-inline">
+    <button class="btn btn-sm btn-primary" type="button" id="joinButton" onclick="joinActivity()" disabled="disabled">Join</button>
+    <button class="btn btn-sm btn-primary" type="button" id="leaveButton" onclick="leaveActivity()" disabled="disabled">Leave</button>
+  </form>
+</nav>
 
-<div id="buttons">
-  <span>Activity Actions: </span>
-  <button id="joinButton" onclick="joinActivity()" disabled="disabled">Join</button>
-  <button id="leaveButton" onclick="leaveActivity()" disabled="disabled">Leave</button>
-</div>
 <div id="pointer-content">
   <div id="cursors">
     <div id="titleBar">Move Mouse In Box Below</div>
-    <div id="cursorBox" onmousemove="mouseMoved(event)" onclick="mouseClicked(event)"></div>
+    <div id="cursorBox" onmousemove="mouseMoved(event)" onclick="mouseClicked(event)" onmouseleave="mouseOut(event)"></div>
     <div id="statusBar">
-      <span>Session Id: </span><span id="sessionId"></span>
-      <span>Local Mouse Location: </span><span id="localMouse"></span>
+      <span class="label">Local User: </span><span id="localUser"></span>
+      <br />
+      <span class="label">Local Mouse Location: </span><span id="localMouse"> (none)</span>
     </div>
   </div>
   <div id="sessions">
-    <div id="rightTitle">Session Mouse Location</div>
+    <div id="rightTitle">Mouse Locations</div>
     <table id="mouseLocationsTable">
       <thead>
-      <th>Session Id</th>
+      <th>User Id</th>
       <th>Mouse Location</th>
       </thead>
       <tbody id="mouseLocations">

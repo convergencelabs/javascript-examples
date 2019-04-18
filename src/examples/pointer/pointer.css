@@ -4,18 +4,19 @@
 }
 
 #pointer-content {
-  font-family: Helvetica Neue, Helvetica, Arial;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 13px;
   display: flex;
 }
 
-#buttons {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 4px;
-  border: 1px solid black;
+.navbar {
+  background: #F0F0F0;
   margin-bottom: 10px;
-  font-size: 13px;
+  border: 1px solid darkgray;
+}
+
+.navbar button {
+  margin-left: 5px;
 }
 
 #sessions {
@@ -24,19 +25,21 @@
 
 #cursorBox {
   height: 300px;
-  border: 1px solid black;
+  border: 1px solid darkgray;
   position: relative;
+  overflow: hidden;
 }
 
 #titleBar, #rightTitle {
-  border: 1px solid black;
-  padding: 2px;
+  border: 1px solid darkgray;
+  padding: 4px;
   text-align: center;
+  background: #e3f2fd;
+  color: black;
 }
 
-
 #statusBar {
-  border: 1px solid black;
+  border: 1px solid darkgray;
   padding: 2px;
 }
 
@@ -51,12 +54,12 @@
 
 #mouseLocationsTable {
   width: 100%;
-  border: 1px solid black;
+  border: 1px solid darkgray;
 }
 
-#mouseLocationsTable td {
+#mouseLocationsTable td, #mouseLocationsTable th {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid darkgray;
 }
 
 .remoteCursor {
@@ -71,4 +74,8 @@
   animation: ripple 300ms forwards;
   border-radius: 18px;
   background-color: palegreen;
+}
+
+.label {
+  font-weight: bold;
 }
