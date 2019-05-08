@@ -1,3 +1,5 @@
-# Input Element Bindings
+# Collaborative TextArea
 
-This example demonstrated binding to common HTML input elements.  The examples makes us of the [Convergence Input Element Bindings](https://www.npmjs.com/package/@convergence/input-element-bindings) helper library, to greatly reduce the amount of effort it takes to get basic collaboration working in simple HTML Forms.
+This is essentially a live example of the [HTML Text Collaborative Extensions](https://github.com/convergencelabs/html-text-collab-ext).  The extensions are themselves backend-independent, but this example uses Convergence to synchronize state.
+
+Due to the simple data model (a string!), collaboration within a textarea is relatively simple.  However, rendering remote selections and cursors on top of a textarea is a bit tricky, which is where the collaborative extensions come in.  The text collaborative extensions combined with Convergence gives you a collaborative `<textarea>` or `<input>` with very little effort.
