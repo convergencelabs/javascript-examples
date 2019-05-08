@@ -5,17 +5,25 @@ layout: default
 <script src="/libs/toastr/build/toastr.min.js"></script>
 <div id="example">
   <div class="example-header">
-    <div class="example-title">{{page.example.title}}</div>
-    <div class="example-share-icons">
-      <a href="#" onclick="copyUrlToClipboard()">
-        <span>Share</span>
-        <i class="far fa-share-square"></i>
-      </a>
+    <div class="example-title">{{page.example.title | default:site.data.examples[page.example.index].title}}</div>
+    <div class="example-icons">
+      <div class="code">
+        <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{site.data.examples[page.example.index].example}}">
+          <span>Code</span>
+          <i class="fa fa-code"></i>
+        </a>
+      </div>
+      <div class="share">
+        <a href="#" onclick="copyUrlToClipboard()">
+          <span>Share</span>
+          <i class="far fa-share-square"></i>
+        </a>
 
-      <a href="#" onclick="newWindowWithExample()">
-        <span>New Window</span>
-        <i class="fas fa-external-link-alt"></i>
-      </a>
+        <a href="#" onclick="newWindowWithExample()">
+          <span>New Window</span>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
     </div>
     <div class="example-overview">{{page.example.overview}}</div>
   </div>

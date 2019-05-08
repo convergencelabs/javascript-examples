@@ -10,13 +10,21 @@
   margin-bottom: 20px;
 }
 
-#example div.example-share-icons {
-  text-align: right;
+#example div.example-icons {
+  display: flex;
+  justify-content: space-between;
 }
 
-#example div.example-share-icons a {
+#example div.example-icons a {
   text-decoration: none;
+}
+
+#example div.example-icons .share a {
   margin-left: 10px;
+}
+
+#example div.example-icons a span {
+  font-size: 1rem;
 }
 
 #example div.example-title {

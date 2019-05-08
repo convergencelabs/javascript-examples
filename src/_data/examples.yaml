@@ -1,3 +1,7 @@
+# In each example's index.html, the front-matter has an index property which 
+# refers to the example's index in this array. 
+# So if you move these around, make sure to update the indices there appropriately.
+
 - title: Text Area
   description: A full fledged collaborative text area, with shared cursors and selections.
   category: forms
@@ -23,7 +27,7 @@
   category: forms
   example: input-elements
   
-- title: Joint JS
+- title: JointJS
   description: Demonstrates integration between <a href="https://www.jointjs.com/">JointJS</a> and Convergence for collaborative diagramming.
   category: diagraming-drawing
   example: jointjs
