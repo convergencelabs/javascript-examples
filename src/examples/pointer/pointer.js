@@ -100,11 +100,14 @@ function handleSessionJoined(participant) {
   const username = participant.user.displayName;
   const sessionTr = document.createElement("tr");
   const usernameCell = document.createElement("td");
-  usernameCell.innerHTML = username;
+  usernameCell.innerHTML = participant.sessionId === activity.session().sessionId() ? 'local' : username;
   sessionTr.appendChild(usernameCell);
 
   const locationCell = document.createElement("td");
   sessionTr.appendChild(locationCell);
+
+  const fpsCell = document.createElement("td");
+  sessionTr.appendChild(fpsCell);
 
   mouseLocations.appendChild(sessionTr);
   let cursorDiv;
@@ -117,17 +120,24 @@ function handleSessionJoined(participant) {
     cursorBox.appendChild(cursorDiv);
   }
 
-  sessions.set(sessionId, {
+  const sessionRec = {
     sessionTr: sessionTr,
     locationCell: locationCell,
-    cursorDiv: cursorDiv
-  });
+    fpsCell: fpsCell,
+    cursorDiv: cursorDiv,
+    updates: []
+  };
+  sessions.set(sessionId, sessionRec);
 
   if (participant.state.has("pointer")) {
     const pointer = participant.state.get("pointer");
     updateMouseLocation(sessionId, pointer.x, pointer.y, participant.local);
   } else {
     hidePointer(sessionId, participant.local);
+  }
+
+  if (!participant.local) {
+    calculateFrameRate(sessionRec);
   }
 }
 
@@ -138,12 +148,16 @@ function handleSessionLeft(sessionId) {
   if (sessionRec.cursorDiv) {
     cursorBox.removeChild(sessionRec.cursorDiv);
   }
+  if(sessionRec.interval) {
+    clearInterval(sessionRec.interval);
+  }
   sessions.delete(sessionId);
 }
 
 function hidePointer(sessionId, local) {
   const sessionRec = sessions.get(sessionId);
   sessionRec.locationCell.innerHTML = "(none)";
+  sessionRec.fpsCell.innerHTML = local ? "-" : "0";
   if (!local) {
     sessionRec.cursorDiv.style.visibility = "hidden";
   }
@@ -157,6 +171,19 @@ function updateMouseLocation(sessionId, x, y, local) {
     sessionRec.cursorDiv.style.left = x + "px";
     sessionRec.cursorDiv.style.visibility = "visible";
   }
+
+  sessionRec.updates.push(performance.now());
+}
+
+function calculateFrameRate(sessionRec) {
+  sessionRec.interval = setInterval(function() {
+    const times = sessionRec.updates;
+    const now = performance.now();
+    while (times.length > 0 && times[0] <= now - 1000) {
+      times.shift();
+    }
+    sessionRec.fpsCell.innerHTML = times.length;
+  }, 250);
 }
 
 function remoteClicked(sessionId, x, y) {
