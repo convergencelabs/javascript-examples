@@ -2,9 +2,8 @@
 const joinButton = document.getElementById("joinButton");
 const leaveButton = document.getElementById("leaveButton");
 
-// The element that shows the local mouse location
+// The elements that shows the local mouse location
 const localMouseSpan = document.getElementById("localMouse");
-
 const localUserSpan = document.getElementById("localUser");
 
 // The list where all the cursors by session are listed.
@@ -26,59 +25,68 @@ let zOrder = 1;
 
 const username = "User-" + (Math.floor(Math.random() * 900000) + 100000);
 
-Convergence.connectAnonymously(CONVERGENCE_URL, username).then(function (d) {
-  domain = d;
-  joinButton.disabled = false;
-  localUserSpan.innerHTML = domain.session().user().displayName;
-}).catch(function (error) {
-  console.log("Could not connect: " + error);
-});
+const POINTER_KEY = "pointer";
+const CLICK_KEY = "click";
+
+Convergence.connectAnonymously(CONVERGENCE_URL, username)
+  .then((d) => {
+    domain = d;
+    joinButton.disabled = false;
+    localUserSpan.innerHTML = domain.session().user().displayName;
+  })
+  .catch((error) => {
+    console.log("Could not connect: " + error);
+  });
 
 // Handles clicking the open button
 function joinActivity() {
-  domain.activities().join(convergenceExampleId).then(function (act) {
-    activity = act;
-    const participants = activity.participants();
-    joinButton.disabled = true;
-    leaveButton.disabled = false;
+  domain.activities()
+    .join(convergenceExampleId)
+    .then((act) => {
+      activity = act;
+      const participants = activity.participants();
+      joinButton.disabled = true;
+      leaveButton.disabled = false;
 
-    participants.forEach(function (participant) {
-      const local = participant.sessionId === activity.session().sessionId();
-      handleSessionJoined(participant);
-      const state = participant.state.get("pointer");
-      if (state) {
-        updateMouseLocation(participant.sessionId, state.x, state.y, local);
-      }
-    });
+      participants.forEach((participant) => {
+        const local = participant.sessionId === activity.session().sessionId();
+        handleSessionJoined(participant);
+        const state = participant.state.get(POINTER_KEY);
+        if (state) {
+          updateMouseLocation(participant.sessionId, state.x, state.y, local);
+        }
+      });
 
-    activity.events().subscribe(function (event) {
-      switch (event.name) {
-        case "session_joined":
-          handleSessionJoined(event.participant);
-          break;
-        case "session_left":
-          handleSessionLeft(event.sessionId);
-          break;
-        case "state_set":
-          switch (event.key) {
-            case 'pointer':
-              updateMouseLocation(event.sessionId, event.value.x, event.value.y, event.local);
-              break;
-            case 'click':
-              if (!event.local) {
-                remoteClicked(event.sessionId, event.value.x, event.value.y);
-              }
-              break;
-          }
-          break;
-        case "state_removed":
-          if (event.key === "pointer") {
-            hidePointer(event.sessionId, event.local);
-          }
-          break;
-      }
+      activity.events().subscribe((event) => {
+        switch (event.name) {
+          case Convergence.Activity.Events.SESSION_JOINED:
+            handleSessionJoined(event.participant);
+            break;
+          case Convergence.Activity.Events.SESSION_LEFT:
+            handleSessionLeft(event.sessionId);
+            break;
+          case Convergence.Activity.Events.STATE_SET:
+            const values = event.values;
+            if (values.has(POINTER_KEY)) {
+              const pointer = values.get(POINTER_KEY);
+              updateMouseLocation(event.sessionId, pointer.x, pointer.y, event.local);
+            }
+
+            if (values.has(CLICK_KEY) && !event.local) {
+              const click = values.get(CLICK_KEY);
+              remoteClicked(event.sessionId, click.x, click.y, event.local);
+            }
+
+            break;
+          case Convergence.Activity.Events.STATE_REMOVED:
+            const keys = event.keys;
+            if (keys.includes(POINTER_KEY)) {
+              hidePointer(event.sessionId, event.local);
+            }
+            break;
+        }
+      });
     });
-  });
 }
 
 // Handles clicking the leave button
@@ -129,8 +137,8 @@ function handleSessionJoined(participant) {
   };
   sessions.set(sessionId, sessionRec);
 
-  if (participant.state.has("pointer")) {
-    const pointer = participant.state.get("pointer");
+  if (participant.state.has(POINTER_KEY)) {
+    const pointer = participant.state.get(POINTER_KEY);
     updateMouseLocation(sessionId, pointer.x, pointer.y, participant.local);
   } else {
     hidePointer(sessionId, participant.local);
@@ -148,7 +156,7 @@ function handleSessionLeft(sessionId) {
   if (sessionRec.cursorDiv) {
     cursorBox.removeChild(sessionRec.cursorDiv);
   }
-  if(sessionRec.interval) {
+  if (sessionRec.interval) {
     clearInterval(sessionRec.interval);
   }
   sessions.delete(sessionId);
@@ -176,7 +184,7 @@ function updateMouseLocation(sessionId, x, y, local) {
 }
 
 function calculateFrameRate(sessionRec) {
-  sessionRec.interval = setInterval(function() {
+  sessionRec.interval = setInterval(function () {
     const times = sessionRec.updates;
     const now = performance.now();
     while (times.length > 0 && times[0] <= now - 1000) {
@@ -188,7 +196,7 @@ function calculateFrameRate(sessionRec) {
 
 function remoteClicked(sessionId, x, y) {
   const elem = createClickSpot(x, y);
-  setTimeout(function () {
+  setTimeout(() => {
     elem.parentElement.removeChild(elem);
   }, 300);
 }
@@ -206,22 +214,22 @@ function mouseMoved(evt) {
   const coordinates = getMouseEventCoordinates(evt);
   localMouseSpan.innerHTML = " (" + coordinates.x + "," + coordinates.y + ")";
 
-  if (activity && activity.isJoined()) {
-    activity.setState("pointer", coordinates);
+  if (activity) {
+    activity.setState(POINTER_KEY, coordinates);
   }
 }
 
 function mouseOut(evt) {
   localMouseSpan.innerHTML = " (none)";
-  if (activity && activity.isJoined()) {
-    activity.removeState("pointer");
+  if (activity) {
+    activity.removeState(POINTER_KEY);
   }
 }
 
 function mouseClicked(event) {
-  if (activity && activity.isJoined()) {
+  if (activity) {
     const coordinates = getMouseEventCoordinates(event);
-    activity.setState("click", coordinates);
+    activity.setState(CLICK_KEY, coordinates);
   }
 }
 
