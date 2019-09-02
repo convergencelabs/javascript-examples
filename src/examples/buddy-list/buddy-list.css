@@ -1,0 +1,93 @@
+[v-cloak] {
+  display: none;
+}
+
+.navbar {
+  background: #F0F0F0;
+  margin-bottom: 10px;
+  border: 1px solid darkgray;
+  display: block;
+}
+
+.navbar button {
+  margin-left: 5px;
+}
+
+.navbar form {
+  display: block;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+}
+
+.flex {
+  flex: 1;
+}
+
+.buddy-list-header {
+  border: 1px solid darkgray;
+  padding: 4px;
+  text-align: center;
+  background: #e3f2fd;
+  color: black;
+  font-size: 14px;
+}
+
+.buddies {
+  padding: 0;
+}
+
+.buddies, .not-connected {
+  border: 1px solid darkgray;
+}
+
+.not-connected {
+  text-align: center;
+  padding: 4px;
+}
+
+.buddies li {
+  list-style: none;
+}
+
+.buddies li.offline {
+  color: #6d6c6c;
+  font-style: italic;
+}
+
+.indicator {
+  margin-left: 5px;
+  height: 12px;
+  width: 12px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  border: 1px solid darkgrey;
+}
+
+.indicator.available {
+  background-color: #4dc465;
+}
+
+.indicator.away {
+  background-color: #ffcf46;
+}
+
+.indicator.dnd {
+  background-color: #C70F16;
+}
+
+.username {
+  margin-left: 5px;
+}
+
+.status {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.status label {
+  display: inline;
+}
