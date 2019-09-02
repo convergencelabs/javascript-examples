@@ -59,7 +59,7 @@
   sourceUrl: https://github.com/convergencelabs/javascript-examples/tree/master/src/chat
 
 - title: Buddy List
-  description: A simple buddy-list example written with <a href="https://vuejs.org">VueJS</a>.  Users can see the presense state of other users in the system.
+  description: A simple buddy list example written with <a href="https://vuejs.org">VueJS</a>.  Users can see the presense state of other users in the system.
   category: presence
   example: buddy-list
   sourceUrl: https://github.com/convergencelabs/javascript-examples/tree/master/src/buddy-list
