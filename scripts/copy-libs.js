@@ -22,7 +22,8 @@ const libs = [
   "popper.js",
   "rxjs",
   "toastr",
-  "underscore"
+  "underscore",
+  "vue"
 ];
 
 const srcLibs = "src/libs/";
