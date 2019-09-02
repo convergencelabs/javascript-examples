@@ -48,7 +48,7 @@
   example: monaco
 
 - title: Shared Pointer
-  category: presence
+  category: cueing
   description: Shows how the Activity API can be used to share remote pointers. User can see where eah others pointers are and where they are clicking.
   example: pointer
 
