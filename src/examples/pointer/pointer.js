@@ -165,7 +165,7 @@ function hidePointer(sessionId, local) {
 
 function updateMouseLocation(sessionId, x, y, local) {
   const sessionRec = sessions.get(sessionId);
-  sessionRec.locationCell.innerHTML = "(" + x + "," + y + ")";
+  sessionRec.locationCell.innerHTML = "(" + Math.round(x) + "," + Math.round(y) + ")";
   if (!local) {
     sessionRec.cursorDiv.style.top = y + "px";
     sessionRec.cursorDiv.style.left = x + "px";
@@ -204,7 +204,7 @@ function getMouseEventCoordinates(evt) {
 // handles the local mouse movement and set events.
 function mouseMoved(evt) {
   const coordinates = getMouseEventCoordinates(evt);
-  localMouseSpan.innerHTML = " (" + coordinates.x + "," + coordinates.y + ")";
+  localMouseSpan.innerHTML = " (" + Math.round(coordinates.x) + "," + Math.round(coordinates.y) + ")";
 
   if (activity && activity.isJoined()) {
     activity.setState("pointer", coordinates);

@@ -13,40 +13,18 @@ example:
     Chat Room.
 ---
 
-<div id="content">
-  <div class="chat-controls">
-    <div class="row">
-      <div class="input-field col s9">
-        <input id="username" type="text" class="validate" placeholder="Enter Username">
-        <label for="username">Username</label>
-      </div>
-      <div class="input-field col s3">
-        <a class="waves-effect waves-light btn" id="join" onclick="connectAndJoin()">Join</a>
-        <a class="waves-effect waves-light btn" id="leave" onclick="handleLeave()" style="display: none">Leave</a>
-      </div>
-    </div>
-  </div>
-  <div class="chat-container">
-    <nav>
-      <div id="chat-title" class="nav-wrapper"><span>Chat Messages</span></div>
-    </nav>
-    <div class="card chat-messages">
-      <div id="scroller" class="card-content">
-        <ul id="chat-messages" class="collection">
-        </ul>
-      </div>
-    </div>
-    <div class="chat-input-containers">
-      <input id="message" type="text" placeholder="Enter message" disabled onkeydown="handleKeyDown(event)"/>
-    </div>
-  </div>
+<div id="chat-example">
+  <chat-example></chat-example>
 </div>
+
 <script type="text/javascript" src="/libs/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/libs/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="/libs/vue/dist/vue.min.js"></script>
 <script type="text/javascript" src="/libs/materialize-css/dist/js/materialize.min.js"></script>
 
 <!-- Convergence resources -->
 <script src="/config.js"></script>
 <script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
 <script src="/libs/@convergence/convergence/convergence.global.js"></script>
+<script src="chat-components.js" type="text/javascript" language="JavaScript"></script>
 <script src="chat-room.js" type="text/javascript" language="JavaScript"></script>

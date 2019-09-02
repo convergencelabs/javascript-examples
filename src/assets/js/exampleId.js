@@ -1,4 +1,4 @@
-const convergenceExampleId = (function () {
+var convergenceExampleId = (function () {
   function createUUID(){
     let dt = new Date().getTime();
     const uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {

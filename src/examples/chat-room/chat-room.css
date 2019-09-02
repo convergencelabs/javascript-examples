@@ -12,15 +12,11 @@ div.chat-messages {
   margin-top: 0;
 }
 
-#scroller {
-  height: 350px;
+div.chat-messages .card-content {
+  height: 300px;
   padding: 0;
   overflow: auto;
   margin-top: 0;
-}
-
-div.chat-messages .card-content {
-  padding: 0;
 }
 
 div.chat-controls {

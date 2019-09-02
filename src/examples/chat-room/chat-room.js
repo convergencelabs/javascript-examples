@@ -1,105 +1,81 @@
-let chatRoom = null;
-let domain = null;
 
-let localDisplayName;
+Vue.component('chat-example', {
+  data: function() {
+    return {
+      domain: null,
+      room: null,
+      messages: []
+    };
+  },
+  template: '' +
+    '<div>' +
+    '  <membership-actions :joined="room != null" @connectAndJoin="handleConnect" />' +
+    '  <div class="chat-container">' +
+    '    <chat-messages :messages="messages" />' +
+    '    <chat-input :input-allowed="room != null" @submit="handleMessageSubmission" />' +
+    '  </div>' +
+    '</div>',
+  methods: {
+   handleConnect: function(username) {
+      // Connect to the domain.  See ../../config.js for the connection settings.
+      Convergence.connectAnonymously(CONVERGENCE_URL, username)
+        .then(d => {
+          this.domain = d;
+          // Blindly try to create the chat room, ignoring the error if it already exists.
+          return this.domain.chat().create({
+            id: convergenceExampleId, 
+            type: "room", 
+            membership: "public", 
+            ignoreExistsError: true
+          });
+        })
+        .then(channelId => this.domain.chat().join(channelId))
+        .then(this.handleJoin)
+        .catch(error => {
+          console.log("Could not join chat room: " + error);
+        });
+    },
+    handleJoin: function(room) {
+      this.room = room;
 
-function connectAndJoin() {
-  localDisplayName = $("#username").val();
+      room.on("message", this.appendMessage);
 
-  // Connect to the domain.  See ../config.js for the connection settings.
-  Convergence.connectAnonymously(CONVERGENCE_URL, localDisplayName)
-    .then(d => {
-      domain = d;
-      // Blindly try to create the chat room, ignoring the error if it already exists.
-      return domain.chat().create({id: convergenceExampleId, type: "room", membership: "public", ignoreExistsError: true})
-    })
-    .then(channelId => domain.chat().join(channelId))
-    .then(handleJoin)
-    .catch(error => {
-      console.log("Could not join chat room: " + error);
-    });
-}
-
-function handleJoin(room) {
-  chatRoom = room;
-
-  $("#join").hide();
-  $("#leave").show();
-
-  $("#username").prop("disabled", true);
-  $("#room").prop("disabled", true);
-  $("#message").prop("disabled", false);
-
-  chatRoom.on("message", (event) => appendMessage({
-    username: event.user.displayName,
-    message: event.message,
-    timestamp: event.timestamp
-  }));
-
-  room.getHistory({
-    offset: chatRoom.info().lastEventNumber,
-    limit: 25,
-    eventFilter: ["message"]
-  }).then(events => {
-    events.filter(event => event.type === "message").forEach(event => {
-      appendMessage({
+      room.getHistory({
+        offset: room.info().lastEventNumber,
+        limit: 25,
+        eventFilter: ["message"]
+      }).then(events => {
+        events.filter(event => event.type === "message").forEach(event => {
+          this.appendMessage(event);
+        });
+      });
+    },
+    appendMessage: function(event) {
+      this.messages.push({
         username: event.user.displayName,
         message: event.message,
         timestamp: event.timestamp
       });
-    });
-  });
-}
+    },
+    handleMessageSubmission: function(messageText) {
+      this.room.send(messageText);
 
-function handleLeave() {
-  $("#join").show();
-  $("#leave").hide();
-
-  $("#username").prop("disabled", false);
-  $("#room").prop("disabled", false);
-  $("#message").prop("disabled", true);
-
-  $("#chat-messages").empty();
-
-  chatRoom.leave().then(() => domain.dispose());
-  chatRoom = null;
-}
-
-function appendMessage(message) {
-  const messageItem = $('<li/>', {class: "collection-item avatar"});
-  const icon = $('<i class="material-icons circle green">person</i>');
-
-  const username = $('<span class="title"></span>');
-  username.html(message.username);
-
-  const messageText = $('<p/>');
-  messageText.text(message.message);
-
-  const time = $('<span class="secondary-content"></span>');
-  const dateString = moment(message.timestamp).format('h:mm a');
-  time.html(dateString);
-
-  messageItem.append(icon);
-  messageItem.append(username);
-  messageItem.append(messageText);
-  messageItem.append(time);
-
-  $("#chat-messages").append(messageItem);
-
-  const scroller = $("#scroller");
-  scroller.scrollTop(scroller[0].scrollHeight);
-}
-
-function handleKeyDown(event) {
-  if (event.keyCode === 13) {
-    const message = event.target.value;
-    chatRoom.send(message);
-    event.target.value = "";
-
-    appendMessage({
-      username: domain.session().user().displayName,
-      message: message,
-      timestamp: new Date().getTime()
-    });
+      this.messages.push({
+        username: this.domain.session().user().displayName,
+        message: messageText,
+        timestamp: new Date().getTime()
+      });
+    },
+    handleLeave() {
+      this.room.leave().then(() => {
+        this.room = null;
+        this.messages = [];
+        return this.domain.dispose();
+      });
+    }
   }
-}
+});
+
+new Vue({
+  el: '#example'
+});

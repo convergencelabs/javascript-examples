@@ -21,7 +21,9 @@
   "bugs": {
     "url": "https://github.com/convergencelabs/examples/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vue": "^2.6.10"
+  },
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
     "@convergence/color-assigner": "0.3.0",
