@@ -9,14 +9,14 @@ Vue.component('chat-example', {
   },
   template: '' +
     '<div>' +
-    '  <membership-actions :joined="room != null" @connectAndJoin="handleConnect" />' +
+    '  <membership-actions :joined="room != null" @connectAndJoin="handleConnect" @leave="handleLeave" />' +
     '  <div class="chat-container">' +
     '    <chat-messages :messages="messages" />' +
     '    <chat-input :input-allowed="room != null" @submit="handleMessageSubmission" />' +
     '  </div>' +
     '</div>',
   methods: {
-   handleConnect: function(username) {
+    handleConnect: function(username) {
       // Connect to the domain.  See ../../config.js for the connection settings.
       Convergence.connectAnonymously(CONVERGENCE_URL, username)
         .then(d => {
@@ -51,20 +51,25 @@ Vue.component('chat-example', {
       });
     },
     appendMessage: function(event) {
-      this.messages.push({
+      let messages = this.messages.slice(0);
+      messages.push({
         username: event.user.displayName,
         message: event.message,
         timestamp: event.timestamp
       });
+      // don't mutate the array, replace it
+      this.messages = messages;
     },
     handleMessageSubmission: function(messageText) {
       this.room.send(messageText);
 
-      this.messages.push({
+      let messages = this.messages.slice(0);
+      messages.push({
         username: this.domain.session().user().displayName,
         message: messageText,
         timestamp: new Date().getTime()
       });
+      this.messages = messages;
     },
     handleLeave() {
       this.room.leave().then(() => {
