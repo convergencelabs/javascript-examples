@@ -67,15 +67,15 @@
   border: 1px solid darkgrey;
 }
 
-.indicator.available {
+.buddies li.online .indicator.available {
   background-color: #4dc465;
 }
 
-.indicator.away {
+.buddies li.online .indicator.away {
   background-color: #ffcf46;
 }
 
-.indicator.dnd {
+.buddies li.online .indicator.dnd {
   background-color: #C70F16;
 }
 

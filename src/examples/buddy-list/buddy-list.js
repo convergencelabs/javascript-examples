@@ -1,28 +1,48 @@
 Vue.component('user-presence', {
-  props: ['presence'],
+  props: ['presenceSubscription'],
   template: `
-<li v-bind:class="{ online: presence.available, offline: !presence.available}" >
+<li v-bind:class="{ online: online, offline: !online}" >
   <span 
    v-bind:title="statusTitle"
-   v-bind:class="{ indicator: true, available: presence.status === 'available', away: presence.status === 'away', dnd: presence.status === 'dnd'}"/>
-  <span class="display-name">{{ presence.displayName }}</span>
+   v-bind:class="{ indicator: true, available: status === 'available', away: status === 'away', dnd: status === 'dnd'}"/>
+  <span class="display-name">{{ displayName }}</span>
 </li>
 `,
   computed: {
     statusTitle: function () {
-      if (this.presence.available) {
-        switch (this.presence.status) {
+      if (this.presenceSubscription.available) {
+        switch (this.presenceSubscription.state.get("status")) {
           case "available":
             return "Available";
           case "away":
             return "Away";
           case "dnd":
             return "Do Not Disturb";
+          default:
+            return "Unknown";
         }
       } else {
         return "Offline";
       }
+    },
+    displayName: function() {
+      return this.presenceSubscription.user.displayName;
     }
+  },
+  created: function () {
+    this.online = this.presenceSubscription.available;
+    this.status = this.presenceSubscription.state.get("status");
+
+    this.presenceSubscription.on("availability_changed", (evt) => {
+      this.online = evt.available;
+    });
+
+    this.presenceSubscription.on("state_set", (evt) => {
+      this.status = this.presenceSubscription.state.get("status");
+    });
+  },
+  destroyed: function() {
+    this.presenceSubscription.unsubscribe();
   }
 });
 
@@ -31,35 +51,53 @@ const app = new Vue({
   el: '#presence-app',
   data: {
     connected: false,
-    status: "available",
-    username: USERS[0],
+    status: null,
+    username: USERS[0].username,
     users: USERS,
     buddies: null
   }
 });
 
-
+let domain = null;
 function connect() {
-  console.log("connect as", app.username);
-  // TODO implement connection and leverage presence api to subscribe to users and populate buddies.
+  const user = USERS.find(user => user.username === app.username);
+  Convergence.connectWithPassword(CONVERGENCE_URL, {username: user.username, password: user.password})
+    .then(d => {
+      domain = d;
+      app.connected = true;
 
-  app.connected = true;
-  app.buddies = [
-    {username: "michael", available: true, status: "available", displayName: 'Michael'},
-    {username: "alec", available: true, status: "away", displayName: 'Alec'},
-    {username: "cameron", available: true, status: "dnd", displayName: 'Cameron'},
-    {username: "john", available: false, status: "", displayName: 'John'}
-  ];
+      if (!domain.presence().state().has("status")) {
+        domain.presence().setState("status", "available");
+      }
+
+      app.status = domain.presence().state().get("status");
+    })
+    .then(() => {
+      const usernames = USERS.map(user => user.username);
+      return domain.presence().subscribe(usernames);
+    })
+    .then(subscriptions => {
+      app.buddies = subscriptions;
+      domain.presence().on(Convergence.PresenceService.Events.STATE_SET, (evt) => {
+        if (evt.state.has("status")) {
+          app.status = evt.state.get("status");
+        }
+      })
+    })
+    .then(localSubscription => {})
+    .catch(error => {
+      console.log("Error connecting", error);
+    });
 }
 
 function disconnect() {
   app.connected = false;
-  // TODO implement disconnection
-
+  domain.dispose();
+  domain = null;
   app.buddies = null;
 }
 
 function changeStatus(target) {
-  console.log("update status", target.value);
-  // TODO leverage presence API to set state.
+  domain.presence().setState("status", target.value);
+  app.status = target.value;
 }

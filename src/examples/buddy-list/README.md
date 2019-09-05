@@ -5,4 +5,4 @@ This example demonstrates how to build a simple buddy list showing the online / 
 The example leverages [Vue.js](https://vuejs.org/) for the dynamic rendering of stat.
 
 # User Configuration
-Note that this example assumes a specific set of users exist in the Convergence domain. The set of user the example uses can be configured in the [users.js](users.js) file. These users can be selected to log in as, and will also be the users that show up in the buddy list.
+Note that this example assumes a specific set of users exist in the Convergence domain. The set of user the example uses can be configured in the [users.js](users.js) file. These users can be selected to log in as, and will also be the users that show up in the buddy list. It should be noted that the username and password are set in the `users.js` file and that these must correspond to actual users in th domain.

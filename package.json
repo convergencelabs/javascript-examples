@@ -22,7 +22,6 @@
     "url": "https://github.com/convergencelabs/examples/issues"
   },
   "dependencies": {
-    "vue": "^2.6.10"
   },
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
@@ -49,7 +48,8 @@
     "nouislider": "12.1.0",
     "popper.js": "1.14.7",
     "rxjs": "6.4.0",
-    "toastr": "2.1.4"
+    "toastr": "2.1.4",
+    "vue": "^2.6.10"
   },
   "scripts": {
     "start": "node ./scripts/copy-libs.js && bundle exec jekyll serve",
