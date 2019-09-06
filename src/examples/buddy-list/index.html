@@ -25,9 +25,9 @@ example:
           </div>
           <select class="custom-select" id="username" :disabled="connected" v-model="username">
             <option
-                v-for="username in users"
-                :value="username"
-            >{{username}}</option>
+                v-for="user in users"
+                :value="user.username"
+            >{{user.username}}</option>
           </select>
         </div>
         <button class="btn btn-sm btn-primary" type="button" id="joinButton" onclick="connect()" :disabled="connected">
@@ -54,9 +54,9 @@ example:
     <div class="buddy-list-header">Buddy List</div>
     <ul class="buddies" v-if="buddies !== null">
       <user-presence
-          v-for="user in buddies"
-          v-bind:presence="user"
-          v-bind:key="user.username"
+          v-for="buddy in buddies"
+          v-bind:presence-subscription="buddy"
+          v-bind:key="buddy.user.username"
       ></user-presence>
     </ul>
     <div class="not-connected" v-if="buddies === null">Connect to Load Buddies</div>
