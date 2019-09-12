@@ -66,21 +66,19 @@ function joinActivity() {
             handleSessionLeft(event.sessionId);
             break;
           case Convergence.Activity.Events.STATE_SET:
-            const values = event.values;
-            if (values.has(POINTER_KEY)) {
-              const pointer = values.get(POINTER_KEY);
+            if (event.key === POINTER_KEY) {
+              const pointer = event.value;
               updateMouseLocation(event.sessionId, pointer.x, pointer.y, event.local);
             }
 
-            if (values.has(CLICK_KEY) && !event.local) {
-              const click = values.get(CLICK_KEY);
+            if (event.key === CLICK_KEY && !event.local) {
+              const click = event.value;
               remoteClicked(event.sessionId, click.x, click.y, event.local);
             }
 
             break;
           case Convergence.Activity.Events.STATE_REMOVED:
-            const keys = event.keys;
-            if (keys.includes(POINTER_KEY)) {
+            if (event.key === POINTER_KEY) {
               hidePointer(event.sessionId, event.local);
             }
             break;
