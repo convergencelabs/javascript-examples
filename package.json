@@ -1,6 +1,6 @@
 {
   "name": "@convergence/examples",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Examples demonstrating various features of the Convergence platform.",
   "keywords": [
     "convergence",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
     "@convergence/color-assigner": "0.3.0",
-    "@convergence/convergence": "1.0.0-rc.2",
+    "@convergence/convergence": "1.0.0-rc.3",
     "@convergence/dom-utils": "0.2.3",
     "@convergence/html-text-collab-ext": "0.1.3",
     "@convergence/input-element-bindings": "0.3.4",
