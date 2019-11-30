@@ -1,0 +1,34 @@
+---
+title: CodeMirror Editor
+layout: example
+permalink: /examples/codemirror/
+stylesheets:
+  - /libs/codemirror/lib/codemirror.css
+  - /libs/@convergencelabs/codemirror-collab-ext/css/codemirror-collab-ext.css
+  - /examples/codemirror/codemirror.css
+example:
+  index: 8
+  overview: |-
+    This example demonstrates building a realtime source code editor with the
+    <a href="https://codemirror.net/">CodeMirror Editor</a>. This example uses the
+    <a href="https://github.com/convergencelabs/codemirror-collab-ext">CodeMirror Collaborative Extensions</a> to
+    display remote cursors and selections, as well as to simplify the management of local and remote edits.
+---
+
+<div class="wrapped-editor">
+  <div class="editor" id="codemirror-editor" style="height: 100%; width: 400px;"></div>
+</div>
+
+<script src="/libs/codemirror/lib/codemirror.js"></script>
+<script src="/libs/codemirror/mode/javascript/javascript.js"></script>
+
+<script src="/libs/@convergencelabs/codemirror-collab-ext/umd/codemirror-collab-ext.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="/libs/@convergence/convergence/convergence.global.js"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript" charset="utf-8"></script>
+<script src="./default_editor_contents.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="./codemirror-adapter.js"></script>
+<script src="./codemirror.js" type="text/javascript" charset="utf-8"></script>

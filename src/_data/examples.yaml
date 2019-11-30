@@ -47,6 +47,11 @@
   category: plain-text
   example: monaco
 
+- title: CodeMirror
+  description: Demonstrates collaborative code editing in the <a href="https://codemirror.net/">CodeMirror</a> Editor.
+  category: plain-text
+  example: codemirror
+
 - title: Shared Pointer
   category: cueing
   description: Shows how the Activity API can be used to share remote pointers. User can see where eah others pointers are and where they are clicking.

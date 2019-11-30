@@ -8,6 +8,7 @@ const libs = [
   "backbone",
   "bootstrap",
   "chart.js",
+  "codemirror",
   "director",
   "froala-editor",
   "handlebars",

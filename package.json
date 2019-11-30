@@ -21,8 +21,7 @@
   "bugs": {
     "url": "https://github.com/convergencelabs/examples/issues"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
     "@convergence/color-assigner": "0.3.0",
@@ -32,6 +31,7 @@
     "@convergence/input-element-bindings": "0.3.4",
     "@convergence/jointjs-utils": "0.3.0",
     "@convergence/mxgraph-adapter": "0.1.0",
+    "@convergencelabs/codemirror-collab-ext": "0.1.1",
     "@convergencelabs/monaco-collab-ext": "0.1.1",
     "@fortawesome/fontawesome-free": "5.7.2",
     "ace-builds": "1.4.2",
