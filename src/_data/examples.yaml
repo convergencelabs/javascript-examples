@@ -71,9 +71,10 @@ buddy-list:
 easymde:
   title: Easy Markdown Editor
   description: |-
-    Rich markdown editing using the Easy Markdwon Editor.
+    A collaborative Markdown editor using the <a href="https://github.com/Ionaru/easy-markdown-editor"/>
+    Easy Markdown Editr</a>.
 
 tui-editor:
   title: ToastUI Editor
   description: |-
-    Rich markdown editing using the Easy Markdwon Editor.
+    A collaborative Markdown editor using the <a href="https://ui.toast.com/tui-editor/">ToastUI Editor</a>.
