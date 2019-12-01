@@ -10,8 +10,10 @@ const libs = [
   "chart.js",
   "codemirror",
   "director",
+  "easymde",
   "froala-editor",
   "handlebars",
+  "highlight.js",
   "jointjs",
   "jquery",
   "lodash",
@@ -23,6 +25,7 @@ const libs = [
   "popper.js",
   "rxjs",
   "toastr",
+  "tui-editor",
   "underscore",
   "vue"
 ];

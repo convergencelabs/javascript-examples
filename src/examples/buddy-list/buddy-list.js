@@ -82,9 +82,8 @@ function connect() {
         if (evt.state.has("status")) {
           app.status = evt.state.get("status");
         }
-      })
+      });
     })
-    .then(localSubscription => {})
     .catch(error => {
       console.log("Error connecting", error);
     });
@@ -101,3 +100,5 @@ function changeStatus(target) {
   domain.presence().setState("status", target.value);
   app.status = target.value;
 }
+
+exampleLoaded();

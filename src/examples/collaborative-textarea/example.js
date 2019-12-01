@@ -2,7 +2,7 @@ const colorAssigner = new ConvergenceColorAssigner.ColorAssigner();
 let textEditor;
 let localSelectionReference;
 
-const username = "User-" + (Math.floor(Math.random()*900000) + 100000);
+const username = randomDisplayName();
 document.getElementById("username").innerHTML = username;
 
 Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
@@ -34,6 +34,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
 
   // handle reference events
   initSharedSelection(rts);
+
+  exampleLoaded();
 
 }).catch(error => {
   console.error(error);

@@ -1,0 +1,31 @@
+---
+layout: example
+permalink: /examples/easymde/
+exampleId: easymde
+stylesheets:
+  - /libs/easymde/dist/easymde.min.css
+  - /libs/@convergencelabs/codemirror-collab-ext/css/codemirror-collab-ext.css
+  - /examples/easymde/easymde.css
+overview: |-
+  This example demonstrates editing of markdown with styling applied in line using the
+  <a href="https://easymde.tk/">Easy Markdown Editor</a>. The Easy Markdown Editor
+  uses <a href="https://codemirror.net/">CodeMirror</a> under the hood, so we used several
+  of our CodeMirror bindings to implement this integration with very little code.
+---
+
+<div class="wrapped-editor">
+  <textarea class="editor" id="easymde-editor"></textarea>
+</div>
+
+<script src="/libs/easymde/dist/easymde.min.js"></script>
+
+<script src="/libs/@convergencelabs/codemirror-collab-ext/umd/codemirror-collab-ext.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="/libs/@convergence/convergence/convergence.global.js"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript" charset="utf-8"></script>
+<script src="./default_editor_contents.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="../codemirror/codemirror-adapter.js"></script>
+<script src="./easymde.js" type="text/javascript" charset="utf-8"></script>

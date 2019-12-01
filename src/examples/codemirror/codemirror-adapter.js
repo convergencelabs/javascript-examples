@@ -12,6 +12,8 @@ class CodeMirrorConvergenceAdapter {
   }
 
   _initSharedData() {
+    this._editor.setValue(this._model.value());
+
     this._contentManager = new CodeMirrorCollabExt.EditorContentManager({
       editor: this._editor,
       onInsert: (index, text) => {

@@ -1,6 +1,6 @@
 // Connect to the domain.  See ../config.js for the connection settings.
 
-const username = "User-" + Math.round(Math.random() * 10000);
+const username = randomDisplayName();
 
 Convergence.connectAnonymously(CONVERGENCE_URL, username)
   .then(d => {
@@ -10,9 +10,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username)
       collection: "example-ace",
       id: convergenceExampleId,
       ephemeral: true,
-      data: {
-        "text": defaultEditorContents
-      }
+      data: {text: defaultEditorContents}
     })
   })
   .then(handleOpen)
@@ -45,6 +43,8 @@ function handleOpen(model) {
 
   const radarViewElement = document.getElementById("radar-view");
   initRadarView(textModel, radarViewElement);
+
+  exampleLoaded();
 }
 
 /////////////////////////////////////////////////////////////////////////////
@@ -137,8 +137,8 @@ function addCursor(reference) {
   const remoteCursorIndex = reference.value();
   cursorManager.addCursor(reference.sessionId(), reference.user().displayName, color, remoteCursorIndex);
 
-  reference.on("cleared", () => cursorManager.clearCursor(reference.sessionId()) );
-  reference.on("disposed", () => cursorManager.removeCursor(reference.sessionId()) );
+  reference.on("cleared", () => cursorManager.clearCursor(reference.sessionId()));
+  reference.on("disposed", () => cursorManager.removeCursor(reference.sessionId()));
   reference.on("set", () => {
     const cursorIndex = reference.value();
     const cursorRow = doc.indexToPosition(cursorIndex).row;

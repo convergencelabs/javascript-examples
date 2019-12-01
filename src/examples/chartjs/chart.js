@@ -23,6 +23,7 @@ RealtimeChart.prototype = {
       this.realTimeModel = model;
       this.bindToSliders();
       this.listenForRemoteChanges();
+      exampleLoaded();
     }).catch(error => {
       console.log("Could not open model: " + error);
     });

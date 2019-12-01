@@ -130,8 +130,6 @@ nav#header .menu {
 }
 
 #content {
-  height: 100%;
-  overflow: auto;
   flex: 1;
 }
 

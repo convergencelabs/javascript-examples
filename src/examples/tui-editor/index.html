@@ -1,0 +1,38 @@
+---
+layout: example
+permalink: /examples/tui-editor/
+exampleId: tui-editor
+stylesheets:
+  - /examples/tui-editor/tui-editor.css
+  - /libs/tui-editor/dist/tui-editor.css
+  - /libs/tui-editor/dist/tui-editor-contents.css
+  - /libs/codemirror/lib/codemirror.css
+  - /libs/highlight.js/styles/github.css
+  - /libs/@convergencelabs/codemirror-collab-ext/css/codemirror-collab-ext.css
+overview: |-
+  This example integrates the <a href="https://ui.toast.com/tui-editor/>">ToastUI Editor</a>
+  to implement a collaborative Markdown editor.  The ToastUI Editor used
+  <a href="https://codemirror.net/">CodeMirror</a> when in Markdown mode, so we used several
+  of our CodeMirror bindings to implement this integration with very little code. The WYSIWYG
+  mode is not yet supported, but we are working on it.
+---
+<div id="content">
+  <div id="tui-editor"></div>
+</div>
+
+<script src="/libs/tui-editor/dist/tui-editor-Editor-full.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="/libs/@convergence/convergence/convergence.global.js"></script>
+<script src="/libs/@convergence/dom-utils/browser/convergence-dom-utils.js"></script>
+<script src="./default_editor_contents.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript" charset="utf-8"></script>
+<script src="/libs/@convergencelabs/codemirror-collab-ext/umd/codemirror-collab-ext.js" type="text/javascript" charset="utf-8"></script>
+<script src="../codemirror/codemirror-adapter.js"></script>
+<script src="./tui-editor.js" type="text/javascript" charset="utf-8"></script>
+
+
+
+

@@ -1,27 +1,20 @@
 ---
-title: Froala
 layout: example
 permalink: /examples/froala/
+exampleId: froala
 stylesheets:
   - /examples/froala/froala.css
   - /libs/froala-editor/css/plugins/table.min.css
   - /libs/froala-editor/css/froala_editor.pkgd.min.css
   - /libs/froala-editor/css/froala_style.min.css
   - /libs/froala-editor/css/plugins/colors.min.css
-  - https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
-example:
-  index: 2
-  overview: |-
-    This example demonstrates shared rich text editing the
-    <a href="https://www.froala.com/wysiwyg-editor">Froala Editor</a>. The example uses the
-    <a href="https://github.com/convergencelabs/dom-utils">Convergence DOM Utils</a>
-    to create a binding between the Froala contents and a Convergence Realtime Model.
+overview: |-
+  This example demonstrates shared rich text editing the
+  <a href="https://www.froala.com/wysiwyg-editor">Froala Editor</a>. The example uses the
+  <a href="https://github.com/convergencelabs/dom-utils">Convergence DOM Utils</a>
+  to create a binding between the Froala contents and a Convergence Realtime Model.
 ---
 <div id="content">
-  <div id="loading">
-    <h2 class="sr-only">Loading</h2>
-    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-  </div>
   <textarea name="editor_content" id="froala"></textarea>
 </div>
 
@@ -35,7 +28,7 @@ example:
 <script src="/libs/froala-editor/js/plugins/paragraph_style.min.js"></script>
 
 
-<script src="/libs/@convergence/color-assigner/browser/color-assigner.js" type="text/javascript"
+<script src="/libs/@convergence/color-assigner/umd/color-assigner.js" type="text/javascript"
         charset="utf-8"></script>
 
 <!-- Convergence resources -->

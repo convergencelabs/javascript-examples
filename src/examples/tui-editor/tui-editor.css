@@ -1,0 +1,29 @@
+#loading {
+  text-align: center;
+  margin: 50px;
+}
+
+#title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 30px;
+  padding: 20px 0 20px 0;
+  text-align: center;
+
+  border-bottom: 1px solid slategray;
+
+  margin-bottom: 20px;
+}
+
+#squire {
+  height: 300px;
+  width: 300px;
+}
+
+#main-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 40px;
+  right: 40px;
+  padding: 5px;
+}

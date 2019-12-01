@@ -1,14 +1,16 @@
 ---
 layout: default
 ---
+{% assign example = site.data.examples[page.exampleId] %}
 <script src="/assets/js/exampleId.js"></script>
 <script src="/libs/toastr/build/toastr.min.js"></script>
+<script src="/assets/js/example-helpers.js"></script>
 <div id="example">
   <div class="example-header">
-    <div class="example-title">{{page.example.title | default:site.data.examples[page.example.index].title}}</div>
+    <div class="example-title">{{example.title}}</div>
     <div class="example-icons">
       <div class="code">
-        <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{site.data.examples[page.example.index].example}}">
+        <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{page.exampleId}}">
           <span>Code</span>
           <i class="fa fa-code"></i>
         </a>
@@ -18,16 +20,19 @@ layout: default
           <span>Share</span>
           <i class="far fa-share-square"></i>
         </a>
-
         <a href="#" onclick="newWindowWithExample()">
           <span>New Window</span>
           <i class="fas fa-external-link-alt"></i>
         </a>
       </div>
     </div>
-    <div class="example-overview">{{page.example.overview}}</div>
+    <div class="example-overview">{{page.overview}}</div>
   </div>
-  <div class="example-content">
+  <div id="loading">
+    <h2>Loading</h2>
+    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+  </div>
+  <div class="example-content" id="example-content" style="visibility: hidden">
     {{ content }}
   </div>
 </div>

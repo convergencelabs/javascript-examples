@@ -99,3 +99,5 @@ Vue.component('chat-example', {
 new Vue({
   el: '#example'
 });
+
+exampleLoaded();

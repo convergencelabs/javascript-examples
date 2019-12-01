@@ -35,6 +35,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL).then(domain => {
   radioInputs.push(document.getElementById("radio2"));
   radioInputs.push(document.getElementById("radio3"));
   ConvergenceInputElementBinder.bindRadioInputs(radioInputs, model.elementAt("radioInputs"));
+
+  exampleLoaded();
 }).catch(error => {
   console.error(error);
 });

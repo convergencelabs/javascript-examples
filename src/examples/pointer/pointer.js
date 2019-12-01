@@ -33,6 +33,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username)
     domain = d;
     joinButton.disabled = false;
     localUserSpan.innerHTML = domain.session().user().displayName;
+    exampleLoaded();
   })
   .catch((error) => {
     console.log("Could not connect: " + error);
