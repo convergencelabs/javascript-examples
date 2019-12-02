@@ -168,6 +168,10 @@ nav#header .examples-title {
 }
 #examples .header {
   margin: 10px 0 20px;
+  border: 1px solid darkgrey;
+  background: white;
+  border-radius: 2px;
+  padding: 10px;
 }
 #examples .header .larger {
   font-size: 1.1rem;
