@@ -12,41 +12,47 @@
 }
 
 #example div.example-header {
+  border: 1px solid darkgrey;
+  background: white;
   margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+#example div.example-title-bar {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid darkgrey;
+}
+
+#example div.example-title {
+  text-align: left;
+  font-size: 24px;
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 0 5px;
 }
 
 #example div.example-icons {
-  display: flex;
   justify-content: space-between;
+  flex: 1;
+  text-align: right;
+  font-size: 0.9rem;
 }
 
 #example div.example-icons a {
   text-decoration: none;
-}
-
-#example div.example-icons .share a {
   margin-left: 10px;
-}
-
-#example div.example-icons a span {
-  font-size: 1rem;
-}
-
-#example div.example-title {
-  text-align: center;
-  font-size: 24px;
-  font-family: "Helvetica Neue", sans-serif;
-  margin-bottom: 10px;
 }
 
 #example div.example-overview {
   font-family: "Helvetica Neue", sans-serif;
-  background: #F0F0F0;
+  background: #ffffff;
   border-radius: 2px;
-  border: 1px solid darkgray;
-  padding: 5px;
-  font-size: 14px;
-  margin-bottom: 10px;
+  padding: 10px;
+  text-align: justify;
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 a {

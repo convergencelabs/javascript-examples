@@ -9,6 +9,7 @@ textarea {
   line-height: 1.2;
   resize: none;
   margin-top: 5px;
+  padding: 4px;
 }
 
 textarea:focus {
