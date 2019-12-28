@@ -60,6 +60,10 @@ a {
   text-decoration: none;
 }
 
+#example div.example-content {
+  position: relative;
+}
+
 @media screen and (max-width: 600px) {
   #example {
     min-width: 0;

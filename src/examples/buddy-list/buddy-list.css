@@ -3,7 +3,7 @@
 }
 
 .navbar {
-  background: #F0F0F0;
+  background: white;
   margin-bottom: 10px;
   border: 1px solid darkgray;
   display: block;
@@ -37,6 +37,7 @@
 
 .buddies {
   padding: 0;
+  background: white;
 }
 
 .buddies, .not-connected {

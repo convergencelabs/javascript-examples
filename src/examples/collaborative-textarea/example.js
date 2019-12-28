@@ -22,7 +22,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
   textarea.selectionEnd = 0;
 
   // Create the editor and set up two way data binding.
-  textEditor = new HtmlTextCollabExt.CollaborativeTextEditor({
+  textEditor = new HtmlTextCollabExt.CollaborativeTextArea({
     control: textarea,
     onInsert: (index, value) => rts.insert(index, value),
     onDelete: (index, length) => rts.remove(index, length),
