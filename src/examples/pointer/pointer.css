@@ -10,9 +10,10 @@
 }
 
 .navbar {
-  background: #F0F0F0;
+  background: white;
   margin-bottom: 10px;
   border: 1px solid darkgray;
+  border-radius: 2px;
 }
 
 .navbar button {
@@ -26,12 +27,15 @@
 #cursorBox {
   height: 300px;
   border: 1px solid darkgray;
+  border-radius: 2px;
   position: relative;
   overflow: hidden;
+  background: white;
 }
 
 #titleBar, #rightTitle {
   border: 1px solid darkgray;
+  border-radius: 2px;
   padding: 4px;
   text-align: center;
   background: #e3f2fd;
@@ -50,11 +54,14 @@
 #cursors {
   flex: 1;
   margin-right: 20px;
+  background: white;
 }
 
 #mouseLocationsTable {
   width: 100%;
   border: 1px solid darkgray;
+  border-radius: 2px;
+  background: white;
 }
 
 #mouseLocationsTable td, #mouseLocationsTable th {

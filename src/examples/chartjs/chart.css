@@ -1,3 +1,9 @@
+#chartjs {
+  border: 1px solid darkgrey;
+  border-radius: 2px;
+  background: white;
+}
+
 #pieChart {
   margin: 0 auto 20px;
 }

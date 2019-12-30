@@ -1,21 +1,21 @@
 ---
-title: Chart.js
 layout: example
-permalink: /examples/chart/
+permalink: /examples/chartjs/
+exampleId: chartjs
 stylesheets:
   - /libs/nouislider/distribute/nouislider.min.css
-  - /examples/chart/chart.css
-example:
-  index: 1
-  overview: |-
-    This example demonstrates modifying visualized data, in real time, using shared controls. The chart is rendered
-    using the <a href="https://www.chartjs.org/">Chart.js</a> library. Move the controls to see the chart update on all
-    clients in real time.
+  - /examples/chartjs/chart.css
+overview: |-
+  This example demonstrates modifying visualized data, in real time, using shared controls. The chart is rendered
+  using the <a href="https://www.chartjs.org/">Chart.js</a> library. Move the controls to see the chart update on all
+  clients in real time.
 ---
 
-<canvas id="pieChart" width="400" height="400"></canvas>
-<div class="controls-container">
-  <div class="controls" id="controls">
+<div id="chartjs">
+  <canvas id="pieChart" width="400" height="400"></canvas>
+  <div class="controls-container">
+    <div class="controls" id="controls">
+    </div>
   </div>
 </div>
 

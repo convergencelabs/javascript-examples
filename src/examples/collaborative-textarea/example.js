@@ -2,7 +2,7 @@ const colorAssigner = new ConvergenceColorAssigner.ColorAssigner();
 let textEditor;
 let localSelectionReference;
 
-const username = "User-" + (Math.floor(Math.random()*900000) + 100000);
+const username = randomDisplayName();
 document.getElementById("username").innerHTML = username;
 
 Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
@@ -22,7 +22,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
   textarea.selectionEnd = 0;
 
   // Create the editor and set up two way data binding.
-  textEditor = new HtmlTextCollabExt.CollaborativeTextEditor({
+  textEditor = new HtmlTextCollabExt.CollaborativeTextArea({
     control: textarea,
     onInsert: (index, value) => rts.insert(index, value),
     onDelete: (index, length) => rts.remove(index, length),
@@ -34,6 +34,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username).then(domain => {
 
   // handle reference events
   initSharedSelection(rts);
+
+  exampleLoaded();
 
 }).catch(error => {
   console.error(error);

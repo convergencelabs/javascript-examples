@@ -1,6 +1,9 @@
 .edit {
-  border: 1px solid black;
+  border: 1px solid darkgrey;
+  border-radius: 2px;
   height: 400px;
   width: 100%;
   margin-top: 15px;
+  background: white;
+  padding: 4px;
 }

@@ -28,14 +28,12 @@ define("monaco-example", [
         }
       })
     })
-    .then(handleOpen)
+    .then((model) => {
+      const adapter = new MonacoConvergenceAdapter(editor, model.elementAt("text"));
+      adapter.bind();
+      exampleLoaded();
+    })
     .catch(error => {
       console.error("Could not open model ", error);
     });
-
-
-  function handleOpen(model) {
-    const adapter = new MonacoConvergenceAdapter(editor, model.elementAt("text"));
-    adapter.bind();
-  }
 });

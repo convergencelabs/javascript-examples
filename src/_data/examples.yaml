@@ -2,59 +2,79 @@
 # refers to the example's index in this array. 
 # So if you move these around, make sure to update the indices there appropriately.
 
-- title: Text Area
+collaborative-textarea:
+  title: Text Area
   description: A full fledged collaborative text area, with shared cursors and selections.
-  category: forms
-  example: collaborative-textarea
-  
-- title: Chart.js
-  category: data-visualization
-  description: Demonstrates the Model API by dynamically changing data visualized using Chart.js. The result is a highly dynamic visual experience.
-  example: chart
 
-- title: Froala
+chartjs:
+  title: Chart.js
+  description: |-
+    Demonstrates the Model API by dynamically changing data visualized using Chart.js.
+    The result is a highly dynamic visual experience.
+
+froala:
+  title: Froala
   description: Demonstrates rich text editing in the <a href="https://www.froala.com/wysiwyg-editor">Froala</a> editor.
-  category: rich-text
-  example: froala
 
-- title: Content Editable
+content-editable:
+  title: Content Editable
   description: Leverages dom synchronization to collaborate within a content editable element.
-  category: rich-text
-  example: content-editable
 
-- title: HTML Input Elements
+input-elements:
+  title: HTML Input Elements
   description: Show real time synchronization of HTML form input controls.
-  category: forms
-  example: input-elements
-  
-- title: JointJS
-  description: Demonstrates integration between <a href="https://www.jointjs.com/">JointJS</a> and Convergence for collaborative diagramming.
-  category: diagraming-drawing
-  example: jointjs
 
-- title: mxGraph
-  description: Demonstrates integration between <a href="https://github.com/jgraph/mxgraph/">mxGraph</a> and Convergence for collaborative diagramming.
-  category: diagraming-drawing
-  example: mxgraph
+jointjs:
+  title: JointJS
+  description: |-
+    Demonstrates integration between <a href="https://www.jointjs.com/">JointJS</a> and Convergence for collaborative
+    diagramming.
 
-- title: Ace Editor
+mxgraph:
+  title: mxGraph
+  description: |-
+    Demonstrates integration between <a href="https://github.com/jgraph/mxgraph/">mxGraph</a> and Convergence for
+    collaborative diagramming.
+
+ace:
+  title: Ace Editor
   description: Demonstrates collaborative code editing in the <a href="https://ace.c9.io/">Ace</a> Editor.
-  category: plain-text
-  example: ace
 
-- title: Monaco Editor
-  description: Demonstrates collaborative code editing in the <a href="https://microsoft.github.io/monaco-editor/">Monaco</a> Editor.
-  category: plain-text
-  example: monaco
+monaco:
+  title: Monaco Editor
+  description: |-
+    Demonstrates collaborative code editing in the <a href="https://microsoft.github.io/monaco-editor/">Monaco</a>
+    Editor.
 
-- title: Shared Pointer
-  category: presence
-  description: Shows how the Activity API can be used to share remote pointers. User can see where eah others pointers are and where they are clicking.
-  example: pointer
+codemirror:
+  title: CodeMirror
+  description: Demonstrates collaborative code editing in the <a href="https://codemirror.net/">CodeMirror</a> Editor.
 
-- title: Chat Room
-  description: A simple chat room example.  Users can join any chat room by name and send messages to other users in the chat room.
-  category: chat
-  example: chat-room
-  sourceUrl: https://github.com/convergencelabs/javascript-examples/tree/master/src/chat
+pointer:
+  title: Shared Pointer
+  description: |-
+    Shows how the Activity API can be used to share remote pointers. User can see where eah others pointers are and
+    where they are clicking.
 
+chat-room:
+  title: Chat Room
+  description: |-
+    A simple chat room example.  Users can join any chat room by name and send messages to
+    other users in the chat room.
+
+buddy-list:
+  title: Buddy List
+  description: |-
+    A simple buddy list example written with <a href="https://vuejs.org">VueJS</a>.
+    Users can see the presense state of other users in the system.
+
+easymde:
+  title: Easy Markdown Editor
+  description: |-
+    A collaborative Markdown editor using the <a href="https://github.com/Ionaru/easy-markdown-editor"/>
+    Easy Markdown Editr</a>.
+
+tui-editor:
+  title: ToastUI Editor
+  description: |-
+    A collaborative Markdown editor using the <a href="https://ui.toast.com/tui-editor/">ToastUI Editor</a>.

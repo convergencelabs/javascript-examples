@@ -38,14 +38,16 @@ Vue.component('chat-example', {
     handleJoin: function(room) {
       this.room = room;
 
+      // listen for a new message added to this room
       room.on("message", this.appendMessage);
 
+      // fetch the 25 most recent messages
       room.getHistory({
-        offset: room.info().lastEventNumber,
         limit: 25,
+        // only return events of type "message"
         eventFilter: ["message"]
       }).then(events => {
-        events.filter(event => event.type === "message").forEach(event => {
+        events.forEach(event => {
           this.appendMessage(event);
         });
       });
@@ -61,15 +63,20 @@ Vue.component('chat-example', {
       this.messages = messages;
     },
     handleMessageSubmission: function(messageText) {
-      this.room.send(messageText);
+      try {
+        this.room.send(messageText);
 
-      let messages = this.messages.slice(0);
-      messages.push({
-        username: this.domain.session().user().displayName,
-        message: messageText,
-        timestamp: new Date().getTime()
-      });
-      this.messages = messages;
+        let messages = this.messages.slice(0);
+        messages.push({
+          username: this.domain.session().user().displayName,
+          message: messageText,
+          timestamp: new Date().getTime()
+        });
+        this.messages = messages;
+      } catch (e) {
+        // handle errors.  say, the user isn't currently connected
+        this.displayError(e);
+      }
     },
     handleLeave() {
       this.room.leave().then(() => {
@@ -77,6 +84,14 @@ Vue.component('chat-example', {
         this.messages = [];
         return this.domain.dispose();
       });
+    },
+    displayError(msg, detail) {
+      // use the materialize toast 
+      if (detail) {
+        M.toast({html: '<h3>' + msg + '</h3><p>' + detail + '</p>'});
+      } else {
+        M.toast({html: msg});
+      }
     }
   }
 });
@@ -84,3 +99,5 @@ Vue.component('chat-example', {
 new Vue({
   el: '#example'
 });
+
+exampleLoaded();

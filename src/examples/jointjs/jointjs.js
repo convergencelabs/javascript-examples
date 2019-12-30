@@ -75,7 +75,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
       }
     });
 
-    const activityPromise = domain.activities().join("jointjs-example");
+    const activityPromise = domain.activities().join("jointjs-" + convergenceExampleId);
     return Promise.all([modelPromise, activityPromise])
   })
   .then(results => {
@@ -88,6 +88,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
     const colorManager = new ConvergenceJointUtils.ActivityColorManager(activity);
     const pointerManager = new ConvergenceJointUtils.PointerManager(paper, activity, colorManager, "/libs/@convergence/jointjs-utils/img/cursor.svg");
     selectionManager = new ConvergenceJointUtils.SelectionManager(paper, graphAdapter, colorManager);
+
+    exampleLoaded();
   })
   .catch(function (error) {
     console.error("Could not open model", error);

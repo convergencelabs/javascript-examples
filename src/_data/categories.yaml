@@ -1,20 +1,38 @@
 - title: Plain Text
-  id: plain-text
+  examples:
+    - ace
+    - monaco
+    - codemirror
 
 - title: Rich Text
-  id: rich-text
+  examples:
+    - froala
+    - content-editable
+    - easymde
+    - tui-editor
 
 - title: Data Visualization
-  id: data-visualization
+  examples:
+    - chartjs
 
 - title: Diagramming / Drawing
-  id: diagraming-drawing
+  examples:
+    - jointjs
+    - mxgraph
 
 - title: Forms
-  id: forms
+  examples:
+    - collaborative-textarea
+    - input-elements
 
 - title: Collaborative Cueing
-  id: presence
+  examples:
+    - pointer
 
 - title: Chat
-  id: chat
+  examples:
+    - chat-room
+
+- title: Presence
+  examples:
+    - buddy-list

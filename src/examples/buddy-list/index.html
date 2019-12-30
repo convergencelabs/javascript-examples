@@ -1,0 +1,71 @@
+---
+layout: example
+permalink: /examples/buddy-list/
+exampleId: buddy-list
+stylesheets:
+  - /examples/buddy-list/buddy-list.css
+overview: |-
+  This example demonstrates how to use the Presence API to create a simple buddy list.
+  Users will show as online or offline depending on if there is at last on session connected
+  for that users. This example is written in <a href="https://vuejs.org/">Vue.js</a>.
+---
+
+<!-- development version, includes helpful console warnings -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+{% raw %}
+<div id="presence-app" v-cloak>
+  <nav class="navbar navbar-light">
+    <a class="navbar-brand">Presence Control</a>
+    <form class="form-inline">
+      <div class="form-row">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Username</span>
+          </div>
+          <select class="custom-select" id="username" :disabled="connected" v-model="username">
+            <option
+                v-for="user in users"
+                :value="user.username"
+            >{{user.username}}</option>
+          </select>
+        </div>
+        <button class="btn btn-sm btn-primary" type="button" id="joinButton" onclick="connect()" :disabled="connected">
+          Connect
+        </button>
+        <button class="btn btn-sm btn-primary" type="button" id="leaveButton" onclick="disconnect()"
+                :disabled="!connected">Disconnect
+        </button>
+        <span class="flex"></span>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="status">Status</label>
+          </div>
+          <select class="custom-select" id="status" :disabled="!connected" onchange="changeStatus(this)" v-model="status">
+            <option value="available">Available</option>
+            <option value="away">Away</option>
+            <option value="dnd">Do Not Disturb</option>
+          </select>
+        </div>
+      </div>
+    </form>
+  </nav>
+  <div id="buddy-list">
+    <div class="buddy-list-header">Buddy List</div>
+    <ul class="buddies" v-if="buddies !== null">
+      <user-presence
+          v-for="buddy in buddies"
+          v-bind:presence-subscription="buddy"
+          v-bind:key="buddy.user.username"
+      ></user-presence>
+    </ul>
+    <div class="not-connected" v-if="buddies === null">Connect to Load Buddies</div>
+  </div>
+</div>
+{% endraw %}
+<!-- Convergence resources -->
+<script src="/config.js"></script>
+<script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
+<script src="/libs/@convergence/convergence/convergence.global.js"></script>
+<script src="users.js" type="text/javascript" language="JavaScript"></script>
+<script src="buddy-list.js" type="text/javascript" language="JavaScript"></script>

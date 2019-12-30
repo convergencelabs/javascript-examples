@@ -5,13 +5,24 @@ permalink: /
 ---
 <div id="examples">
   <div class="container">
-    <div class="header">
-      <p class="larger">Here are several examples of different uses of Convergence.  We have found that most developers can find something here related to their specific use case.  <a href="https://forum.convergence.io">Go here</a> to suggest additional examples, or better yet, add your own to <a href="https://github.com/convergencelabs/examples/">this repository</a>!</p>
+    <div class="header card">
+      <p class="larger">Here are several examples of different uses of Convergence.  We have found that most developers can find something here related to their specific use case.  <a href="https://forum.convergence.io">Go here</a> to suggest additional examples, or better yet, add your own to <a href="https://github.com/convergencelabs/javascript-examples/">this repository</a>!</p>
       <p><em>Each example has a <strong>Share <i class="far fa-share-square"></i></strong> button, which will give you a URL to share with others to use the example together (or you can simply open the example in two windows yourself).</em></p>
     </div>
     <div class="row">
   {% for example in site.data.examples %}
-    {% include example-card.html example=example %}
+      <div class="example-column col-lg-6 col-md-12 col-sm-12">
+        <div class="card">
+          <h5 class="card-header">{{example[1].title}}</h5>
+          <div class="card-body">
+            <div class="description">{{example[1].description}}</div>
+            <div class="actions">
+              <a href="/examples/{{example[0]}}" class="action">View Example</a>
+              <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{example[0]}}" class="action">View Code</a>
+            </div>
+          </div>
+        </div>
+      </div>
   {% endfor %}
     </div>
   </div>

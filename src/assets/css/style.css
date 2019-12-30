@@ -1,6 +1,6 @@
 @font-face {
   font-family: "Century Gothic";
-  src: url('fonts/CenturyGothic.ttf');
+  src: url('../fonts/CenturyGothic.ttf');
 }
 
 body {
@@ -13,15 +13,16 @@ body {
   left: 0;
   display: flex;
   flex-direction: column;
+  background: #f1f2f5;
 }
 
 nav#header {
-  background: #1976D2;
+  background: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 5px 15px 5px 10px;
-  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 1px 4px 0px rgba(0, 0, 0, 0.16);
 }
 nav#header img.logo {
   height: 40px;
@@ -32,10 +33,11 @@ nav#header .brand-copy {
   -webkit-font-smoothing: antialiased;
 }
 nav#header .brand-copy a {
-  color: rgba(255, 255, 255, 0.9);
+  color: #007bc3;
 }
 nav#header span.title {
   font-size: 1.7em;
+  color: #676f82;
 }
 nav#header .links {
   display: flex;
@@ -53,6 +55,9 @@ nav#header img.github-logo {
 }
 nav#header .menu {
   display: none;
+}
+nav#header .examples-title {
+  font-size: 22px;
 }
 
 .wrapper {
@@ -73,7 +78,8 @@ nav#header .menu {
   max-width: 100%;
   overflow: auto;
   border-right: 1px solid #a9a9a9;
-  background-color: rgba(0,0,0,.03);
+  background-color: #1D2939;
+  color: white;
 }
 #sidebar .sidebar-content.hidden {
   opacity: 0;
@@ -83,21 +89,44 @@ nav#header .menu {
   margin: 10px 0;
   padding: 4px 10px;
 }
+#sidebar .all-examples a {
+  color: rgba(255, 255, 255, 0.65);
+}
 #sidebar .example-category {
   padding: 4px 10px;
-  background: rgba(0, 0, 0, 0.1);
+  color: #039be5;
+  border-bottom: 1px solid;
+  margin-bottom: 5px;
 }
 #sidebar ul.example-group {
   margin: 0 0 15px;
-  padding: 0;
+  padding: 0 10px;
 }
 #sidebar ul.example-group li {
-  padding: 4px 20px 0;
   list-style: none;
+  margin-bottom: 5px;
+}
+#sidebar ul.example-group li a {
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  padding: 4px 8px;
+  display: block;
+  font-size: 14px;
+}
+#sidebar ul.example-group li:hover {
+  color: white;
+  background: #151b2a;
+}
+#sidebar ul.example-group li:hover a {
+  color: white;
 }
 #sidebar ul.example-group li.active {
-  padding-left: 8px;
-  color: #039be5;
+  border-radius: 2px;
+  background-image: -webkit-gradient(linear, left top, right top, from(#19a6b3), to(#288eb9));
+  background-image: linear-gradient(to right, #19a6b3 0%, #288eb9 100%);
+}
+#sidebar ul.example-group li.active a {
+  color: white;
 }
 
 #sidebar-toggle {
@@ -130,8 +159,6 @@ nav#header .menu {
 }
 
 #content {
-  height: 100%;
-  overflow: auto;
   flex: 1;
 }
 
@@ -141,6 +168,7 @@ nav#header .menu {
 }
 #examples .header {
   margin: 10px 0 20px;
+  padding: 10px;
 }
 #examples .header .larger {
   font-size: 1.1rem;
@@ -188,7 +216,7 @@ footer {
   margin-top: 0;
   text-align: center;
   font-size: 11px;
-  background: #1976D2;
+  background: #3c4044;
   padding: 10px;
   color: white;
 }

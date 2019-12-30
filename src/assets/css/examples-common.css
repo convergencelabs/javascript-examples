@@ -1,0 +1,71 @@
+#loading {
+  text-align: center;
+  margin: 50px;
+}
+
+#example {
+  padding: 10px 20px;
+  max-width: 800px;
+  min-width: 500px;
+  margin: 0;
+  position: relative;
+}
+
+#example div.example-header {
+  border: 1px solid darkgrey;
+  background: white;
+  margin-bottom: 20px;
+  border-radius: 2px;
+}
+
+#example div.example-title-bar {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid darkgrey;
+}
+
+#example div.example-title {
+  text-align: left;
+  font-size: 24px;
+  font-family: "Helvetica Neue", sans-serif;
+  margin: 0 5px;
+}
+
+#example div.example-icons {
+  justify-content: space-between;
+  flex: 1;
+  text-align: right;
+  font-size: 0.9rem;
+}
+
+#example div.example-icons a {
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+#example div.example-overview {
+  font-family: "Helvetica Neue", sans-serif;
+  background: #ffffff;
+  border-radius: 2px;
+  padding: 10px;
+  text-align: justify;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+a {
+  color: #039be5;
+  text-decoration: none;
+}
+
+#example div.example-content {
+  position: relative;
+}
+
+@media screen and (max-width: 600px) {
+  #example {
+    min-width: 0;
+  }
+}

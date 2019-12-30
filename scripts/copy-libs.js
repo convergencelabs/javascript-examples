@@ -8,9 +8,12 @@ const libs = [
   "backbone",
   "bootstrap",
   "chart.js",
+  "codemirror",
   "director",
+  "easymde",
   "froala-editor",
   "handlebars",
+  "highlight.js",
   "jointjs",
   "jquery",
   "lodash",
@@ -22,6 +25,7 @@ const libs = [
   "popper.js",
   "rxjs",
   "toastr",
+  "tui-editor",
   "underscore",
   "vue"
 ];
@@ -32,3 +36,4 @@ fs.mkdir(srcLibs);
 
 const paths = libs
   .forEach(lib => fs.copySync("node_modules/" + lib, srcLibs + lib));
+
