@@ -11,15 +11,18 @@ permalink: /
     </div>
     <div class="row">
   {% for example in site.data.examples %}
-      <div class="example-column col-lg-6 col-md-12 col-sm-12">
+      <div class="example-column col-lg-4 col-md-6 col-sm-12">
         <div class="card">
-          <h5 class="card-header">{{example[1].title}}</h5>
+          <h5 class="card-header">
+            <a href="/examples/{{example[0]}}">{{example[1].title}}</a>
+            <span class="code">
+              <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{example[0]}}" class="action">
+                <img src="/assets/img/GitHub-Mark-32px.png" class="github-logo" alt="Example code">
+              </a>
+            </span>
+          </h5>
           <div class="card-body">
             <div class="description">{{example[1].description}}</div>
-            <div class="actions">
-              <a href="/examples/{{example[0]}}" class="action">View Example</a>
-              <a href="https://github.com/convergencelabs/javascript-examples/tree/master/src/examples/{{example[0]}}" class="action">View Code</a>
-            </div>
           </div>
         </div>
       </div>
