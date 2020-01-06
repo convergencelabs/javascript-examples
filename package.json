@@ -58,6 +58,6 @@
     "start": "node ./scripts/copy-libs.js && bundle exec jekyll serve",
     "build": "node ./scripts/copy-libs.js && bundle exec jekyll build",
     "clean": "node ./scripts/clean.js",
-    "docker-prep": "npm run build && node scripts/docker-prep.js"
+    "docker-prep": "node scripts/docker-prep.js"
   }
 }
