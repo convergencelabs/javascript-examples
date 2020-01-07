@@ -12,6 +12,7 @@ This repository contains several examples that demonstrate using various feature
 
  * ruby, gem
  * jeykll >= 3.6.x
+ * Convergence = 1.0.0-rc.4
 
 ## Development Setup
 
