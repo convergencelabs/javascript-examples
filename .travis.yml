@@ -12,7 +12,7 @@ services:
 script:
  - bundle install
  - npm run build
- - npm run docker-prep
+ - ./scripts/docker-prepare.sh
  - docker build -t $DOCKER_REPO docker-build
 
 after_success:

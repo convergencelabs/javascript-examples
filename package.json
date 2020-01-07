@@ -16,11 +16,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/convergencelabs/examples.git"
+    "url": "https://github.com/convergencelabs/javascript-examples.git"
   },
   "bugs": {
-    "url": "https://github.com/convergencelabs/examples/issues"
+    "url": "https://github.com/convergencelabs/javascript-examples/issues"
   },
+  "private": true,
   "dependencies": {},
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
@@ -57,7 +58,6 @@
   "scripts": {
     "start": "node ./scripts/copy-libs.js && bundle exec jekyll serve",
     "build": "node ./scripts/copy-libs.js && bundle exec jekyll build",
-    "clean": "node ./scripts/clean.js",
-    "docker-prep": "node scripts/docker-prep.js"
+    "clean": "node ./scripts/clean.js"
   }
 }
