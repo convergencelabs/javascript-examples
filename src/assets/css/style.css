@@ -137,7 +137,7 @@ nav#header .examples-title {
 
 #sidebar-toggle {
   padding-top: 48vh;
-  z-index: 10;
+  z-index: 5;
   cursor: pointer;
   overflow: hidden;
   width: 15px;
