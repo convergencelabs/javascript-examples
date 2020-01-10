@@ -33,7 +33,7 @@
     "@convergence/jointjs-utils": "0.4.0",
     "@convergence/mxgraph-adapter": "0.1.0",
     "@convergencelabs/codemirror-collab-ext": "0.1.2",
-    "@convergencelabs/monaco-collab-ext": "0.1.1",
+    "@convergencelabs/monaco-collab-ext": "0.2.0",
     "@fortawesome/fontawesome-free": "5.7.2",
     "ace-builds": "1.4.2",
     "bootstrap": "4.3.1",
