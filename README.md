@@ -52,3 +52,11 @@ docker run --name convergence -p "8000:80" convergencelabs/convergence-omnibus
 
 ## Branches
 The `master` branch contains examples that work with the latest released version of Convergence.  The `develop` branch contains new / updated examples that work with the current version of Convergence that is in development and may or may not worth with the latest release version.  If you are not developing Convergence you should probably stick with `master`.
+
+## Support
+[Convergence Labs](https://convergencelabs.com) provides several different channels for support:
+
+- Please use the [Convergence Community Forum](https://forum.convergence.io) for general and technical questions, so the whole community can benefit.
+- For paid dedicated support or custom development services, [contact us](https://convergence.io/contact-sales/) directly.
+- Chat with us on the [Convergence Public Slack](https://slack.convergence.io).
+- Email <support@convergencelabs.com> for all other inquiries.
