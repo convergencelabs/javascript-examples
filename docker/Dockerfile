@@ -1,19 +1,16 @@
 FROM nginx:stable-alpine
 
-# supervisord
-RUN apk --no-cache add supervisor
-COPY supervisord/supervisord.conf /etc/supervisord.conf
-
 # confd
-ADD bin/confd-0.16.0-linux-amd64 /usr/local/bin/confd
-RUN chmod +x /usr/local/bin/confd
+RUN wget https://github.com/kelseyhightower/confd/releases/download/v0.16.0/confd-0.16.0-linux-amd64 && \
+    mv confd-0.16.0-linux-amd64 /usr/local/bin/confd && \
+    chmod +x /usr/local/bin/confd
 ADD confd /etc/confd/
 
+# boot script
 ADD bin/boot.sh /boot.sh
 RUN chmod +x /boot.sh
 
-# This is the most dynamic piece so add this last to
-# maximize layer caching.
+# nginx
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY www /usr/share/nginx/html
 

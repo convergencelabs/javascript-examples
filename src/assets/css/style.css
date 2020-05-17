@@ -17,6 +17,9 @@ body {
 }
 
 nav#header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
   background: white;
   display: flex;
   align-items: center;
@@ -26,18 +29,20 @@ nav#header {
 }
 nav#header img.logo {
   height: 40px;
-  margin-right: 10px;
+  padding: 2px 0;
 }
 nav#header .brand-copy {
   font-family: "Century Gothic", sans-serif;
   -webkit-font-smoothing: antialiased;
+  display: flex;
 }
 nav#header .brand-copy a {
-  color: #007bc3;
+  color: #11599c;
+  margin-right: 10px;
+  line-height: 1.5em;
 }
 nav#header span.title {
-  font-size: 1.7em;
-  color: #676f82;
+  font-size: 1.5em;
 }
 nav#header .links {
   display: flex;
@@ -65,6 +70,7 @@ nav#header .examples-title {
   width: 100%;
   flex: 1;
   align-items: stretch;
+  margin-top: 50px;
 }
 
 #sidebar {
@@ -130,10 +136,9 @@ nav#header .examples-title {
 }
 
 #sidebar-toggle {
-  margin-top: -15px;
-  z-index: 10;
+  padding-top: 48vh;
+  z-index: 5;
   cursor: pointer;
-  align-self: center;
   overflow: hidden;
   width: 15px;
 }
@@ -141,8 +146,8 @@ nav#header .examples-title {
   transform: translateX(-50%);
   border: 1px solid #a9a9a9;
   border-radius: 100%;
-  background-color: rgba(0,0,0,.03);
-  color: #6d6c6c;
+  background-color: #1D2939;
+  color: rgba(255, 255, 255, 0.65);
   width: 30px;
   height: 30px;
 }
@@ -180,8 +185,15 @@ nav#header .examples-title {
   margin-bottom: 30px;
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
 }
-#examples .card a.action {
-  margin-left: 15px;
+#examples .card .card-header {
+  display: flex;
+  justify-content: space-between;
+}
+#examples .card .card-header a {
+  color: #11599c;
+}
+#examples .card .code img {
+  height: 20px;
 }
 
 div.row {
@@ -209,7 +221,6 @@ div.card-body div.description {
 
 div.card-body div.actions {
   margin-top: 15px;
-  text-align: right;
 }
 
 footer {
@@ -229,6 +240,9 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
+  .wrapper {
+    margin-top: 40px;
+  }
   #content {
     margin-left: -15px;
   }
@@ -245,7 +259,6 @@ footer {
     display: initial;
     align-self: flex-end;
     font-size: 1.2em;
-    color: rgba(255, 255, 255, 0.9);
   }
   nav#header .links {
     display: none;
@@ -254,13 +267,14 @@ footer {
     position: absolute;
     top: 38px;
     left: 0;
-    background: #1976D2;
+    background: #fff;
     z-index: 10;
     width: 100%;
     display: flex;
     flex-direction: column;
     padding-bottom: 8px;
     border-top: 1px solid rgba(0, 0, 0, .07);
+    border-bottom: 1px solid rgba(0, 0, 0, .3);
   } 
   nav#header .links .link {
     padding: 5px 15px 0;

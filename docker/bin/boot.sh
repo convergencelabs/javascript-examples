@@ -10,11 +10,19 @@ require_env_var() {
   fi
 }
 
-echo "Convergence Examples.  Checking required environment variables."
-
-require_env_var $CONVERGENCE_URL "CONVERGENCE_URL"
-
-echo "All required variables are set.  Booting."
+echo "Convergence JavaScript Examples"
+echo "Checking required environment variables..."
 echo ""
 
-exec supervisord --configuration /etc/supervisord.conf
+require_env_var "$CONVERGENCE_URL" "CONVERGENCE_URL"
+
+echo ""
+echo "All required environment variables are set.  Processing config file."
+echo ""
+
+/usr/local/bin/confd -backend env --onetime
+
+echo ""
+echo "Starting the Convergence JavaScript Examples"
+
+exec nginx -g "daemon off;"

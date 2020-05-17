@@ -32,7 +32,9 @@ const libs = [
 
 const srcLibs = "src/libs/";
 
-fs.mkdir(srcLibs);
+if (!fs.existsSync(srcLibs)) {
+  fs.mkdir(srcLibs);
+}
 
 const paths = libs
   .forEach(lib => fs.copySync("node_modules/" + lib, srcLibs + lib));

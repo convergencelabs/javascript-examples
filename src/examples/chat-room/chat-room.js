@@ -46,8 +46,8 @@ Vue.component('chat-example', {
         limit: 25,
         // only return events of type "message"
         eventFilter: ["message"]
-      }).then(events => {
-        events.forEach(event => {
+      }).then(response => {
+        response.data.forEach(event => {
           this.appendMessage(event);
         });
       });
@@ -65,14 +65,6 @@ Vue.component('chat-example', {
     handleMessageSubmission: function(messageText) {
       try {
         this.room.send(messageText);
-
-        let messages = this.messages.slice(0);
-        messages.push({
-          username: this.domain.session().user().displayName,
-          message: messageText,
-          timestamp: new Date().getTime()
-        });
-        this.messages = messages;
       } catch (e) {
         // handle errors.  say, the user isn't currently connected
         this.displayError(e);
