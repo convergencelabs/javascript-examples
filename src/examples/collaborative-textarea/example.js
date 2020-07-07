@@ -64,6 +64,10 @@ function initSharedSelection(rts) {
       this.addSelection(e.reference);
     }
   });
+
+  textarea.addEventListener("blur", () => {
+    localSelectionReference.clear();
+  })
 }
 
 function addSelection(reference) {
@@ -78,7 +82,10 @@ function addSelection(reference) {
     color,
     {anchor: remoteRange.start, target: remoteRange.end});
 
-  reference.on("cleared", () => selectionManager.removeCollaborator(reference.sessionId()) );
+  reference.on("cleared", () => {
+    const collaborator = selectionManager.getCollaborator(reference.sessionId());
+    collaborator.clearSelection();
+  });
   reference.on("disposed", () => selectionManager.removeCollaborator(reference.sessionId()) );
   reference.on("set", (e) => {
     const selection = reference.value();
