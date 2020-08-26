@@ -29,7 +29,7 @@
     "@convergence/convergence": "1.0.0-rc.7",
     "@convergence/dom-utils": "0.2.3",
     "@convergence/html-text-collab-ext": "0.2.0",
-    "@convergence/input-element-bindings": "0.3.4",
+    "@convergence/input-element-bindings": "0.4.0",
     "@convergence/jointjs-utils": "0.4.0",
     "@convergence/mxgraph-adapter": "0.1.0",
     "@convergencelabs/codemirror-collab-ext": "0.1.2",

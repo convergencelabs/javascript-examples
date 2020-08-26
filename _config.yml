@@ -19,6 +19,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Convergence is a next generation API that allows developers to build rich, real-time collaboration into their applications.
 #baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://convergence.io" # the base hostname & protocol for your site, e.g. http://example.com
+host: 0.0.0.0
 
 # Build settings
 source: src
