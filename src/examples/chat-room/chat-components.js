@@ -41,13 +41,20 @@ Vue.component('chat-messages', {
     '    <div id="chat-title" class="nav-wrapper"><span>Chat Messages</span></div>' + 
     '  </nav>' + 
     '  <div class="card chat-messages">' + 
-    '    <div class="card-content">' + 
+    '    <div class="card-content" ref="container">' + 
     '      <ul class="collection">' + 
     '        <chat-message v-for="message in messages" :message="message" />' +
     '      </ul>' +
     '    </div>' + 
     '  </div>' +
-    '</div>'
+    '</div>',
+    watch: { 
+      messages: function() { 
+        this.$nextTick(() => {
+          this.$refs.container.scrollTop = this.$refs.container.scrollHeight;
+        });
+      }
+    }
 });
 
 Vue.component('chat-message', {
@@ -68,9 +75,6 @@ Vue.component('chat-message', {
     color: function() {
       return colorAssigner.getColorAsHex(this.message.username);
     }
-  },
-  mounted: function() {
-    this.$el.scrollIntoView();
   }
 });
 
