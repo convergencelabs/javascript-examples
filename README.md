@@ -1,18 +1,16 @@
-<div align="center">
-  <img alt="Convergence Logo" height="80" src="https://convergence.io/assets/img/convergence-logo.png" >
-</div>
+<img alt="Convergence Logo" height="80" src="https://convergence.io/assets/img/convergence-logo.png" >
 
 # Convergence Examples
 
-[![Build Status](https://travis-ci.org/convergencelabs/javascript-examples.svg?branch=master)](https://travis-ci.org/convergencelabs/javascript-examples)
+![Build Status](https://travis-ci.org/convergencelabs/javascript-examples.svg?branch=master)](https://travis-ci.org/convergencelabs/javascript-examples)
 
 This repository contains several examples that demonstrate using various features of [Convergence](https://convergence.io).
 
 ## Dependencies
 
  * ruby, gem
- * jeykll >= 3.6.x
- * Convergence = 1.0.0-rc.4
+ * jeykll >= 3.9.x
+ * Convergence >= 1.0.0-rc.7
 
 ## Development Setup
 
