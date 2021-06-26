@@ -12,7 +12,7 @@ COPY src src
 
 RUN chown -R jekyll:jekyll /srv/jekyll
 
-RUN /usr/jekyll/bin/entrypoint jekyll build
+RUN /usr/jekyll/bin/entrypoint jekyll build --disable-disk-cache
 
 USER jekyll
 
