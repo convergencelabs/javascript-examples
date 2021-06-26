@@ -33,7 +33,7 @@ const libs = [
 const siteLibs = "_site/libs/";
 
 if (!fs.existsSync(siteLibs)) {
-  fs.mkdir(siteLibs);
+  fs.mkdirp(siteLibs);
 }
 
 libs.forEach(lib => fs.copySync("node_modules/" + lib, siteLibs + lib));
