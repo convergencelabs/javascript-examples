@@ -1,4 +1,5 @@
 const fs = require("fs-extra");
+const rimraf = require("rimraf");
 
 const libs = [
   "@convergence",
@@ -32,8 +33,10 @@ const libs = [
 
 const siteLibs = "_site/libs/";
 
-if (!fs.existsSync(siteLibs)) {
-  fs.mkdirp(siteLibs);
+if (fs.existsSync(siteLibs)) {
+  rimraf.sync(siteLibs);
 }
+
+fs.mkdirp(siteLibs);
 
 libs.forEach(lib => fs.copySync("node_modules/" + lib, siteLibs + lib));

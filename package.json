@@ -29,7 +29,7 @@
     "@convergence/convergence": "1.0.0-rc.8",
     "@convergence/dom-utils": "0.3.1",
     "@convergence/html-text-collab-ext": "0.2.1",
-    "@convergence/input-element-bindings": "0.4.0",
+    "@convergence/input-element-bindings": "0.5.0",
     "@convergence/jointjs-utils": "0.6.0",
     "@convergence/mxgraph-adapter": "0.1.0",
     "@convergencelabs/codemirror-collab-ext": "0.1.2",
@@ -49,10 +49,13 @@
     "mxgraph": "3.9.12",
     "nouislider": "12.1.0",
     "popper.js": "1.14.7",
+    "rimraf": "^3.0.2",
     "rxjs": "6.6.3",
-    "sass": "1.23.0-module.beta.1",
     "toastr": "2.1.4",
     "tui-editor": "1.4.8",
     "vue": "2.6.10"
+  },
+  "scripts": {
+    "copy": "node scripts/copy-libs.js"
   }
 }
