@@ -1,10 +1,7 @@
-.idea
-.sass-cache
 node_modules
+.idea
 _site
-src/config.js
-src/libs
 src/.jekyll-cache
 src/.jekyll-metadata
-
-
+src/config.js
+src/config.example.js

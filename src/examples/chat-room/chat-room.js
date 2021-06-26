@@ -32,7 +32,7 @@ Vue.component('chat-example', {
         .then(channelId => this.domain.chat().join(channelId))
         .then(this.handleJoin)
         .catch(error => {
-          console.log("Could not join chat room: " + error);
+          console.error("Could not join chat room: ", error);
         });
     },
     handleJoin: function(room) {

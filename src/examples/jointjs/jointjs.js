@@ -75,7 +75,14 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
       }
     });
 
-    const activityPromise = domain.activities().join("jointjs-" + convergenceExampleId);
+    const activityOptions = {
+      autoCreate: {
+        ephemeral: true,
+        worldPermissions: ["join", "view_state", "set_state"]
+      }
+    }
+
+    const activityPromise = domain.activities().join("jointjs", convergenceExampleId, activityOptions);
     return Promise.all([modelPromise, activityPromise])
   })
   .then(results => {
@@ -91,9 +98,8 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
 
     exampleLoaded();
   })
-  .catch(function (error) {
-    console.error("Could not open model", error);
-    throw error;
+  .catch((error) => {
+    console.error("Could not open model or join activity", error);
   });
 
 function reset() {

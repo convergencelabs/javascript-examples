@@ -39,10 +39,17 @@ Convergence.connectAnonymously(CONVERGENCE_URL, username)
     console.log("Could not connect: " + error);
   });
 
+const activityOptions = {
+  autoCreate: {
+    ephemeral: true,
+    worldPermissions: ["join", "view_state", "set_state"]
+  }
+}
+
 // Handles clicking the open button
 function joinActivity() {
   domain.activities()
-    .join(convergenceExampleId)
+    .join("pointer", convergenceExampleId, activityOptions)
     .then((act) => {
       activity = act;
       const participants = activity.participants();

@@ -85,7 +85,7 @@ function connect() {
       });
     })
     .catch(error => {
-      console.log("Error connecting", error);
+      console.error(error);
     });
 }
 

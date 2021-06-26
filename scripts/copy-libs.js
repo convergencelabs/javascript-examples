@@ -30,12 +30,10 @@ const libs = [
   "vue"
 ];
 
-const srcLibs = "src/libs/";
+const siteLibs = "_site/libs/";
 
-if (!fs.existsSync(srcLibs)) {
-  fs.mkdir(srcLibs);
+if (!fs.existsSync(siteLibs)) {
+  fs.mkdir(siteLibs);
 }
 
-const paths = libs
-  .forEach(lib => fs.copySync("node_modules/" + lib, srcLibs + lib));
-
+libs.forEach(lib => fs.copySync("node_modules/" + lib, siteLibs + lib));
