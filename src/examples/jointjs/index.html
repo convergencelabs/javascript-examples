@@ -5,7 +5,7 @@ exampleId: jointjs
 stylesheets:
   - /libs/jointjs/dist/joint.css
   - /examples/jointjs/jointjs.css
-  - /libs/@convergence/jointjs-utils/css/convergence-jointjs-utils.css
+  - /libs/@convergence/jointjs-utils/dist/css/convergence-jointjs-utils.css
 overview: |-
   This example demonstrates shared editing of a graph visualized with the
   <a href="https://www.jointjs.com/">Joint JS</a> library. The example uses the
@@ -13,7 +13,7 @@ overview: |-
   to simplify the binding between Joint JS and Convergence. The example demonstrates
   shared pointers and selection, as well as real time editing.
 ---
-
+<button onClick="reset()">Reset Graph to Default Data</button>
 <div id="paper"></div>
 
 <!-- JointJS Dependencies: -->
@@ -29,7 +29,7 @@ overview: |-
 <script src="/libs/rxjs/bundles/rxjs.umd.min.js"></script>
 <script src="/libs/@convergence/convergence/convergence.global.js"></script>
 <script src="/libs/@convergence/color-assigner/umd/color-assigner.js"></script>
-<script src="/libs/@convergence/jointjs-utils/umd/convergence-jointjs-utils.js"></script>
+<script src="/libs/@convergence/jointjs-utils/dist/umd/convergence-jointjs-utils.js"></script>
 
 <!-- Application Scripts: -->
 <script src="/config.js"></script>

@@ -86,7 +86,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
     graphAdapter.bind();
 
     const colorManager = new ConvergenceJointUtils.ActivityColorManager(activity);
-    const pointerManager = new ConvergenceJointUtils.PointerManager(paper, activity, colorManager, "/libs/@convergence/jointjs-utils/img/cursor.svg");
+    const pointerManager = new ConvergenceJointUtils.PointerManager(paper, activity, colorManager, "/libs/@convergence/jointjs-utils/dist/img/cursor.svg");
     selectionManager = new ConvergenceJointUtils.SelectionManager(paper, graphAdapter, colorManager);
 
     exampleLoaded();
@@ -95,3 +95,7 @@ Convergence.connectAnonymously(CONVERGENCE_URL)
     console.error("Could not open model", error);
     throw error;
   });
+
+function reset() {
+  graph.fromJSON(DefaultGraphData);
+}

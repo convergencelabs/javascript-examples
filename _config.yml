@@ -17,15 +17,15 @@ title: Convergence Examples
 email: webmaster@econvergence.io
 description: >- # this means to ignore newlines until "baseurl:"
   Convergence is a next generation API that allows developers to build rich, real-time collaboration into their applications.
-#baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://convergence.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+url: "https://examples.convergence.io/"
+host: 0.0.0.0
 
 # Build settings
 source: src
 markdown: kramdown
 theme: minima
 plugins:
-  - jekyll-feed
   - jekyll-sitemap
 
 # Exclude from processing.
