@@ -26,7 +26,7 @@
   "devDependencies": {
     "@convergence/ace-collab-ext": "0.3.0",
     "@convergence/color-assigner": "0.3.0",
-    "@convergence/convergence": "1.0.0-rc.8",
+    "@convergence/convergence": "1.0.0-rc.9",
     "@convergence/dom-utils": "0.3.1",
     "@convergence/html-text-collab-ext": "0.2.1",
     "@convergence/input-element-bindings": "0.5.0",
