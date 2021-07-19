@@ -11,7 +11,7 @@ RUN chown -R jekyll:jekyll /srv/jekyll
 
 RUN /usr/jekyll/bin/entrypoint jekyll build --disable-disk-cache
 
-FROM node:14.17-buster as node
+FROM node:16 as node
 
 RUN mkdir /tmp/examples
 
@@ -21,7 +21,9 @@ COPY package.json .
 COPY package-lock.json .
 COPY scripts scripts
 
-RUN npm i
+RUN git config --global url."https://github.com/".insteadOf ssh://git@github.com/
+
+RUN npm ci
 RUN node scripts/copy-libs.js
 
 FROM nginx:stable-alpine
