@@ -2,4 +2,4 @@
 
 set -e
 
-docker build --no-cache -t convergencelabs/javasript-examples .
+docker build --no-cache -t convergencelabs/javascript-examples .
