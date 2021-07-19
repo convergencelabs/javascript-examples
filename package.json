@@ -1,6 +1,6 @@
 {
   "name": "@convergence/examples",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "Examples demonstrating various features of the Convergence platform.",
   "keywords": [
     "convergence",
@@ -26,12 +26,12 @@
   "devDependencies": {
     "@convergencelabs/ace-collab-ext": "0.6.0",
     "@convergence/color-assigner": "0.3.0",
-    "@convergence/convergence": "1.0.0-rc.9",
+    "@convergence/convergence": "1.0.0-rc.11",
     "@convergence/dom-utils": "0.3.1",
-    "@convergence/html-text-collab-ext": "0.2.1",
-    "@convergence/input-element-bindings": "0.5.0",
+    "@convergence/html-text-collab-ext": "0.3.1",
+    "@convergence/input-element-bindings": "0.5.1",
     "@convergence/jointjs-utils": "0.6.0",
-    "@convergence/mxgraph-adapter": "0.1.0",
+    "@convergence/mxgraph-adapter": "0.3.0",
     "@convergencelabs/codemirror-collab-ext": "0.1.2",
     "@convergencelabs/monaco-collab-ext": "0.3.2",
     "@fortawesome/fontawesome-free": "5.7.2",
@@ -46,7 +46,7 @@
     "jquery": "3.6.0",
     "materialize-css": "1.0.0",
     "moment": "2.23.0",
-    "mxgraph": "3.9.12",
+    "mxgraph": "4.2.2",
     "nouislider": "12.1.0",
     "popper.js": "1.14.7",
     "rimraf": "^3.0.2",
