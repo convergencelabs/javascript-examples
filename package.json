@@ -45,7 +45,7 @@
     "handlebars": "^4.7.7",
     "jquery": "^3.6.0",
     "materialize-css": "1.0.0",
-    "moment": "2.23.0",
+    "moment": "2.29.2",
     "mxgraph": "3.9.12",
     "nouislider": "12.1.0",
     "popper.js": "1.14.7",
